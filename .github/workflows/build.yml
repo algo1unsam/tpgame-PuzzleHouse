@@ -1,0 +1,24 @@
+# .github/workflows/build.yml
+# GitHub Actions documentation
+# => https://docs.github.com/en/actions
+name: build
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on: [push, pull_request]
+jobs:
+  gradle:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-java@v1
+        with:
+          java-version: 14
+
+      # Execute Gradle commands in GitHub Actions workflows
+      - run: |
+          git clone https://github.com/uqbar-project/wollok-cli
+          wollok-cli/wollok test
+        shell: bash
+
