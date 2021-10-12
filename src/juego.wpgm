@@ -2,7 +2,31 @@ import wollok.game.*
 import pepita.*
 
 program juego {
+	game.width(14) //Los parametros de width y height cualquier cosa los cambian ,yo solo estoy probando
+  	game.height(8) 
+  	game.cellSize(50)
 	game.title("Juego Base")
-	game.addVisual(pepita)
+	game.addVisual(jugador)
+	game.addVisual(caja)
+	
+	
+	//los Keyboard por lo que vi la mayoria no los colocan aca
+	keyboard.up().onPressDo { jugador.haciaArriba() }
+	keyboard.down().onPressDo { jugador.haciaAbajo() }
+	keyboard.left().onPressDo{jugador.haciaIzquierda()}
+	keyboard.right().onPressDo({jugador.haciaDerecha()})
+	
+	
+	game.onCollideDo(jugador, { elemento => 
+    elemento.subir()
+  	})
+	
+
+	
+	
+	game.boardGround("pasto.png")
+	
+
+	
 	game.start()
 }
