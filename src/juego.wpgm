@@ -11,22 +11,17 @@ program juego {
 	
 	
 	//los Keyboard por lo que vi la mayoria no los colocan aca
-	keyboard.up().onPressDo { jugador.haciaArriba() }
-	keyboard.down().onPressDo { jugador.haciaAbajo() }
-	keyboard.left().onPressDo{jugador.haciaIzquierda()}
-	keyboard.right().onPressDo({jugador.haciaDerecha()})
 	
+	keyboard.up().onPressDo({jugador.alPresionarUp()})
+	keyboard.down().onPressDo({jugador.alPresionarDown()})
+	keyboard.right().onPressDo({jugador.alPresionarRight()})
+	keyboard.left().onPressDo({jugador.alPresionarLeft()})
 	
-	game.onCollideDo(jugador, { elemento => 
-    elemento.subir()
-  	})
-	
+	game.onCollideDo(jugador, { elemento => elemento.subir()})
 
-	
-	
 	game.boardGround("pasto.png")
 	
-
-	
 	game.start()
+	
+	
 }
