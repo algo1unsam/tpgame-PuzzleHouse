@@ -45,8 +45,9 @@ object paleta {
 }
 
 class Muro{
-	var property image="muro.png"
-	var property position=game.at(5,5)
+	/* Para volver al muro anterior borarr comentario de abajo */
+	//var property image="muro.png"
+	var property position
 
 	method irHacia(direccion){ //no se que tan bien esta esto ,pero es solo para mantener polimorfismo
 		direccion.dirOpuesta(jugador1) // se mueve una posicion para atras

@@ -18,7 +18,12 @@ object configuraciones{
 		keyboard.up().onPressDo {jugador1.irHacia(arriba)}  
 		keyboard.down().onPressDo {jugador1.irHacia(abajo)}
 		keyboard.left().onPressDo {jugador1.irHacia(izquierda)}
-		keyboard.right().onPressDo {jugador1.irHacia(derecha)}		
+		keyboard.right().onPressDo {jugador1.irHacia(derecha)}	
+		
+		keyboard.w().onPressDo {jugador1.irHacia(arriba)}  
+		keyboard.s().onPressDo {jugador1.irHacia(abajo)}
+		keyboard.a().onPressDo {jugador1.irHacia(izquierda)}
+		keyboard.d().onPressDo {jugador1.irHacia(derecha)}		
 	}
 	
 	method configMusic() {
@@ -26,7 +31,7 @@ object configuraciones{
 	    keyboard.p().onPressDo({musicaDprueba.stop()})
 	    musicaDprueba.shouldLoop(true)
 		game.schedule(0, {musicaDprueba.play()})
-		musicaDprueba.volume(0.3)
+		musicaDprueba.volume(0.1)
 	}
 	
 	/* 
