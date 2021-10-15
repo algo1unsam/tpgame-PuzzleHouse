@@ -1,46 +1,24 @@
 import wollok.game.*
 import pepita.*
-						//si el codigo solo complica las cosas, no duden en cambiar todo!! 
+import direcciones.*
+import configuraciones.*
+import niveles.*
+
+/* si el codigo solo complica las cosas, no duden en cambiar todo!! */
+
 program juego {
-	game.width(14) 
-  	game.height(8) 
+	game.title( "TP" )
+	game.width( configuraciones.ancho() )
+  	game.height( configuraciones.altura() ) 
   	game.cellSize(50)
-	game.title("Juego Base")
-	
-
-	game.addVisual(caja)
-	game.addVisual(caja2)
-	
-	game.addVisual(muro)
-	game.addVisual(jugador1)
-	
-	keyboard.up().onPressDo {jugador1.irHacia(arriba)}  // (1) Dependiendo que tecla presione el jugador se movera . Jugador1.irHacia(parametro) esta en pepita.wlk (Por ahora es innecesario aclarar esto pero cuando tengamos mas archivos va a ser una buena practica para guiarnos)
-	keyboard.down().onPressDo {jugador1.irHacia(abajo)}
-	keyboard.left().onPressDo {jugador1.irHacia(izquierda)}
-	keyboard.right().onPressDo {jugador1.irHacia(derecha)}
-    
-    const musicaDprueba = game.sound("nivel0a.mp3")
-    keyboard.p().onPressDo({musicaDprueba.stop()})
-
-	
-	game.onCollideDo(jugador1, { elemento =>  //(7) si un jugador colisiona con una caja entonces la mueve S
-    elemento.irHacia(jugador1.orientacionAnterior()) //(8) 
-   		
-  	})
   	
-
-	game.boardGround("pasto.png")
+  	nivel1.cargarNivel()
 	
+	configuraciones.configTeclas()
+	configuraciones.configMusic()
+	configuraciones.configColisiones()
 	
-	
-	musicaDprueba.shouldLoop(true)
-
-	game.schedule(0, {musicaDprueba.play()})
-	musicaDprueba.volume(0.3)
 	game.start()
 	
-
-
-	game.start()
 }
 
