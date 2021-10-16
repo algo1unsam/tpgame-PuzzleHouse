@@ -4,23 +4,43 @@ import configuraciones.*
 import niveles.*
 
 //////////////////////////////////////////////////codigo temporal. Si hay que cambiar todo como ya dije ni lo duden //////////////////////////////////////////////////////////////
-const jugador1 = new Jugador( position=game.at(3,3), nombreJugador ="jugador1")
+const jugador1 = new Jugador( position=game.at(2,1), nombreJugador ="jugador1")
 
-class Jugador {																				
+class ObjetoMovible {
+
+	method emitirSonido(unSonido){
+		const sonido =game.sound(unSonido)
+		sonido.volume(0.1)
+		sonido.play()	
+		
+	}
+	
+}
+
+class Jugador  inherits ObjetoMovible {																				
 																						
 	var property position 
+	const posicionInicial= position
 	const nombreJugador
 	var property image =nombreJugador+"abajo.png"
 	var property orientacionAnterior=null
+
 	
 	method irHacia(orientacion){  														
 			orientacionAnterior=orientacion											
-			image=nombreJugador+orientacionAnterior.toString()+".png" 	
+			image=nombreJugador+orientacionAnterior.toString()+".png"
+			self.emitirSonido("pasosf.mp3") 	//si resulta muy molesto o lo pueden sacar o pueden poner pasos.mp3 () . El pasosf.mp3 es el mismo sonido que el anterior pero esta editado para que suene mas fuerte
+			
 			orientacion.moverse(self) // se mueve 1 posicion para adelante											 
 	}	
 	method text() = position.toString()
 	
 	method textColor()= paleta.verde()
+	
+	method posicioninicial() {
+		self.emitirSonido("reinicio.mp3")
+		self.position(posicionInicial)
+	}
 }
 
 object paleta {
@@ -28,20 +48,23 @@ object paleta {
 	const property rojo = "FF0000FF"
 }
 
- class Caja{
+ class Caja inherits ObjetoMovible{
 	 var property position= game.center() 
 	 var property image= "caja.png"
+	 const posicionInicial= position
 	 
 	method irHacia(direccion){ //(10) 
-		self.cajaSonido()
+		self.emitirSonido("caja_mover.mp3")
 		direccion.moverse(self)	// se mueve una posicion para adelante
 	}
 	
-	method cajaSonido(){
-		const cajaMoviendose =game.sound("caja_mover.mp3")
-		cajaMoviendose.volume(0.1)
-		cajaMoviendose.play()	
-	}		
+	
+	
+	method posicioninicial() {
+		self.position(posicionInicial)
+	}
+	
+		
 }
 
 class Muro{
