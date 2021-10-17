@@ -13,15 +13,22 @@ object niveles {
 		return  listaNiveles.flatMap({elementos=>elementos.listaObjetos()}) 
 	}
 	
+	method reiniciarNivel(){
+		return self.elementosPorNivel().forEach{elemn=>elemn.posicioninicial() }
 	
 	
-	
-	
-	
-	
-}
+	}
+
+
+}																										                                   
 object nivel1 {
-	const listaObjetos=[new Caja(position = game.center(), image="caja.png"),new Caja(position = game.at(3,3) , image="caja.png"),jugador1] //codigo Mejorable
+	const listaObjetos=[new Caja(position = game.at(7,3), image="caja.png"),new Caja(position = game.at(4,2) , image="caja.png"),jugador1,new Caja(position=game.at(10,4)),new Caja(position=game.at(12,2)),new Caja(position=game.at(2,2))] 
+	
+	method posiciones(){
+		 return listaObjetos.map({elemento=>elemento.position()})
+
+	}
+
 	
 	
 	method cargarNivel(){
@@ -32,6 +39,8 @@ object nivel1 {
 		
 		/* Para volver al muro anterior borarr comentario de abajo */
 		//game.addVisual( new Muro(position = game.at(5,5), image="muro.png" ) )
+		
+		
 		
 	
 		/* Muros invisibles */
@@ -81,7 +90,7 @@ object nivel1 {
 	
 	method cargaDeObjetosMovibles(){
 		
-		return listaObjetos.forEach{ unObjeto => game.addVisual(unObjeto)}
+		return listaObjetos.forEach{ unObjeto => game.addVisual(unObjeto)} 
 	}
 	
 	

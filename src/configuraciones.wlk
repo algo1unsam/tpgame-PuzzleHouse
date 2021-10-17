@@ -24,15 +24,14 @@ object configuraciones{
 		keyboard.s().onPressDo {jugador1.irHacia(abajo)}
 		keyboard.a().onPressDo {jugador1.irHacia(izquierda)}
 		keyboard.d().onPressDo {jugador1.irHacia(derecha)}	
-		keyboard.r().onPressDo {niveles.elementosPorNivel().forEach{objeto=>objeto.posicioninicial() } //Desconosco que tan bien puede funcionar esto cuando agreguemos mas niveles... Seguro va a ser necesario un ajuste, de lo contrario si queremos hacerla facil fijensen en niveles.wlk linea 27.
+		keyboard.r().onPressDo {niveles.elementosPorNivel().forEach{objeto=>objeto.posicioninicial()} }
 		
-		
-		}
+
 		
 	}
 	
 	method configMusic() {
-		const musicaDprueba = game.sound("nivel1a.mp3") // Supongo que  partir de ahora llamamos nivel1 al nivel0 de antes . esto es una musica  alternativa de varias que tengo para proponer . cuando el juego este completo vamos a elegir entre todos las musicas mas adecuadas para cada nivel. 
+		const musicaDprueba = game.sound("nivel2MoiraB.mp3") // Supongo que  partir de ahora llamamos nivel1 al nivel0 de antes . esto es una musica  alternativa de varias que tengo para proponer . cuando el juego este completo vamos a elegir entre todos las musicas mas adecuadas para cada nivel. 
 	    keyboard.p().onPressDo({musicaDprueba.stop()})  // Si seguimos el guion se supone que el primer nivel todo es color de rosas, por eso puse  canciones  alegres. 
 	    musicaDprueba.shouldLoop(true)					
 		game.schedule(0, {musicaDprueba.play()})
@@ -44,7 +43,9 @@ object configuraciones{
 	 * Si un jugador intenta mover un muro se adelanta y retrocede a la vez
 	 */
 	method configColisiones(){
-		game.onCollideDo(jugador1, { elemento => elemento.irHacia(jugador1.orientacionAnterior()) })
+		game.onCollideDo(jugador1, { elemento =>  //(7) si un jugador colisiona con una caja entonces la mueve S
+    					elemento.irHacia(jugador1.ultimaPosicion()) //(8) 
+  		})
 	}
 	
 	
