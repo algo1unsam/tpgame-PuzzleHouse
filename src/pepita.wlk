@@ -4,8 +4,6 @@ import niveles.*
 
 const jugador1 = new Jugador(position = game.at(3, 3), nombreJugador = "jugador1")
 
-
-
 //Como pueden ver se repite masomenos la logica en los objetos ,solo que tienen variaciones. Se que esto se puede solucoionar, Si alguno esta canchero con herencia ya sabe
 class ObjetoMovible {
 
@@ -104,7 +102,15 @@ class Muro {
 			direccion.dirOpuesta(jugador1) // se mueve una posicion para atras
 		}
 	}
+}
 
+class Meta{
+	var property position
+	var property image = "meta.png"
+	
+	method irHacia(direccion){
+		
+	}
 }
 
 object libreMovimiento {
@@ -118,7 +124,6 @@ object libreMovimiento {
 	method activado() {
 		return numero % 2 == 0
 	}
-
 
 }
 
