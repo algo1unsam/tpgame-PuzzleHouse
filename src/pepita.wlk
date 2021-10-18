@@ -67,7 +67,7 @@ class Caja inherits ObjetoMovible {
 			direccion.moverse(self)
 			if (self.DosObjEnUnaMismaPosicion()) {
 				if ( self.llegoMeta() ){
-					
+					self.image("caja_ok.png")
 				}
 				else{
 					direccion.dirOpuesta(self)
