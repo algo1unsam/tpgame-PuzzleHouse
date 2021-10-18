@@ -62,17 +62,26 @@ class Caja inherits ObjetoMovible {
 
 	method irHacia(direccion) { // (10) 
 		if (!libreMovimiento.activado()) {    //Esto esta tambien en la clase muro . Para la version final este if va a desaparecer. Sirve basicamente para desahibilitar cualquier accion que haga el objeto cuando el jugador colisiona con el. Permitiendole asi al jugador moverse libremente por el mapa. Se activa y se desactiva con la Z.
-													 //quise implementarlo en configuraciones pero por razones que desconosco en el  juego no me hacia caso cuando apretaba la Z. 
-			
+													 //quise implementarlo en configuraciones pero por razones que desconosco en el  juego no me hacia caso cuando apretaba la Z. 	
 			self.emitirSonido("caja_mover.mp3")
 			direccion.moverse(self)
 			if (self.DosObjEnUnaMismaPosicion()) {
-				direccion.dirOpuesta(self)
-				direccion.dirOpuesta(jugador1)
+				if ( self.llegoMeta() ){
+					
+				}
+				else{
+					direccion.dirOpuesta(self)
+					direccion.dirOpuesta(jugador1)
+				}
+				
 			}
 		}
 	}
-
+	
+	method llegoMeta(){
+		return  nivel1.listaMeta().any{ unaMeta => unaMeta.position() == self.position()}
+	}
+	
 	method DosObjEnUnaMismaPosicion() {
 		return game.getObjectsIn(position).size() > 1
 	}
@@ -108,10 +117,10 @@ class Meta{
 	var property position
 	var property image = "meta.png"
 	
-	method irHacia(direccion){
-		
-	}
+	method irHacia(direccion){}
 }
+
+object meta1 inherits Meta(position = game.at(1,5) ){}
 
 object libreMovimiento {
 	var numero = 1

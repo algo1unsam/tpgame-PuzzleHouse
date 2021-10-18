@@ -21,18 +21,22 @@ object niveles {
 object nivel1 {
 	const listaObjetos=[new Caja(position = game.at(6,3), image="caja_ok.png"),new Caja(position = game.at(6,2) , image="caja.png"),new Caja(position=game.at(5,3)),new Caja(position=game.at(6,4)),new Caja(position=game.at(7,3)),jugador1]
 	
+	const listaMeta= [  new Meta(position = game.at(1,1)  ),
+						new Meta(position = game.at(1,5)  ),
+						new Meta(position = game.at(12,5) ),
+						new Meta(position = game.at(12,1) )
+					]
+					
 	method posiciones(){
 		 return listaObjetos.map({elemento=>elemento.position()})
 	}
 
 	method cargarNivel(){
 		game.boardGround("prueba.png")
-		game.addVisual( new Meta(position = game.at(1,5)  ) )
-		game.addVisual( new Meta(position = game.at(1,1)  ) )				
-		game.addVisual( new Meta(position = game.at(12,5) ) )
-		game.addVisual( new Meta(position = game.at(12,1) ) )
-		
+
+		self.cargaDeObjetosMeta()
 		self.cargaDeObjetosMovibles()
+		
 		
 		//keyboard.r().onPressDo {listaObjetos.forEach{objeto=>objeto.posicioninicial()}}
 		
@@ -85,8 +89,16 @@ object nivel1 {
 		return listaObjetos
 	}
 	
+	method listaMeta(){
+		return listaMeta
+	}
+	
 	method cargaDeObjetosMovibles(){
 		return listaObjetos.forEach{ unObjeto => game.addVisual(unObjeto)} 
+	}
+	
+	method cargaDeObjetosMeta(){
+		return listaMeta.forEach{ unaMeta => game.addVisual( unaMeta )}
 	}
 		
 }
