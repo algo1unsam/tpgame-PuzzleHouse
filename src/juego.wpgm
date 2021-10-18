@@ -12,11 +12,19 @@ program juego {
   	game.height( configuraciones.altura() ) 
   	game.cellSize(50)
   	
+	
+  	
+  	
   	nivel1.cargarNivel()
 	
 	configuraciones.configTeclas()
 	configuraciones.configMusic()
+	
+	
+	
 	configuraciones.configColisiones()
+	
+
 	
 	game.start()
 	

@@ -4,19 +4,22 @@ import niveles.*
 
 const jugador1 = new Jugador(position = game.at(3, 3), nombreJugador = "jugador1")
 
+
+
+//Como pueden ver se repite masomenos la logica en los objetos ,solo que tienen variaciones. Se que esto se puede solucoionar, Si alguno esta canchero con herencia ya sabe
 class ObjetoMovible {
+
+	var property atravesable = false
 
 	method emitirSonido(unSonido) {
 		const sonido = game.sound(unSonido)
 		sonido.volume(0.1)
 		sonido.play()
 	}
-
+	
 }
 
-//quizas en un futuro tanto los 4 objetos direccion se conviertan en clases y tengamos que aplicar herencia tambien ,pero por ahora no lo veo necesario
-class Jugador inherits ObjetoMovible { //macaria y moira deberian moverse al igual que pepe ("nombre provisorio porque ayer probando un juego de un cuatrimestre pasado me di cuenta que el personaje tambien se llamaba pepe jaja)
-	// sin embargo recordemos que hay cosas que moira y macaria no pueden hacer que pepe si ,creo que aca entraria herencia para un futuro
+class Jugador inherits ObjetoMovible {
 
 	var property position
 	const nombreJugador
@@ -24,7 +27,7 @@ class Jugador inherits ObjetoMovible { //macaria y moira deberian moverse al igu
 	var ultimaPosicion = null
 	const posicionInicial = position
 
-	method irHacia(direccion) { // (2)recibe la "direccion". Direccion es un objeto que contiene un metodo que puede mover a los objetos en una direccion , existen 4 objetos direcciones(arriba,abajo,izquierda y derecha)
+	method irHacia(direccion) {
 		ultimaPosicion = direccion // (3)ese por lo tanto sera nuestro ultimo movimiento. Ultimaposicion ( el nombre del metodo podriamos cambiarlo si quieren) lo que hace es guardar el ultimo movimiento del jugador . Si nos movimos hacia arriba ,entonces guardara al objeto arriba para luego ser utilizado para algun mensaje  
 		direccion.moverse(self) // (4)se envia como parametro a si mismo  porque  el metodo "moverse" del objeto direccion (ya sea arriba ,abajo, izquierda o derecha) realiza una modificacion en la pocicion del jugador
 		image = nombreJugador + ultimaPosicion.toString() + ".png" // (6)  Si  la variable nombreJugador es = "jugador1" ,el objeto direccion =arriba y concatenamos todo con el string "png" formamos jugador1arriba.png que como ven coincide con el asset que muestra al personaje de espalda. 
@@ -39,11 +42,16 @@ class Jugador inherits ObjetoMovible { //macaria y moira deberian moverse al igu
 		self.emitirSonido("reinicio.mp3")
 		self.position(posicionInicial)
 	}
-	
-	method text() = position.toString()
+
+	method text() {
+		if (!libreMovimiento.activado()) {
+			return ""
+		} else {
+			return "[ " + position.x().toString() + " , " + position.y().toString() + " ]"
+		}
+	}
 
 	method textColor() = paleta.verde()
-	
 
 }
 
@@ -55,25 +63,23 @@ class Caja inherits ObjetoMovible {
 	var property image = "caja.png"
 
 	method irHacia(direccion) { // (10) 
-		self.emitirSonido("caja_mover.mp3")
-		direccion.moverse(self)
-		
-		if(self. DosObjEnUnaMismaPosicion()){
-			direccion.dirOpuesta(self)
-			direccion.dirOpuesta(jugador1)	
+		if (!libreMovimiento.activado()) {    //Esto esta tambien en la clase muro . Para la version final este if va a desaparecer. Sirve basicamente para desahibilitar cualquier accion que haga el objeto cuando el jugador colisiona con el. Permitiendole asi al jugador moverse libremente por el mapa. Se activa y se desactiva con la Z.
+													 //quise implementarlo en configuraciones pero por razones que desconosco en el  juego no me hacia caso cuando apretaba la Z. 
+			
+			self.emitirSonido("caja_mover.mp3")
+			direccion.moverse(self)
+			if (self.DosObjEnUnaMismaPosicion()) {
+				direccion.dirOpuesta(self)
+				direccion.dirOpuesta(jugador1)
+			}
 		}
-	
-	
 	}
-	
 
-	
-	method DosObjEnUnaMismaPosicion(){
-		return game.getObjectsIn(position).size()>1		
+	method DosObjEnUnaMismaPosicion() {
+		return game.getObjectsIn(position).size() > 1
 	}
 
 	method posicioninicial() {
-		
 		self.emitirSonido("reinicio.mp3")
 		self.position(posicionInicial)
 	}
@@ -87,8 +93,6 @@ object paleta {
 
 }
 
-
-
 class Muro {
 
 	/* Para volver al muro anterior borarr comentario de abajo */
@@ -96,8 +100,25 @@ class Muro {
 	var property position
 
 	method irHacia(direccion) { // no se que tan bien esta esto ,pero es solo para mantener polimorfismo
-		direccion.dirOpuesta(jugador1) // se mueve una posicion para atras
+		if (!libreMovimiento.activado()) {
+			direccion.dirOpuesta(jugador1) // se mueve una posicion para atras
+		}
 	}
+
+}
+
+object libreMovimiento {
+	var numero = 1
+	
+
+	method cambio() {
+		numero += 1
+	}
+
+	method activado() {
+		return numero % 2 == 0
+	}
+
 
 }
 

@@ -22,7 +22,7 @@ object niveles {
 
 }																										                                   
 object nivel1 {
-	const listaObjetos=[new Caja(position = game.at(7,3), image="caja.png"),new Caja(position = game.at(4,2) , image="caja.png"),jugador1,new Caja(position=game.at(10,4)),new Caja(position=game.at(12,2)),new Caja(position=game.at(2,2))] 
+	const listaObjetos=[new Caja(position = game.at(6,3), image="caja_ok.png"),new Caja(position = game.at(6,2) , image="caja.png"),new Caja(position=game.at(5,3)),new Caja(position=game.at(6,4)),new Caja(position=game.at(7,3)),jugador1]
 	
 	method posiciones(){
 		 return listaObjetos.map({elemento=>elemento.position()})
