@@ -1,11 +1,11 @@
 import wollok.game.*
 import pepita.*
 import direcciones.*
-import niveles.*
+//import niveles.*
 
 object configuraciones{
-	const property altura = 8		/* height */
-	const property ancho = 14		/* width */
+	const property altura = 10	/* height */
+	const property ancho = 11		/* width */
 	
 	/*
 	 *  Dependiendo que tecla presione el jugador se movera.
@@ -24,7 +24,8 @@ object configuraciones{
 		keyboard.s().onPressDo {jugador1.irHacia(abajo)}
 		keyboard.a().onPressDo {jugador1.irHacia(izquierda)}
 		keyboard.d().onPressDo {jugador1.irHacia(derecha)}	
-		keyboard.r().onPressDo {niveles.elementosPorNivel().forEach{objeto=>objeto.posicioninicial()} }
+		
+		//keyboard.r().onPressDo {niveles.elementosPorNivel().forEach{objeto=>objeto.posicioninicial()} }
 	  
 	    keyboard.z().onPressDo {libreMovimiento.cambio()}
 
@@ -32,7 +33,7 @@ object configuraciones{
 	}
 	
 	method configMusic() {
-		const musicaDprueba = game.sound("nivel2MoiraA.mp3") // Supongo que  partir de ahora llamamos nivel1 al nivel0 de antes . esto es una musica  alternativa de varias que tengo para proponer . cuando el juego este completo vamos a elegir entre todos las musicas mas adecuadas para cada nivel. 
+		const musicaDprueba = game.sound("nivel2moiraA.mp3") // Supongo que  partir de ahora llamamos nivel1 al nivel0 de antes . esto es una musica  alternativa de varias que tengo para proponer . cuando el juego este completo vamos a elegir entre todos las musicas mas adecuadas para cada nivel. 
 	    keyboard.p().onPressDo({musicaDprueba.stop()})  // Si seguimos el guion se supone que el primer nivel todo es color de rosas, por eso puse  canciones  alegres. 
 	    musicaDprueba.shouldLoop(true)					
 		game.schedule(0, {musicaDprueba.play()})
@@ -49,9 +50,7 @@ object configuraciones{
 	 
 	method configColisiones(){
 
-  			game.onCollideDo(jugador1, { elemento =>  //(7) si un jugador colisiona con una caja entonces la mueve S
-    				elemento.irHacia(jugador1.ultimaPosicion()) //(8) 
-  		})
+  		game.onCollideDo(jugador1, { elemento => jugador1.empujar(jugador1.ultimaPosicion(),elemento)})
   			
   		
 	
