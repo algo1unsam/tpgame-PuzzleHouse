@@ -4,28 +4,24 @@ import direcciones.*
 import configuraciones.*
 import niveles.*
 
-/* si el codigo solo complica las cosas, no duden en cambiar todo!! */
 
+/* si el codigo solo complica las cosas, no duden en cambiar todo!! */
 program juego {
-	game.title( "TP" )
-	game.width( configuraciones.ancho() )
-  	game.height( configuraciones.altura() ) 
-  	game.cellSize(50)
-  	
+	game.title("TP")
 	
-  	
-  	
-  	nivel1.cargarNivel()
+	
+	
+	game.cellSize(50)
+	
+	//prueba.cargarNivel()
+	nivel1.cargarNivel() // solo por ahora sigue este orden!! 
+	
+	game.width(configuraciones.ancho())
+	game.height(configuraciones.altura())
+	
 	
 	configuraciones.configTeclas()
-	configuraciones.configMusic()
-	
-	
-	
+	//configuraciones.configMusic()
 	configuraciones.configColisiones()
-	
-
-	
 	game.start()
-	
 }
