@@ -106,6 +106,7 @@ class Caja inherits ObjetoMovible {
 	var property tipo = 1
 	
 	const posicionInicial = position
+	const imagenInicial = image
 
 	method esEmpujable() = true
 
@@ -114,6 +115,7 @@ class Caja inherits ObjetoMovible {
 	method posicioninicial() {
 		self.emitirSonido("reinicio.mp3")
 		self.position(posicionInicial)
+		self.image(imagenInicial)
 	}
 	
 	method llegoMeta() {

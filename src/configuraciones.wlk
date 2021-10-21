@@ -60,7 +60,7 @@ object configuraciones {
 		
 	}
 	method reiniciador(lista){
-		keyboard.r().onPressDo {lista.forEach{objeto=>objeto.posicioninicial()}}	
+		keyboard.r().onPressDo {lista.forEach{objeto=>objeto.posicioninicial() }}	
 	}
 
 	method libreMoviento() = numero % 2 == 0
