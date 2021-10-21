@@ -63,7 +63,7 @@ class Jugador inherits ObjetoMovible {
 			
 			/* Transicion caja success */
 			if ( objeto.llegoMeta() ) {
-				objeto.image("caja_ok2.png")
+				objeto.image(objeto.image_success())
 			} 
 			
 			
@@ -101,6 +101,10 @@ class Caja inherits ObjetoMovible {
 
 	var property position = game.center()
 	var property image = "caja2.png"
+	var property image_success = "caja_ok.png"
+	
+	var property tipo = 1
+	
 	const posicionInicial = position
 
 	method esEmpujable() = true
@@ -113,8 +117,12 @@ class Caja inherits ObjetoMovible {
 	}
 	
 	method llegoMeta() {
-		return nivel1.listaMeta().any{ unaMeta => unaMeta.position() == self.position() }
-		 
+		/* Esto es eliminable, solo queria probar  --------*/
+		if (nivel1.listaMeta().any{ unaMeta => unaMeta.position() == self.position() && !(unaMeta.tipo() == self.tipo())}){
+			self.emitirSonido("ouch.mp3")
+		}
+		/* ------------------------------------------------*/
+		return nivel1.listaMeta().any{ unaMeta => unaMeta.position() == self.position() && unaMeta.tipo() == self.tipo()}
 	}
 
 }
@@ -134,6 +142,8 @@ class Meta {
 
 	var property position = game.at(7, 7)
 	var property image = "meta1.png"
+	
+	var property tipo = 1
 
 	method esEmpujable() = false
 

@@ -18,12 +18,12 @@ class Niveles {
 
 object nivel1 inherits Niveles {
 	const listaObjetos=[
-						new Caja(position = game.at(6,3), image="caja3.png"),
+						new Caja(position = game.at(6,3), image="caja3.png" , image_success="caja_ok2.png", tipo = 2),
 						new Caja(position = game.at(6,2)),
 						new Caja(position = game.at(5,3)),
 						new Caja(position = game.at(6,4)),
 						new Caja(position = game.at(7,3)),
-						new Caja(position = game.at(9,2) , image="caja3.png"),
+						new Caja(position = game.at(9,2) , image="caja3.png", image_success="caja_ok2.png", tipo = 2),
 						jugador1
 	]
 	
@@ -31,8 +31,8 @@ object nivel1 inherits Niveles {
 						new Meta(position = game.at(1,1)  ),
 						new Meta(position = game.at(12,5) ),
 						new Meta(position = game.at(12,1) ),
-					    new Meta(position = game.at(9,3)  , image="meta2.png" ),
-					    new Meta(position = game.at(10,3) , image="meta2.png" )			
+					    new Meta(position = game.at(9,3)  , image="meta2.png", tipo=2 ),
+					    new Meta(position = game.at(10,3) , image="meta2.png", tipo=2 )			
 					]
 
 	method posiciones() =  listaObjetos.map({elemento=>elemento.position()})
