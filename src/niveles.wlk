@@ -18,20 +18,21 @@ class Niveles {
 
 object nivel1 inherits Niveles {
 	const listaObjetos=[
-						new Caja(position = game.at(6,3), image="caja_ok.png"),
-						new Caja(position = game.at(6,2) , image="caja.png"),
-						new Caja(position=game.at(5,3)),
-						new Caja(position=game.at(6,4)),
-						new Caja(position=game.at(7,3)),
-						new Caja(position = game.at(9,2), image="caja_ok.png"),
+						new Caja(position = game.at(6,3), image="caja3.png"),
+						new Caja(position = game.at(6,2)),
+						new Caja(position = game.at(5,3)),
+						new Caja(position = game.at(6,4)),
+						new Caja(position = game.at(7,3)),
+						new Caja(position = game.at(9,2) , image="caja3.png"),
 						jugador1
 	]
-	const listaMeta= [  new Meta(position = game.at(1,5)   ),
+	
+	const listaMeta= [  new Meta(position = game.at(1,5)  ),
 						new Meta(position = game.at(1,1)  ),
 						new Meta(position = game.at(12,5) ),
 						new Meta(position = game.at(12,1) ),
-					    new Meta(position = game.at(9,3) , image="metav.png" ),
-					    new Meta(position = game.at(10,3) , image="metav.png" )			
+					    new Meta(position = game.at(9,3)  , image="meta2.png" ),
+					    new Meta(position = game.at(10,3) , image="meta2.png" )			
 					]
 
 	method posiciones() =  listaObjetos.map({elemento=>elemento.position()})
@@ -44,20 +45,19 @@ object nivel1 inherits Niveles {
 		jugador1.posicionInicial(game.at(3,3))
 		
 		
-		game.boardGround("prueba.png")
+		game.boardGround("prueba2.png")
 		
 		
 		self.cargaDeObjetosMeta()
 		self.cargaDeObjetosMovibles()
 
 		
-		/* Para volver al muro anterior borarr comentario de abajo */
-		//game.addVisual( new Muro(position = game.at(5,5), image="muro.png" ) )
+		/* Muros Visibles */
 		game.addVisual( new MuroVisible(position = game.at(2,4) ) )
 		game.addVisual( new MuroVisible(position = game.at(2,2) ) )
 	
 	
-		/* Muros invisibles */
+		/* Muros Invisibles */
 		/* VERTICAL */
 		game.addVisual( new Muro(position = game.at(0,5) ) )
 		game.addVisual( new Muro(position = game.at(0,4) ) )

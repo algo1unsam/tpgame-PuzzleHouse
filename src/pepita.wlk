@@ -60,6 +60,13 @@ class Jugador inherits ObjetoMovible {
 		const proximaDireccion = direccion.moverse(objeto)
 		if (self.atravesable(proximaDireccion)) {
 			objeto.position(proximaDireccion)
+			
+			/* Transicion caja success */
+			if ( objeto.llegoMeta() ) {
+				objeto.image("caja_ok2.png")
+			} 
+			
+			
 			objeto.emitirSonido("caja_mover.mp3") // Solo se emite si la caja puede ser empujable ,osea no haya ningun otro objeto que impida que esto suceda. Ustedes decidan donde queda mejor
 		} else {
 			self.position(direccion.dirOpuesto(self)) // Si esto desaparece el jugador bajo ciertas condiciones atraviesa la caja! 
@@ -69,6 +76,7 @@ class Jugador inherits ObjetoMovible {
 	method posicioninicial() {
 		self.emitirSonido("reinicio.mp3")
 		self.position(posicionInicial)
+		
 	}
 
 	method puedeEmpujar(direccion) = game.getObjectsIn(direccion).all{ unObj => unObj.esEmpujable() }
@@ -92,7 +100,7 @@ class Jugador inherits ObjetoMovible {
 class Caja inherits ObjetoMovible {
 
 	var property position = game.center()
-	var property image = "caja.png"
+	var property image = "caja2.png"
 	const posicionInicial = position
 
 	method esEmpujable() = true
@@ -102,6 +110,11 @@ class Caja inherits ObjetoMovible {
 	method posicioninicial() {
 		self.emitirSonido("reinicio.mp3")
 		self.position(posicionInicial)
+	}
+	
+	method llegoMeta() {
+		return nivel1.listaMeta().any{ unaMeta => unaMeta.position() == self.position() }
+		 
 	}
 
 }
@@ -120,7 +133,7 @@ class Muro {
 class Meta {
 
 	var property position = game.at(7, 7)
-	var property image = "meta.png"
+	var property image = "meta1.png"
 
 	method esEmpujable() = false
 
@@ -138,7 +151,7 @@ object paleta {
 class MuroVisible {
 
 	var property position = game.at(4, 5)
-	var property image = "muro.png"
+	var property image = "muro2.png"
 
 	method esEmpujable() = false
 
