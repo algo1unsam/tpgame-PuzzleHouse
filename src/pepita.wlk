@@ -1,5 +1,7 @@
 import wollok.game.*
 import direcciones.*
+import niveles.*
+import configuraciones.*
 
 const jugador1 = new Jugador(position = game.at(5, 6), nombreJugador = "jugador1")
 
@@ -10,7 +12,6 @@ class ObjetoMovible {
 		sonido.volume(0.1)
 		sonido.play()
 	}
-
 }
 
 class Jugador inherits ObjetoMovible {
@@ -21,6 +22,17 @@ class Jugador inherits ObjetoMovible {
 	var property ultimaPosicion = null
 	var property posicionInicial = position
 
+	method sinColision() {
+	}
+
+	method preIrHacia(direccion) { // los metodos pre+algo son metodos que van a desaparecer en la version final del juego. son metodos que se encargan de preguntar si el jugador esta en modoLibre o no. EL modo libre permite al jugador saltarse las colisiones con los objetos y por lo tanto navegar por todo el mapa libremente 
+		if (!configuraciones.libreMoviento()) {
+			self.irHacia(direccion)
+		} else {
+			self.position(direccion.moverse(self)) // El modo libre movimento esta activado ,sin embargo el jugador necesita moverse aun asi que incorpore esta linea. SI NO lo hacia el jugador practicamente no se movia
+		}
+	}
+
 	method irHacia(direccion) {
 		const proximaDireccion = direccion.moverse(self)
 		ultimaPosicion = direccion
@@ -29,6 +41,12 @@ class Jugador inherits ObjetoMovible {
 		}
 		image = nombreJugador + ultimaPosicion.toString() + ".png"
 		self.emitirSonido("pasosf.mp3")
+	}
+
+	method preColisionaConAlgo(direccion, objeto) { // los metodos pre+algo son metodos que van a desaparecer en la version final del juego. son metodos que se encargan de preguntar si el jugador esta en modoLibre o no. EL modo libre permite al jugador saltarse las colisiones con los objetos y por lo tanto navegar por todo el mapa libremente 
+		if (!configuraciones.libreMoviento()) {
+			self.colisionaConAlgo(direccion, objeto) // si el modo libre esta activado entonces se desactiva cualquier colision del jugador con cajas
+		}
 	}
 
 	method colisionaConAlgo(direccion, objeto) {
@@ -53,28 +71,21 @@ class Jugador inherits ObjetoMovible {
 		self.position(posicionInicial)
 	}
 
-	method puedeEmpujar(direccion) {
-		return game.getObjectsIn(direccion).all{ unObj => unObj.esEmpujable() }
-	}
+	method puedeEmpujar(direccion) = game.getObjectsIn(direccion).all{ unObj => unObj.esEmpujable() }
 
-	method atravesable(direccion) {
-		return game.getObjectsIn(direccion).all{ unObj => unObj.esAtravesable() }
-	}
+	method atravesable(direccion) = game.getObjectsIn(direccion).all{ unObj => unObj.esAtravesable() }
 
-	method algunoAtravesable(direccion) {
-		return game.getObjectsIn(direccion).any{ unObj => unObj.esAtravesable() }
-	}
+	method algunoAtravesable(direccion) = game.getObjectsIn(direccion).any{ unObj => unObj.esAtravesable() }
 
-	method text() {
-		if (!libreMovimiento.activado()) {
-			return ""
-		} else {
-			return "[ " + position.x().toString() + " , " + position.y().toString() + " ]"
-		}
-	}
+	method text() = if (!configuraciones.libreMoviento()) {""} else {"[ " + position.x().toString() + " , " + position.y().toString() + " ]"}
 
 	method textColor() = paleta.verde()
 
+	method llegoMeta() = nivel1.listaMeta().any{ unaMeta => unaMeta.position() == self.position() } // Este es codigo de commits anteriores ,lo agregue recien porque con el cambio de logica de colisiones  lo borre sin querer .ahi esta denuevo ,aun asi no se como usarlo ahora mismo.
+
+	method esAtravesable()=false
+	
+	method esEmpujable()=false
 }
 
 //idea para el futuro , tanto caja1 como caja 2 deben estar en una lista . Cuando las cajas llegan a su meta hay que preguntar con colecciones si todos estan en la "cruz"
@@ -84,13 +95,9 @@ class Caja inherits ObjetoMovible {
 	var property image = "caja.png"
 	const posicionInicial = position
 
-	method esEmpujable() {
-		return true
-	}
+	method esEmpujable() = true
 
-	method esAtravesable() {
-		return false
-	}
+	method esAtravesable() = false
 
 	method posicioninicial() {
 		self.emitirSonido("reinicio.mp3")
@@ -102,15 +109,11 @@ class Caja inherits ObjetoMovible {
 class Muro {
 
 	var property position = game.at(4, 5)
+
 //	var property image = "muro.png"
+	method esEmpujable() = false
 
-	method esEmpujable() {
-		return false
-	}
-
-	method esAtravesable() {
-		return false
-	}
+	method esAtravesable() = false
 
 }
 
@@ -119,13 +122,9 @@ class Meta {
 	var property position = game.at(7, 7)
 	var property image = "meta.png"
 
-	method esEmpujable() {
-		return false
-	}
+	method esEmpujable() = false
 
-	method esAtravesable() {
-		return true
-	}
+	method esAtravesable() = true
 
 }
 
@@ -136,32 +135,14 @@ object paleta {
 
 }
 
-object libreMovimiento {
-
-	var numero = 2
-
-	method cambio() {
-		numero += 1
-	}
-
-	method activado() {
-		return numero % 2 == 0
-	}
-
-}
-
 class MuroVisible {
 
 	var property position = game.at(4, 5)
 	var property image = "muro.png"
 
-	method esEmpujable() {
-		return false
-	}
+	method esEmpujable() = false
 
-	method esAtravesable() {
-		return false
-	}
+	method esAtravesable() = false
 
 }
 
