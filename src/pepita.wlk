@@ -139,6 +139,17 @@ class Muro {
 	method esAtravesable() = false
 
 }
+					
+class MuroVisible {
+
+	var property position = game.at(4, 5)
+	var property image = "muro2.png"
+
+	method esEmpujable() = false
+
+	method esAtravesable() = false
+
+}
 
 class Meta {
 
@@ -160,14 +171,4 @@ object paleta {
 
 }
 
-class MuroVisible {
-
-	var property position = game.at(4, 5)
-	var property image = "muro2.png"
-
-	method esEmpujable() = false
-
-	method esAtravesable() = false
-
-}
 

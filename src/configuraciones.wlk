@@ -6,8 +6,8 @@ import pepita.*
 //import niveles.*
 object configuraciones {
 
-	var property altura = 8 /* height lo vuelvo var solo por ahora, Lo correcto es que sea Const*/
-	var property ancho = 14 /* width */
+	var property altura = 13 /* height lo vuelvo var solo por ahora, Lo correcto es que sea Const*/
+	var property ancho = 25 /* width */
 	var numero = 1
 
 	/*
