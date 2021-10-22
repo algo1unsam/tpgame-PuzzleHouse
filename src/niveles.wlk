@@ -122,77 +122,77 @@ object nivel0 inherits Niveles {
 
 object nivel1 inherits Niveles {
 	const listaObjetos=[
-						new Caja(position = game.at(6,3), image="caja3.png" , image_success="caja_ok2.png", tipo = 2),
-						new Caja(position = game.at(6,2)),
-						new Caja(position = game.at(5,3)),
-						new Caja(position = game.at(6,4)),
-						new Caja(position = game.at(7,3)),
-						new Caja(position = game.at(9,2) , image="caja3.png", image_success="caja_ok2.png", tipo = 2),
+						new Caja(position = game.at(16,5), image="nivel1/caja2.png" , image_success="nivel1/caja_ok2.png", tipo = 2),
+						new Caja(position = game.at(12,7)),
+						new Caja(position = game.at(10,5)),
+						new Caja(position = game.at(12,3)),
+						new Caja(position = game.at(14,5)),
+						new Caja(position = game.at(18,5) , image="nivel1/caja2.png", image_success="nivel1/caja_ok2.png", tipo = 2),
 						jugador1
 	]
 	
-	const listaMeta= [  new Meta(position = game.at(1,5)  ),
-						new Meta(position = game.at(1,1)  ),
-						new Meta(position = game.at(12,5) ),
-						new Meta(position = game.at(12,1) ),
-					    new Meta(position = game.at(9,3)  , image="meta2.png", tipo=2 ),
-					    new Meta(position = game.at(10,3) , image="meta2.png", tipo=2 )			
+	const listaMeta= [  new Meta(position = game.at(2,9)  ),
+						new Meta(position = game.at(2,1)  ),
+						new Meta(position = game.at(22,9) ),
+						new Meta(position = game.at(22,1) ),
+					    new Meta(position = game.at(16,3)  , image="nivel1/meta2.png", tipo=2 ),
+					    new Meta(position = game.at(18,3) , image="nivel1/meta2.png", tipo=2 )			
 					]
 
 	method posiciones() =  listaObjetos.map({elemento=>elemento.position()})
 	
 	method cargarNivel(){
 		configuraciones.configMusic("nivel2MoiraA.mp3")
-		jugador1.position(game.at(3,3))
-		jugador1.posicionInicial(game.at(3,3))
+		jugador1.position(game.at(2,1))
+		jugador1.posicionInicial(game.at(2,1))
 				
-		game.boardGround("prueba2.png")
+		game.boardGround("nivel1/scene-lv1.png")
 			
 		self.cargaDeObjetosMeta()
 		self.cargaDeObjetosMovibles()
 
 		/* Muros Visibles */
-		game.addVisual( new MuroVisible(position = game.at(2,4) ) )
-		game.addVisual( new MuroVisible(position = game.at(2,2) ) )
+		game.addVisual( new MuroVisible(position = game.at(4,7) ) )
+		game.addVisual( new MuroVisible(position = game.at(4,3) ) )
 	
 		/* Muros Invisibles */
 		/* VERTICAL */
-		game.addVisual( new Muro(position = game.at(0,5) ) )
-		game.addVisual( new Muro(position = game.at(0,4) ) )
-		game.addVisual( new Muro(position = game.at(0,3) ) )
-		game.addVisual( new Muro(position = game.at(0,2) ) )
 		game.addVisual( new Muro(position = game.at(0,1) ) )
+		game.addVisual( new Muro(position = game.at(0,3) ) )
+		game.addVisual( new Muro(position = game.at(0,5) ) )
+		game.addVisual( new Muro(position = game.at(0,7) ) )
+		game.addVisual( new Muro(position = game.at(0,9) ) )
 		
-		game.addVisual( new Muro(position = game.at(13,1) ) )
-		game.addVisual( new Muro(position = game.at(13,4) ) )
-		game.addVisual( new Muro(position = game.at(13,5) ) )	
+		game.addVisual( new Muro(position = game.at(24,9) ) )
+		game.addVisual( new Muro(position = game.at(24,7) ) )
+		game.addVisual( new Muro(position = game.at(24,5) ) )
+		game.addVisual( new Muro(position = game.at(24,1) ) )
 		
 		/* HORIZONTAL */
-		game.addVisual( new Muro(position = game.at(1,0) ) )
-		game.addVisual( new Muro(position = game.at(2,0) ) )
-		game.addVisual( new Muro(position = game.at(3,0) ) )
-		game.addVisual( new Muro(position = game.at(4,0) ) )
-		game.addVisual( new Muro(position = game.at(5,0) ) )
-		game.addVisual( new Muro(position = game.at(6,0) ) )
-		game.addVisual( new Muro(position = game.at(7,0) ) )
-		game.addVisual( new Muro(position = game.at(8,0) ) )
-		game.addVisual( new Muro(position = game.at(9,0) ) )
-		game.addVisual( new Muro(position = game.at(10,0) ) )
-		game.addVisual( new Muro(position = game.at(11,0) ) )
-		game.addVisual( new Muro(position = game.at(12,0) ) )
+		game.addVisual( new Muro(position = game.at(2,11) ) )
+		game.addVisual( new Muro(position = game.at(4,11) ) )
+		game.addVisual( new Muro(position = game.at(6,11) ) )
+		game.addVisual( new Muro(position = game.at(8,11) ) )
+		game.addVisual( new Muro(position = game.at(10,11) ) )
+		game.addVisual( new Muro(position = game.at(12,11) ) )
+		game.addVisual( new Muro(position = game.at(14,11) ) )
+		game.addVisual( new Muro(position = game.at(16,11) ) )
+		game.addVisual( new Muro(position = game.at(18,11) ) )
+		game.addVisual( new Muro(position = game.at(20,11) ) )
+		game.addVisual( new Muro(position = game.at(22,11) ) )
 		
-		game.addVisual( new Muro(position = game.at(1,6) ) )
-		game.addVisual( new Muro(position = game.at(2,6) ) )
-		game.addVisual( new Muro(position = game.at(3,6) ) )
-		game.addVisual( new Muro(position = game.at(4,6) ) )
-		game.addVisual( new Muro(position = game.at(5,6) ) )
-		game.addVisual( new Muro(position = game.at(6,6) ) )
-		game.addVisual( new Muro(position = game.at(7,6) ) )
-		game.addVisual( new Muro(position = game.at(8,6) ) )
-		game.addVisual( new Muro(position = game.at(9,6) ) )
-		game.addVisual( new Muro(position = game.at(10,6) ) )
-		game.addVisual( new Muro(position = game.at(11,6) ) )
-		game.addVisual( new Muro(position = game.at(12,6) ) )
+		game.addVisual( new Muro(position = game.at(2,-1) ) )
+		game.addVisual( new Muro(position = game.at(4,-1) ) )
+		game.addVisual( new Muro(position = game.at(6,-1) ) )
+		game.addVisual( new Muro(position = game.at(8,-1) ) )
+		game.addVisual( new Muro(position = game.at(10,-1) ) )
+		game.addVisual( new Muro(position = game.at(12,-1) ) )
+		game.addVisual( new Muro(position = game.at(14,-1) ) )
+		game.addVisual( new Muro(position = game.at(16,-1) ) )
+		game.addVisual( new Muro(position = game.at(18,-1) ) )
+		game.addVisual( new Muro(position = game.at(20,-1) ) )
+		game.addVisual( new Muro(position = game.at(22,-1) ) )
+
 		
 		self.configuracionDeNivel()
 	}

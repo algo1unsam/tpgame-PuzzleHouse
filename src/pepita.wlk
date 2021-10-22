@@ -18,7 +18,8 @@ class Jugador inherits ObjetoMovible {
 
 	var property position
 	const nombreJugador
-	var property image = nombreJugador + "abajo.png"
+	//var property image = nombreJugador + "abajo.png"
+	var property image = "nivel1/" + nombreJugador.toString()  +"abajo.png"
 	var property ultimaPosicion = null
 	var property posicionInicial = position
 
@@ -39,7 +40,8 @@ class Jugador inherits ObjetoMovible {
 		if (self.puedeEmpujar(proximaDireccion) or self.algunoAtravesable(proximaDireccion)) {
 			self.position(proximaDireccion)
 		}
-		image = nombreJugador + ultimaPosicion.toString() + ".png"
+		//image = nombreJugador + ultimaPosicion.toString() + ".png"
+		image = "nivel1/" + nombreJugador.toString() + ultimaPosicion.toString() + ".png"
 		self.emitirSonido("pasosf.mp3")
 	}
 
@@ -100,8 +102,8 @@ class Jugador inherits ObjetoMovible {
 class Caja inherits ObjetoMovible {
 
 	var property position = game.center()
-	var property image = "caja2.png"
-	var property image_success = "caja_ok.png"
+	var property image = "nivel1/caja1.png"
+	var property image_success = "nivel1/caja_ok1.png"
 	
 	var property tipo = 1
 	
@@ -143,7 +145,7 @@ class Muro {
 class MuroVisible {
 
 	var property position = game.at(4, 5)
-	var property image = "muro2.png"
+	var property image = "nivel1/muro.png"
 
 	method esEmpujable() = false
 
@@ -154,7 +156,7 @@ class MuroVisible {
 class Meta {
 
 	var property position = game.at(7, 7)
-	var property image = "meta1.png"
+	var property image = "nivel1/meta1.png"
 	
 	var property tipo = 1
 
