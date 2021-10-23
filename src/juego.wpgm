@@ -12,13 +12,13 @@ program juego {
   	game.height( configuraciones.altura() ) 
   	game.cellSize(50)
 	
-	/* Incompleto 
+	/*  
 	 * Para entrar al nivel 0
 	 * Eliminar comentario  de la linea 19 y comentar el de la linea 21
 	 */
-  	nivel1.cargarNivel()
-  	
   	//nivel1.cargarNivel()
+  	
+  	nivel0.cargarNivel()
 
 	game.start()
 	

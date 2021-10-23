@@ -2,7 +2,7 @@ import wollok.game.*
 import direcciones.*
 import niveles.*
 import configuraciones.*
-
+import timeline.*
 
 
 class ObjetoMovible {
@@ -40,6 +40,12 @@ class Jugador inherits ObjetoMovible {
 		ultimaPosicion = direccion
 		if (self.puedeEmpujar(proximaDireccion) or self.algunoAtravesable(proximaDireccion)) {
 			self.position(proximaDireccion)
+			/* TIMELINE & SOMBRAS */
+			if ( self.nivel() == 0){
+					self.desbloquear(sombra1, (game.at(18,2)), self)
+					self.desbloquear(sombra2, (game.at(12,2)), self)
+					self.desbloquear(sombra3, (game.at(6,2)) , self)			
+			}
 		}
 		//image = nombreJugador + ultimaPosicion.toString() + ".png"
 		image = "nivel" + nivel.toString() + "/" + nombreJugador.toString() + ultimaPosicion.toString() + ".png"
@@ -101,6 +107,15 @@ class Jugador inherits ObjetoMovible {
 	method esAtravesable()=false
 	
 	method esEmpujable()=false
+	
+	method desbloquear(sombra, coord, jugador){
+		if ( jugador.position() == coord ){
+			try
+				game.removeVisual( sombra )
+				//game.say(jugador, "se hizo")
+			catch e {}		
+		}
+	}
 }
 
 //idea para el futuro , tanto caja1 como caja 2 deben estar en una lista . Cuando las cajas llegan a su meta hay que preguntar con colecciones si todos estan en la "cruz"

@@ -25,13 +25,6 @@ class Niveles {
 	method listaMeta()
 
 	method cargarObjetos(objeto) = objeto.forEach{ unObjeto => game.addVisual(unObjeto)}
-	/* 
-	method desbloquear(sombra,coord,jugador){
-		if ( position == game.at(coord))
-		game.removeVisual(sombra)
-	}
-	*/
-
 }
 
 object nivel0 inherits Niveles {
@@ -116,29 +109,21 @@ object nivel0 inherits Niveles {
 
 	method cargarNivel(){
 		configuraciones.configMusic("nivel1cc.mp3")
-		 game.addVisual(map)
+		game.addVisual(map)
 		game.addVisual(sombra4)
 		game.addVisual(sombra3)
 		game.addVisual(sombra2)
 		game.addVisual(sombra1)
-		
-	
 		
 		self.cargarObjetos(listaPared)
 		
 		game.addVisual(jugador1)
 		self.configNivel0(jugador1)
 		
-		jugador1.posicionInicial(game.at(23,3))
-		
 		/* ESPOSA */
 		const jugadora1 = new Jugador(position = game.at(23, 4) , nombreJugador = "jugadora1", nivel= 0)
 		game.addVisual(jugadora1)
-		
-		/* TIMELINE & SOMBRAS */
-		
-		
-		
+			
 	}
 	
 
