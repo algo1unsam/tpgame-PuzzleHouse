@@ -22,7 +22,7 @@ class Niveles {
 }
 
 object nivel0 inherits Niveles {
-	const jugador1 = new Jugador(position = game.at(23, 3) , nombreJugador = "jugador1", nivel= 0)
+	const jugador1 = new Jugador(position = game.at(22, 1) , nombreJugador = "jugador1", nivel= 0)
 	const listaObjetos = [ jugador1 ]
 	
 	override method listaObjetos() = listaObjetos
@@ -109,7 +109,11 @@ object nivel0 inherits Niveles {
 		
 		self.cargaDeObjetosMovibles()
 		self.configNivel0(jugador1)
-		jugador1.posicionInicial(game.at(23,3))
+		jugador1.posicionInicial(game.at(22,1))
+		
+		/* ESPOSA */
+		const jugadora1 = new Jugador(position = game.at(23, 4) , nombreJugador = "jugadora1", nivel= 0)
+		game.addVisual(jugadora1)
 		
 	}
 	
