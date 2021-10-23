@@ -67,6 +67,10 @@ class Jugador inherits ObjetoMovible {
 			/* Transicion caja success */
 			if ( objeto.llegoMeta() ) {
 				objeto.image(objeto.image_success())
+				
+				if(nivel1.verificarMetas()){
+					game.say(self,"listo")
+				}
 			} 
 			
 			
