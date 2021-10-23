@@ -16,17 +16,17 @@ object configuraciones {
 	 * (Por ahora es innecesario aclarar esto pero cuando 
 	 * tengamos mas archivos va a ser una buena practica para guiarnos)
 	 */
-	method configTeclas() {
+	method configTeclas(jugador) {
 
 			
-		keyboard.up().onPressDo{ jugador1.preIrHacia(arriba)} // irHacia(arriba)
-		keyboard.down().onPressDo{ jugador1.preIrHacia(abajo)}
-		keyboard.left().onPressDo{ jugador1.preIrHacia(izquierda)}
-		keyboard.right().onPressDo{ jugador1.preIrHacia(derecha)}
-		keyboard.w().onPressDo{ jugador1.preIrHacia(arriba)}
-		keyboard.s().onPressDo{ jugador1.preIrHacia(abajo)}
-		keyboard.a().onPressDo{ jugador1.preIrHacia(izquierda)}
-		keyboard.d().onPressDo{ jugador1.preIrHacia(derecha)}
+		keyboard.up().onPressDo{ jugador.preIrHacia(arriba)} // irHacia(arriba)
+		keyboard.down().onPressDo{ jugador.preIrHacia(abajo)}
+		keyboard.left().onPressDo{ jugador.preIrHacia(izquierda)}
+		keyboard.right().onPressDo{ jugador.preIrHacia(derecha)}
+		keyboard.w().onPressDo{ jugador.preIrHacia(arriba)}
+		keyboard.s().onPressDo{ jugador.preIrHacia(abajo)}
+		keyboard.a().onPressDo{ jugador.preIrHacia(izquierda)}
+		keyboard.d().onPressDo{ jugador.preIrHacia(derecha)}
 		//keyboard.r().onPressDo {niveles.elementosPorNivel().forEach{objeto=>objeto.posicioninicial()} }	
 		keyboard.x().onPressDo{ game.clear()} //el game.clear puede ser clave para transiciones entre niveles
 		keyboard.z().onPressDo{ self.cambio()}
@@ -45,9 +45,9 @@ object configuraciones {
 	 * Si un jugador colisiona con una caja entonces la mueve
 	 * Si un jugador intenta mover un muro se adelanta y retrocede a la vez
 	 */
-	method configColisiones() {
+	method configColisiones(jugador) {
 		
-			game.onCollideDo(jugador1, { elemento => jugador1.preColisionaConAlgo(jugador1.ultimaPosicion(), elemento)})
+			game.onCollideDo(jugador, { elemento => jugador.preColisionaConAlgo(jugador.ultimaPosicion(), elemento)})
 		
 		
 		/* 

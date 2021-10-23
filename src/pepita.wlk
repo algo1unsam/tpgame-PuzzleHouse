@@ -3,10 +3,9 @@ import direcciones.*
 import niveles.*
 import configuraciones.*
 
-const jugador1 = new Jugador(position = game.at(5, 6), nombreJugador = "jugador1")
+
 
 class ObjetoMovible {
-
 	method emitirSonido(unSonido) {
 		const sonido = game.sound(unSonido)
 		sonido.volume(0.1)
@@ -15,14 +14,16 @@ class ObjetoMovible {
 }
 
 class Jugador inherits ObjetoMovible {
-
+	
 	var property position
+	var property nivel
 	const nombreJugador
+	
 	//var property image = nombreJugador + "abajo.png"
-	var property image = "nivel1/" + nombreJugador.toString()  +"abajo.png"
+	var property image = "nivel" + nivel.toString() + "/" + nombreJugador.toString()  +"abajo.png"
 	var property ultimaPosicion = null
 	var property posicionInicial = position
-
+	
 	method sinColision() {
 	}
 
@@ -30,18 +31,18 @@ class Jugador inherits ObjetoMovible {
 		if (!configuraciones.libreMoviento()) {
 			self.irHacia(direccion)
 		} else {
-			self.position(direccion.moverse(self)) // El modo libre movimento esta activado ,sin embargo el jugador necesita moverse aun asi que incorpore esta linea. SI NO lo hacia el jugador practicamente no se movia
+			self.position(direccion.moverse(self,nivel)) // El modo libre movimento esta activado ,sin embargo el jugador necesita moverse aun asi que incorpore esta linea. SI NO lo hacia el jugador practicamente no se movia
 		}
 	}
 
 	method irHacia(direccion) {
-		const proximaDireccion = direccion.moverse(self)
+		const proximaDireccion = direccion.moverse(self,nivel)
 		ultimaPosicion = direccion
 		if (self.puedeEmpujar(proximaDireccion) or self.algunoAtravesable(proximaDireccion)) {
 			self.position(proximaDireccion)
 		}
 		//image = nombreJugador + ultimaPosicion.toString() + ".png"
-		image = "nivel1/" + nombreJugador.toString() + ultimaPosicion.toString() + ".png"
+		image = "nivel" + nivel.toString() + "/" + nombreJugador.toString() + ultimaPosicion.toString() + ".png"
 		self.emitirSonido("pasosf.mp3")
 	}
 
