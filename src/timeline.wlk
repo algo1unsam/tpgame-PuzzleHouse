@@ -15,11 +15,11 @@ class Imagen {
 
 object map inherits Imagen(	position = game.at(0,0), imagen = "nivel0/map.png"	){}
 									
-object sombra1 inherits Imagen(	esAtravesable = false, position = game.at(0,0), imagen = "nivel0/sombra1.png"){}
+object sombra1 inherits Imagen(	esAtravesable = false, position = game.at(0,0), imagen = "nivel0/sombras1.png"){}
 
-object sombra2 inherits Imagen(	esAtravesable = false, position = game.at(0,0), imagen = "nivel0/sombra2.png"){}
+object sombra2 inherits Imagen(	esAtravesable = false, position = game.at(0,0), imagen = "nivel0/sombras2.png"){}
 
-object sombra3 inherits Imagen(	esAtravesable = false, position = game.at(0,0), imagen = "nivel0/sombra3.png"){}
+object sombra3 inherits Imagen(	esAtravesable = false, position = game.at(0,0), imagen = "nivel0/sombras3.png"){}
 
-object sombra4 inherits Imagen(	esAtravesable = false, position = game.at(0,0), imagen = "nivel0/sombra4.png"){}
+object sombra4 inherits Imagen(	esAtravesable = false, position = game.at(0,0), imagen = "nivel0/sombras4.png"){}
 
