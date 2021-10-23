@@ -18,7 +18,7 @@ program juego {
 	 */
   	//nivel1.cargarNivel()
   	
-  	nivel0.cargarNivel()
+  	nivel1.cargarNivel()
 
 	game.start()
 	

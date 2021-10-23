@@ -216,10 +216,14 @@ object nivel1 inherits Niveles {
 
 		
 		self.cargarObjetos(listaMeta)
-		self.cargarObjetos(listaObjetos)
-		self.cargarObjetos(listaPared)
 		
-		game.addVisual(jugador1)
+		self.cargarObjetos(listaPared)
+		listaObjetos.add(jugador1)
+		self.cargarObjetos(listaObjetos)
+		
+		
+		
+		
 
 		self.configNivel1(jugador1)
 	}
