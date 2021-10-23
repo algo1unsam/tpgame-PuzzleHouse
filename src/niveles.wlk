@@ -166,7 +166,7 @@ object nivel1 inherits Niveles {
 	const listaMeta= [  new Meta(position = game.at(2,9)  ),
 						new Meta(position = game.at(2,1)  ),
 						new Meta(position = game.at(22,9) ),
-						new Meta(position = game.at(22,1) ),
+						new Meta(position = game.at(16,7) ),
 					    new Meta(position = game.at(16,3)  , image="nivel1/meta2.png", tipo=2 ),
 					    new Meta(position = game.at(18,3) , image="nivel1/meta2.png", tipo=2 )			
 					]
@@ -231,7 +231,7 @@ object nivel1 inherits Niveles {
 		self.cargarObjetos(listaMeta)
 		
 		self.cargarObjetos(listaPared)
-		listaObjetos.add(jugador1)
+		game.addVisual(jugador1)
 		self.cargarObjetos(listaObjetos)
 		
 		
@@ -264,6 +264,11 @@ object nivel1 inherits Niveles {
 		
 		//nivel2.cargarNivel()
 		//self.musica().stop()	
+		
+	}
+	
+	method verificarMetas(){
+			return listaObjetos.all({unaCaja=>unaCaja.llegoMeta()})
 		
 	}
 	
