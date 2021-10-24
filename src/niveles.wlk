@@ -117,11 +117,22 @@ object nivel0 inherits Niveles {
 		game.addVisual(pasadizo2)
 		
 		/* Escena Pasadizo */
-		game.addVisual(pasadizo1)
 		game.addVisual(pasadizo0)
 		
 		game.addVisual(sombra2)
 		game.addVisual(sombra1)
+		
+		/* Habitaciones */
+		game.addVisual(hab1)
+		const hijo = new Jugador(position = game.at(7, 11) , nombreJugador = "hijo", nivel= 0)
+		game.addVisual(hijo)
+		
+		game.addVisual(hab2)
+		const hija = new Jugador(position = game.at(10, 11) , nombreJugador = "hija", nivel= 0)
+		game.addVisual(hija)
+		
+		game.addVisual(sombraHab1)
+		game.addVisual(sombraHab2)
 		
 		self.cargarObjetos(listaPared)
 		
