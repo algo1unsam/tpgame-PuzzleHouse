@@ -32,16 +32,13 @@ object nivel0 inherits Niveles {
 	const listaObjetos = [ jugador1 ]
 	
 	const listaMeta =[]
-	
-	
-	const listaPared =[
 		
+	const listaPared =[
 						new Muro(position = game.at(0,1) ) ,	
 						new Muro(position = game.at(0,2) ) ,
 						new Muro(position = game.at(0,3) ) ,
 					    new Muro(position = game.at(0,4) ) ,
 					    new Muro(position = game.at(6,4) ) ,
-						new Muro(position = game.at(10,4)) ,
 					    new Muro(position = game.at(11,3) ),
 					    new Muro(position = game.at(12,3) ),
 					    new Muro(position = game.at(13,0) ),
@@ -79,7 +76,6 @@ object nivel0 inherits Niveles {
 					    new Muro(position = game.at(11,1)),
 					    new Muro(position = game.at(12,1)),
 						new Muro(position = game.at(6,3)),
-						new Muro(position = game.at(7,4)),
 						new Muro(position = game.at(8,3)),
 						new Muro(position = game.at(9,3) ),
 						new Muro(position = game.at(1,5) ),
@@ -95,23 +91,27 @@ object nivel0 inherits Niveles {
 					    new Muro(position = game.at(24,3) ),
 					    new Muro(position = game.at(24,2) ),
 						new Muro(position = game.at(24,1) ),
-		
 		// Escaleras 
 					   new Muro(position = game.at(16,4) ),
 					   new Muro(position = game.at(15,4) ),
-					  	 new Muro(position = game.at(14,4) ),
-					     new Muro(position = game.at(14,3) ),
-					  	 new Muro(position = game.at(15,3) ),
-					  	 new Muro(position = game.at(16,3))
-	
+					   new Muro(position = game.at(14,4) ),
+					   new Muro(position = game.at(14,3) ),
+					   new Muro(position = game.at(15,3) ),
+					   new Muro(position = game.at(16,3) )
 	]
 	
-
 	method cargarNivel(){
 		configuraciones.configMusic("nivel1cc.mp3")
 		game.addVisual(map)
 		game.addVisual(sombra4)
+		/* */
+		
 		game.addVisual(sombra3)
+		game.addVisual(pasadizo3)
+		game.addVisual(pasadizo2)
+		game.addVisual(pasadizo1)
+		game.addVisual(pasadizo0)
+		
 		game.addVisual(sombra2)
 		game.addVisual(sombra1)
 		

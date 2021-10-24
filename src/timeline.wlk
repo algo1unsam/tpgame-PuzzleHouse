@@ -23,3 +23,10 @@ object sombra3 inherits Imagen(	esAtravesable = false, position = game.at(0,0), 
 
 object sombra4 inherits Imagen(	esAtravesable = false, position = game.at(0,0), imagen = "nivel0/sombras4.png"){}
 
+object pasadizo0 inherits Imagen ( esAtravesable = false, position = game.at(0,0), imagen = "nivel0/pasadizo0.png"){}
+
+object pasadizo1 inherits Imagen ( esAtravesable = false, position = game.at(0,0), imagen = "nivel0/pasadizo1.png"){}
+
+object pasadizo2 inherits Imagen ( esAtravesable = false, position = game.at(0,0), imagen = "nivel0/pasadizo2.png"){}
+
+object pasadizo3 inherits Imagen ( esAtravesable = false, position = game.at(0,0), imagen = "nivel0/pasadizo3.png"){}

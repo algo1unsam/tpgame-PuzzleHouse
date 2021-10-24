@@ -44,7 +44,10 @@ class Jugador inherits ObjetoMovible {
 			if ( self.nivel() == 0){
 					self.desbloquear(sombra1, (game.at(18,2)), self)
 					self.desbloquear(sombra2, (game.at(12,2)), self)
-					self.desbloquear(sombra3, (game.at(6,2)) , self)			
+					self.desbloquear(sombra3, (game.at(6,2)) , self)
+					
+					self.desbloquear(pasadizo0, (game.at(7,3)),self)	
+					self.desbloquear(pasadizo0, (game.at(10,3)),self)		
 			}
 		}
 		//image = nombreJugador + ultimaPosicion.toString() + ".png"
