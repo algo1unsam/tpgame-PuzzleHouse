@@ -107,8 +107,16 @@ object nivel0 inherits Niveles {
 		/* */
 		
 		game.addVisual(sombra3)
+		
+		/* Puerta 2 */
+		game.addVisual(pasadizo5)
+		game.addVisual(pasadizo4)
+		
+		/* Puerta 1 */
 		game.addVisual(pasadizo3)
 		game.addVisual(pasadizo2)
+		
+		/* Escena Pasadizo */
 		game.addVisual(pasadizo1)
 		game.addVisual(pasadizo0)
 		

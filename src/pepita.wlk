@@ -23,7 +23,7 @@ class Jugador inherits ObjetoMovible {
 	var property image = "nivel" + nivel.toString() + "/" + nombreJugador.toString()  +"abajo.png"
 	var property ultimaPosicion = null
 	var property posicionInicial = position
-	
+		
 	method sinColision() {
 	}
 
@@ -46,15 +46,15 @@ class Jugador inherits ObjetoMovible {
 					self.desbloquear(sombra2, (game.at(12,2)), self)
 					self.desbloquear(sombra3, (game.at(6,2)) , self)
 					
-					self.desbloquear(pasadizo0, (game.at(7,3)),self)	
-					self.desbloquear(pasadizo0, (game.at(10,3)),self)		
+					self.desbloquear(pasadizo2, (game.at(7,3 )), self)	
+					self.desbloquear(pasadizo4, (game.at(10,3)), self)		
 			}
 		}
 		//image = nombreJugador + ultimaPosicion.toString() + ".png"
 		image = "nivel" + nivel.toString() + "/" + nombreJugador.toString() + ultimaPosicion.toString() + ".png"
 		self.emitirSonido("pasosf.mp3")
 	}
-
+	
 	method preColisionaConAlgo(direccion, objeto) { // los metodos pre+algo son metodos que van a desaparecer en la version final del juego. son metodos que se encargan de preguntar si el jugador esta en modoLibre o no. EL modo libre permite al jugador saltarse las colisiones con los objetos y por lo tanto navegar por todo el mapa libremente 
 		if (!configuraciones.libreMoviento()) {
 			self.colisionaConAlgo(direccion, objeto) // si el modo libre esta activado entonces se desactiva cualquier colision del jugador con cajas
