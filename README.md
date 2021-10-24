@@ -1,18 +1,13 @@
 # Juego de Aventura (titulo momentaneo)
-Se tratará de un trabajador/a que va a tener que ingeniárselas para poder llegar temprano a su
-trabajo con las bebidas que le pidieron sus compañeros, en caso contrario lo despedirán!
+Se tratará de un padre o madre que va a tener que ingeniárselas para salvar a su familia.
 
-Se dividirá en 3 fases(Imagenes de ejemplo):
-
--Fase 1 Laberinto para obtener la llave de la casa y la billetera
-![](fase1.png)
+-Nivel 0 Exploracion de la casa del personaje principal
+![](nivel0.png)
 	
--Fase 2 Obtener los cafes en la cafeteria
-![](fase2.png)
+-Nivel 1 puzzle 
+![](nivel1.png)
 	
--Fase 3 Cruzar la calle sin morir y sobre todo sin perder los cafes
-![](fase3.png)
-
+-Nivel 2 En proceso...
 
 ## Equipo de desarrollo
 
