@@ -20,7 +20,7 @@ class Jugador inherits ObjetoMovible {
 	const nombreJugador
 	
 	//var property image = nombreJugador + "abajo.png"
-	var property image = "nivel" + nivel.toString() + "/" + nombreJugador.toString()  +"abajo.png"
+	var property image = nivel.toString() + "/" + nombreJugador.toString()  +"abajo.png"
 	var property ultimaPosicion = null
 	var property posicionInicial = position
 		
@@ -41,7 +41,7 @@ class Jugador inherits ObjetoMovible {
 		if (self.puedeEmpujar(proximaDireccion) or self.algunoAtravesable(proximaDireccion)) {
 			self.position(proximaDireccion)
 			/* TIMELINE & SOMBRAS */
-			if ( self.nivel() == 0){
+			if ( self.nivel().toString() == "nivel0"){
 					self.desbloquear(sombra1, (game.at(18,2)), self)
 					self.desbloquear(sombra2, (game.at(12,2)), self)
 					self.desbloquear(sombra3, (game.at(6,2)) , self)
@@ -50,11 +50,16 @@ class Jugador inherits ObjetoMovible {
 					self.desbloquear(pasadizo4, (game.at(10,3)), self)
 					
 					self.desbloquear(sombraHab1, (game.at(7,5 )), self)
-					self.desbloquear(sombraHab2, (game.at(10,5)), self)		
+					self.desbloquear(sombraHab2, (game.at(10,5)), self)	
+					
+					/* AVANZAR AL NIVEL 1 */
+					if (self.position() == game.at(3,2)){
+						nivel.avanzarA(nivel.siguienteNivel() )
+					}	
 			}
 		}
 		//image = nombreJugador + ultimaPosicion.toString() + ".png"
-		image = "nivel" + nivel.toString() + "/" + nombreJugador.toString() + ultimaPosicion.toString() + ".png"
+		image = nivel.toString() + "/" + nombreJugador.toString() + ultimaPosicion.toString() + ".png"
 		self.emitirSonido("pasosf.mp3")
 	}
 	
@@ -81,7 +86,7 @@ class Jugador inherits ObjetoMovible {
 				objeto.image(objeto.image_success())
 				
 				if(nivel1.verificarMetas()){
-					game.say(self,"listo")
+					nivel.avanzarA(nivel.siguienteNivel())
 				}
 			} 
 			
@@ -176,6 +181,16 @@ class MuroVisible {
 	method esEmpujable() = false
 
 	method esAtravesable() = false
+
+}
+
+class Checkpoint {
+
+	var property position
+	var property image = "nivel0/checkpoint.png"
+
+	method esEmpujable() = false
+	method esAtravesable() = true
 
 }
 

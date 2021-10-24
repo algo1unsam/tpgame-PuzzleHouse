@@ -8,6 +8,8 @@ class Niveles {
 //const listaNiveles=[nivel1] //[nivel1,nivel2,nivel3 etc]
 //method elementosPorNivel() = listaNiveles.flatMap({elementos=>elementos.listaObjetos()}) 
 //method reiniciarNivel() = self.elementosPorNivel().forEach{elemn=>elemn.posicioninicial() }
+	var property siguienteNivel
+	
 	method configNivel0(personaje1){
 		configuraciones.configTeclas(personaje1)
 		configuraciones.configColisiones(personaje1)
@@ -25,10 +27,19 @@ class Niveles {
 	method listaMeta()
 
 	method cargarObjetos(objeto) = objeto.forEach{ unObjeto => game.addVisual(unObjeto)}
+	
+	method eliminaTodo(){
+		game.clear()
+	}
+	
+	method avanzarA(nivel){
+		self.eliminaTodo()
+		siguienteNivel.cargarNivel()
+	}
 }
 
-object nivel0 inherits Niveles {
-	const jugador1 = new Jugador(position = game.at(22, 1) , nombreJugador = "jugador1", nivel= 0)
+object nivel0 inherits Niveles (siguienteNivel = nivel1){
+	const jugador1 = new Jugador(position = game.at(22, 1) , nombreJugador = "jugador1", nivel= nivel0)
 	const listaObjetos = [ jugador1 ]
 	
 	const listaMeta =[]
@@ -103,6 +114,9 @@ object nivel0 inherits Niveles {
 	method cargarNivel(){
 		configuraciones.configMusic("nivel1cc.mp3")
 		game.addVisual(map)
+		const checkpoint1 = new Checkpoint(position = game.at(3,2) )
+		game.addVisual(checkpoint1)
+		
 		game.addVisual(sombra4)
 		/* */
 		
@@ -124,23 +138,24 @@ object nivel0 inherits Niveles {
 		
 		/* Habitaciones */
 		game.addVisual(hab1)
-		const hijo = new Jugador(position = game.at(7, 11) , nombreJugador = "hijo", nivel= 0)
+		const hijo = new Jugador(position = game.at(7, 11) , nombreJugador = "hijo", nivel= nivel0)
 		game.addVisual(hijo)
 		
 		game.addVisual(hab2)
-		const hija = new Jugador(position = game.at(10, 11) , nombreJugador = "hija", nivel= 0)
+		const hija = new Jugador(position = game.at(10, 11) , nombreJugador = "hija", nivel= nivel0)
 		game.addVisual(hija)
 		
 		game.addVisual(sombraHab1)
 		game.addVisual(sombraHab2)
 		
 		self.cargarObjetos(listaPared)
-		
+		/* ESPOSO */
 		game.addVisual(jugador1)
 		self.configNivel0(jugador1)
+		jugador1.posicionInicial(game.at(22, 1))
 		
 		/* ESPOSA */
-		const jugadora1 = new Jugador(position = game.at(23, 4) , nombreJugador = "jugadora1", nivel= 0)
+		const jugadora1 = new Jugador(position = game.at(23, 4) , nombreJugador = "jugadora1", nivel= nivel0)
 		game.addVisual(jugadora1)
 			
 	}
@@ -155,8 +170,8 @@ object nivel0 inherits Niveles {
 	
 
 
-object nivel1 inherits Niveles {
-	const jugador1 = new Jugador(position = game.at(2, 1) , nombreJugador = "jugador1", nivel= 1)
+object nivel1 inherits Niveles (siguienteNivel = nivel0){
+	const jugador1 = new Jugador(position = game.at(2, 1) , nombreJugador = "jugador1", nivel= nivel1)
 	
 	const listaObjetos=[
 						new Caja(position = game.at(16,5), image="nivel1/caja2.png" , image_success="nivel1/caja_ok2.png", tipo = 2),
