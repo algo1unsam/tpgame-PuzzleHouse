@@ -9,7 +9,8 @@ class Niveles {
 //method elementosPorNivel() = listaNiveles.flatMap({elementos=>elementos.listaObjetos()}) 
 //method reiniciarNivel() = self.elementosPorNivel().forEach{elemn=>elemn.posicioninicial() }
 	var property siguienteNivel
-	
+	const property velocidadDefecto
+		
 	method configNivel0(personaje1){
 		configuraciones.configTeclas(personaje1)
 		configuraciones.configColisiones(personaje1)
@@ -38,7 +39,7 @@ class Niveles {
 	}
 }
 
-object nivel0 inherits Niveles (siguienteNivel = nivel1){
+object nivel0 inherits Niveles (siguienteNivel = nivel1, velocidadDefecto = 1){
 	const jugador1 = new Jugador(position = game.at(22, 1) , nombreJugador = "jugador1", nivel= nivel0)
 	const listaObjetos = [ jugador1 ]
 	
@@ -170,7 +171,7 @@ object nivel0 inherits Niveles (siguienteNivel = nivel1){
 	
 
 
-object nivel1 inherits Niveles (siguienteNivel = nivel0){
+object nivel1 inherits Niveles (siguienteNivel = nivel0, velocidadDefecto = 2){
 	const jugador1 = new Jugador(position = game.at(2, 1) , nombreJugador = "jugador1", nivel= nivel1)
 	
 	const listaObjetos=[

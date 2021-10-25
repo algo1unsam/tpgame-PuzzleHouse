@@ -16,7 +16,7 @@ class ObjetoMovible {
 class Jugador inherits ObjetoMovible {
 	
 	var property position
-	var property nivel
+	var property nivel	
 	const nombreJugador
 	
 	//var property image = nombreJugador + "abajo.png"
@@ -77,7 +77,7 @@ class Jugador inherits ObjetoMovible {
 	}
 
 	method puedeEmpujar(direccion, objeto) {
-		const proximaDireccion = direccion.moverse(objeto)
+		const proximaDireccion = direccion.moverse(objeto,nivel)
 		if (self.atravesable(proximaDireccion)) {
 			objeto.position(proximaDireccion)
 			
