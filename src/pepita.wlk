@@ -40,23 +40,11 @@ class Jugador inherits ObjetoMovible {
 		ultimaPosicion = direccion
 		if (self.puedeEmpujar(proximaDireccion) or self.algunoAtravesable(proximaDireccion)) {
 			self.position(proximaDireccion)
-			/* TIMELINE & SOMBRAS */
-			if ( self.nivel().toString() == "nivel0"){
-					self.desbloquear(sombra1, (game.at(18,2)), self)
-					self.desbloquear(sombra2, (game.at(12,2)), self)
-					self.desbloquear(sombra3, (game.at(6,2)) , self)
-					
-					self.desbloquear(pasadizo2, (game.at(7,3 )), self)	
-					self.desbloquear(pasadizo4, (game.at(10,3)), self)
-					
-					self.desbloquear(sombraHab1, (game.at(7,5 )), self)
-					self.desbloquear(sombraHab2, (game.at(10,5)), self)	
-					
-					/* AVANZAR AL NIVEL 1 */
-					if (self.position() == game.at(3,2)){
-						nivel.avanzarA(nivel.siguienteNivel() )
-					}	
+			/* AVANZAR AL NIVEL 1 */
+			if (self.position() == game.at(3,2)){
+				nivel.avanzarA()
 			}
+			
 		}
 		//image = nombreJugador + ultimaPosicion.toString() + ".png"
 		image = nivel.toString() + "/" + nombreJugador.toString() + ultimaPosicion.toString() + ".png"
@@ -84,16 +72,16 @@ class Jugador inherits ObjetoMovible {
 			/* Transicion caja success */
 			if ( objeto.llegoMeta() ) {
 				objeto.image(objeto.image_success())
-				
+				/* SOLO OCURRE EN NIVEL 1 Y PASA AL SIGUIENTE NIVEL */
 				if(nivel1.verificarMetas()){
-					nivel.avanzarA(nivel.siguienteNivel())
+					nivel.avanzarA()
 				}
 			} 
 			
 			
 			objeto.emitirSonido("caja_mover.mp3") // Solo se emite si la caja puede ser empujable ,osea no haya ningun otro objeto que impida que esto suceda. Ustedes decidan donde queda mejor
 		} else {
-			self.position(direccion.dirOpuesto(self)) // Si esto desaparece el jugador bajo ciertas condiciones atraviesa la caja! 
+			self.position(direccion.dirOpuesto(self, nivel)) // Si esto desaparece el jugador bajo ciertas condiciones atraviesa la caja! 
 		}
 	}
 
@@ -119,13 +107,15 @@ class Jugador inherits ObjetoMovible {
 	
 	method esEmpujable()=false
 	
-	method desbloquear(sombra, coord, jugador){
-		if ( jugador.position() == coord ){
-			try
-				game.removeVisual( sombra )
-				//game.say(jugador, "se hizo")
-			catch e {}		
-		}
+	method desbloquear(sombra){
+		try
+			game.removeVisual( sombra )
+		catch e {}		
+		
+	}
+	
+	method llegoCheckpoint(){
+		nivel.avanzarA()
 	}
 }
 
@@ -206,6 +196,8 @@ class Meta {
 	method esAtravesable() = true
 
 }
+
+object checkpoint1 inherits Checkpoint ( position = game.at(3,2)){}
 
 object paleta {
 

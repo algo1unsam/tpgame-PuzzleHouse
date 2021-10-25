@@ -13,6 +13,12 @@ class Imagen {
 	method image() = imagen
 }
 
+class SombraInvisible{
+	var property position
+	var property esAtravesable = true
+	method esEmpujable() = false
+}
+
 object map inherits Imagen(	position = game.at(0,0), imagen = "nivel0/map.png"	){}
 									
 object sombra1 inherits Imagen(	esAtravesable = false, position = game.at(0,0), imagen = "nivel0/sombras1.png"){}
@@ -42,3 +48,17 @@ object sombraHab2 inherits Imagen(	esAtravesable = false, position = game.at(0,0
 object hab1 inherits Imagen(	esAtravesable = false, position = game.at(0,0), imagen = "nivel0/habitaciones/Hab1.png"){}
 
 object hab2 inherits Imagen(	esAtravesable = false, position = game.at(0,0), imagen = "nivel0/habitaciones/Hab2.png"){}
+
+object sombraInv1 inherits SombraInvisible( position = game.at(18,2)){}
+
+object sombraInv2 inherits SombraInvisible( position = game.at(12,2)){}
+
+object sombraInv3 inherits SombraInvisible( position = game.at(6,2 )){}
+
+object pasadizoInv2 inherits SombraInvisible ( position = game.at(7, 3)){}
+
+object pasadizoInv4 inherits SombraInvisible ( position = game.at(10,3)){}
+
+object sombraHabInv1 inherits SombraInvisible ( position = game.at(7,5)){}
+
+object sombraHabInv2 inherits SombraInvisible ( position = game.at(10,5)){}

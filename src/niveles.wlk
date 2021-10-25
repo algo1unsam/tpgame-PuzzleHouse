@@ -14,6 +14,7 @@ class Niveles {
 	method configNivel0(personaje1){
 		configuraciones.configTeclas(personaje1)
 		configuraciones.configColisiones(personaje1)
+		configuraciones.configColisionesNivel0()
 	}
 	
 	method configNivel1(personaje1){
@@ -33,9 +34,9 @@ class Niveles {
 		game.clear()
 	}
 	
-	method avanzarA(nivel){
+	method avanzarA(){
 		self.eliminaTodo()
-		siguienteNivel.cargarNivel()
+		(self.siguienteNivel()).cargarNivel()
 	}
 }
 
@@ -112,14 +113,24 @@ object nivel0 inherits Niveles (siguienteNivel = nivel1, velocidadDefecto = 1){
 					   new Muro(position = game.at(16,3) )
 	]
 	
-	method cargarNivel(){
+	method cargarNivel(){		
 		configuraciones.configMusic("nivel1cc.mp3")
 		game.addVisual(map)
-		const checkpoint1 = new Checkpoint(position = game.at(3,2) )
+		
 		game.addVisual(checkpoint1)
 		
 		game.addVisual(sombra4)
-		/* */
+		
+		game.addVisual(sombraInv1)
+		game.addVisual(sombraInv2)
+		game.addVisual(sombraInv3)
+		
+		game.addVisual(pasadizoInv2)
+		game.addVisual(pasadizoInv4)
+		
+		game.addVisual(sombraHabInv1)
+		game.addVisual(sombraHabInv2)
+		
 		
 		game.addVisual(sombra3)
 		
@@ -174,8 +185,7 @@ object nivel0 inherits Niveles (siguienteNivel = nivel1, velocidadDefecto = 1){
 object nivel1 inherits Niveles (siguienteNivel = nivel0, velocidadDefecto = 2){
 	const jugador1 = new Jugador(position = game.at(2, 1) , nombreJugador = "jugador1", nivel= nivel1)
 	
-	const listaObjetos=[
-						new Caja(position = game.at(16,5), image="nivel1/caja2.png" , image_success="nivel1/caja_ok2.png", tipo = 2),
+	const listaObjetos=[new Caja(position = game.at(16,5) , image="nivel1/caja2.png" , image_success="nivel1/caja_ok2.png", tipo = 2),
 						new Caja(position = game.at(12,7)),
 						new Caja(position = game.at(10,5)),
 						new Caja(position = game.at(12,3)),
@@ -192,8 +202,7 @@ object nivel1 inherits Niveles (siguienteNivel = nivel0, velocidadDefecto = 2){
 					]
 
 	const listaPared = [
-		
-					/* Muros Visibles */
+		/* Muros Visibles */
 						new MuroVisible(position = game.at(4,7)),
 						new MuroVisible(position = game.at(4,3)),
 	
@@ -237,8 +246,6 @@ object nivel1 inherits Niveles (siguienteNivel = nivel0, velocidadDefecto = 2){
 	   					new Muro(position = game.at(22,-1) ) 
 	]
 
-	
-	
 	method cargarNivel(){
 		configuraciones.configMusic("macariaDespierta.mp3")
 				
@@ -254,18 +261,9 @@ object nivel1 inherits Niveles (siguienteNivel = nivel0, velocidadDefecto = 2){
 		game.addVisual(jugador1)
 		self.cargarObjetos(listaObjetos)
 		
-		
-		
-		
-
 		self.configNivel1(jugador1)
 	}
-	
-	/* Elimine a jugador1 de la listaObjetos, pienso que ahora sera mas facil usar all u otro metodo
-	 * para el tema de saber si completo el puzzle
-	 */
 
-	
 	override method listaObjetos() = listaObjetos
 	
 	override method listaParedes()= listaPared
@@ -288,7 +286,7 @@ object nivel1 inherits Niveles (siguienteNivel = nivel0, velocidadDefecto = 2){
 	}
 	
 	method verificarMetas(){
-			return listaObjetos.all({unaCaja=>unaCaja.llegoMeta()})
+			return self.listaObjetos().all({unaCaja=>unaCaja.llegoMeta()})
 		
 	}
 	
