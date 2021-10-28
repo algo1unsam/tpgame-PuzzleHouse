@@ -1,21 +1,31 @@
 import wollok.game.*
-import pepita.*
+import jugador.*
+import objetos.*
 //import configuraciones.*
 //import niveles.*
 
 object izquierda{
-	method moverse(unObjeto, nivel) = unObjeto.position().left(nivel.velocidadDefecto())
-	method dirOpuesto(unObjeto, nivel) = unObjeto.position().right(nivel.velocidadDefecto())
+	
+	method moverse(unObjeto) = unObjeto.position().left(duplicaDireccion.direccionDuplicador()) //
+	method dirOpuesto(unObjeto) = unObjeto.position().right(duplicaDireccion.direccionDuplicador())
 }
 object derecha{
-	method moverse(unObjeto, nivel) = unObjeto.position().right(nivel.velocidadDefecto())
-	method dirOpuesto(unObjeto, nivel) = unObjeto.position().left(nivel.velocidadDefecto())
+	
+	method moverse(unObjeto) = unObjeto.position().right(duplicaDireccion.direccionDuplicador())
+	method dirOpuesto(unObjeto) = unObjeto.position().left(duplicaDireccion.direccionDuplicador())
 }
 object abajo{
-	method moverse(unObjeto, nivel) = unObjeto.position().down(nivel.velocidadDefecto())
-	method dirOpuesto(unObjeto, nivel) = unObjeto.position().up(nivel.velocidadDefecto())
+
+	method moverse(unObjeto) = unObjeto.position().down(duplicaDireccion.direccionDuplicador())
+	method dirOpuesto(unObjeto) = unObjeto.position().up(duplicaDireccion.direccionDuplicador())
 }
 object arriba{	
-	method moverse(unObjeto, nivel) = unObjeto.position().up(nivel.velocidadDefecto())
-	method dirOpuesto(unObjeto, nivel) = unObjeto.position().down(nivel.velocidadDefecto())
+	
+	method moverse(unObjeto) = unObjeto.position().up(duplicaDireccion.direccionDuplicador())
+	method dirOpuesto(unObjeto) = unObjeto.position().down(duplicaDireccion.direccionDuplicador())
+} 
+
+object duplicaDireccion{
+	var property direccionDuplicador = 1 
+
 }

@@ -1,29 +1,14 @@
 import wollok.game.*
-import pepita.*
+import objetos.*
 import direcciones.*
 import configuraciones.*
 import timeline.*
+import jugador.*
 
 class Niveles {
-//const listaNiveles=[nivel1] //[nivel1,nivel2,nivel3 etc]
-//method elementosPorNivel() = listaNiveles.flatMap({elementos=>elementos.listaObjetos()}) 
-//method reiniciarNivel() = self.elementosPorNivel().forEach{elemn=>elemn.posicioninicial() }
 	var property siguienteNivel
-	const property velocidadDefecto
-		
-	method configNivel0(personaje1){
-		configuraciones.configTeclas(personaje1)
-		configuraciones.configColisiones(personaje1)
-		configuraciones.configColisionesNivel0()
-	}
-	
-	method configNivel1(personaje1){
-		configuraciones.configTeclas(personaje1) //Si las configuraciones estan en juego.wpgm no las podemos modificar in game ,por eso las coloco aca
-		configuraciones.reiniciador(self.listaObjetos())
-		configuraciones.configColisiones(personaje1)	
-	}
 	method listaObjetos()
-	
+
 	method listaParedes()
 	
 	method listaMeta()
@@ -34,14 +19,27 @@ class Niveles {
 		game.clear()
 	}
 	
+	
 	method avanzarA(){
 		self.eliminaTodo()
 		(self.siguienteNivel()).cargarNivel()
 	}
+	
+	
+	method verificarMetas(){
+		const verificador=self.listaObjetos().all({unaCaja=>unaCaja.llegoMeta()})
+		
+		if(verificador){
+			game.say(configuraciones.elJugador(),"ganaste!")
+	}
+	
+	}
 }
 
-object nivel0 inherits Niveles (siguienteNivel = nivel1, velocidadDefecto = 1){
-	const jugador1 = new Jugador(position = game.at(22, 1) , nombreJugador = "jugador1", nivel= nivel0)
+object nivel0 inherits Niveles (siguienteNivel = nivel1){
+	
+		
+	const jugador1 = new Jugador(position = game.at(10, 7) ,tamanio="nivel0",nombreJugador = "jugador1", nivel= self)
 	const listaObjetos = [ jugador1 ]
 	
 	const listaMeta =[]
@@ -114,6 +112,7 @@ object nivel0 inherits Niveles (siguienteNivel = nivel1, velocidadDefecto = 1){
 	]
 	
 	method cargarNivel(){		
+		 const duplicador=1
 		configuraciones.configMusic("nivel1cc.mp3")
 		game.addVisual(map)
 		
@@ -150,11 +149,11 @@ object nivel0 inherits Niveles (siguienteNivel = nivel1, velocidadDefecto = 1){
 		
 		/* Habitaciones */
 		game.addVisual(hab1)
-		const hijo = new Jugador(position = game.at(7, 11) , nombreJugador = "hijo", nivel= nivel0)
+		const hijo = new Jugador(position = game.at(7, 11) ,tamanio="nivel0" ,nombreJugador = "hijo", nivel= self)
 		game.addVisual(hijo)
 		
 		game.addVisual(hab2)
-		const hija = new Jugador(position = game.at(10, 11) , nombreJugador = "hija", nivel= nivel0)
+		const hija = new Jugador(position = game.at(10, 11) ,tamanio="nivel0", nombreJugador = "hija", nivel= self)
 		game.addVisual(hija)
 		
 		game.addVisual(sombraHab1)
@@ -163,15 +162,25 @@ object nivel0 inherits Niveles (siguienteNivel = nivel1, velocidadDefecto = 1){
 		self.cargarObjetos(listaPared)
 		/* ESPOSO */
 		game.addVisual(jugador1)
-		self.configNivel0(jugador1)
-		jugador1.posicionInicial(game.at(22, 1))
+		self.configNivel(jugador1,duplicador)
+		jugador1.position(game.at(20, 3))
+		jugador1.posicionInicial(game.at(20, 3))
 		
 		/* ESPOSA */
-		const jugadora1 = new Jugador(position = game.at(23, 4) , nombreJugador = "jugadora1", nivel= nivel0)
+		const jugadora1 = new Jugador(position = game.at(23, 4) ,tamanio="nivel0", nombreJugador = "jugadora1", nivel= self)
 		game.addVisual(jugadora1)
 			
 	}
 	
+		method configNivel(personaje1,duplicador){
+		duplicaDireccion.direccionDuplicador(duplicador)
+		configuraciones.configTeclas(personaje1)
+		configuraciones.configColisiones(personaje1)
+		configuraciones.configColisionesNivel0()
+		configuraciones.nivelActual(self)
+		//Recomiendo crear un metodo en configuraciones que retorne como parametros el nivel actual y el siguiente
+	}
+	
 
 	override method listaObjetos() = listaObjetos
 	
@@ -179,116 +188,146 @@ object nivel0 inherits Niveles (siguienteNivel = nivel1, velocidadDefecto = 1){
 	
 	override method listaMeta()= listaMeta
 }
-	
 
-
-object nivel1 inherits Niveles (siguienteNivel = nivel0, velocidadDefecto = 2){
-	const jugador1 = new Jugador(position = game.at(2, 1) , nombreJugador = "jugador1", nivel= nivel1)
+object nivel1 inherits Niveles (siguienteNivel = nivel0){
+	const jugador1 = new Jugador(position = game.at(22, 1) , tamanio="nivel0",nombreJugador = "jugador1", nivel= self)
 	
-	const listaObjetos=[new Caja(position = game.at(16,5) , image="nivel1/caja2.png" , image_success="nivel1/caja_ok2.png", tipo = 2),
-						new Caja(position = game.at(12,7)),
-						new Caja(position = game.at(10,5)),
-						new Caja(position = game.at(12,3)),
-						new Caja(position = game.at(14,5)),
-						new Caja(position = game.at(18,5) , image="nivel1/caja2.png", image_success="nivel1/caja_ok2.png", tipo = 2)
+	
+	const listaMeta =[  new Meta(position = game.at(15,7), image="menorResolucion/meta1.png" ),
+						new Meta(position = game.at(8,7), image="menorResolucion/meta1.png" ),
+						new Meta(position = game.at(7,9),  image="menorResolucion/meta2.png",tipo=2 ),
+						new Meta(position = game.at(7,10),  image="menorResolucion/meta2.png",tipo=2 )
+						
+		
+	]
+	const listaObjetos=[new Caja(position = game.at(10,5),resolucion="menorResolucion",caja="caja1.png",cajaEnMeta="caja_ok.png"), 
+					    new Caja(position = game.at(9,4),resolucion="menorResolucion",caja="caja1.png",cajaEnMeta="caja_ok.png"),
+					    new Caja(position = game.at(10,7),resolucion="menorResolucion",caja="caja2.png",cajaEnMeta="caja_ok2.png",tipo=2),
+					  	 new Caja(position = game.at(11,7),resolucion="menorResolucion",caja="caja2.png",cajaEnMeta="caja_ok2.png",tipo=2)
+		
+	]
+		
+
+	
+	
+	const listaPared =[new MuroVisible(position = game.at(6,0) , image ="nivel0/muro2.png"),
+					   new MuroVisible(position = game.at(7,0) , image ="nivel0/muro2.png"),
+					   new MuroVisible(position = game.at(8,0) , image ="nivel0/muro2.png"),
+					   new MuroVisible(position = game.at(9,0) , image ="nivel0/muro2.png"),
+					   new MuroVisible(position = game.at(10,0) , image ="nivel0/muro2.png"),
+					   new MuroVisible(position = game.at(11,0) , image ="nivel0/muro2.png"),
+					   new MuroVisible(position = game.at(12,0) , image ="nivel0/muro2.png"),
+					   new MuroVisible(position = game.at(13,0) , image ="nivel0/muro2.png"),
+					   new MuroVisible(position = game.at(14,0) , image ="nivel0/muro2.png"),
+					   new MuroVisible(position = game.at(15,0) , image ="nivel0/muro2.png"),
+					   new MuroVisible(position = game.at(16,0) , image ="nivel0/muro2.png"),
+					   new MuroVisible(position = game.at(17,0) , image ="nivel0/muro2.png"),
+					   new MuroVisible(position = game.at(18,0) , image ="nivel0/muro2.png"),
+					 
+					   
+					   new MuroVisible(position = game.at(6,2) , image ="nivel0/muro2.png"),
+					   
+					   
+					   new MuroVisible(position = game.at(6,1) , image ="nivel0/muro2.png"),
+					  
+					   
+					   
+					   new MuroVisible(position = game.at(6,11) , image ="nivel0/muro2.png"),
+					   new MuroVisible(position = game.at(7,11) , image ="nivel0/muro2.png"),
+					   new MuroVisible(position = game.at(8,11) , image ="nivel0/muro2.png"),
+					   new MuroVisible(position = game.at(9,11) , image ="nivel0/muro2.png"),
+					   new MuroVisible(position = game.at(10,11) , image ="nivel0/muro2.png"),
+					   new MuroVisible(position = game.at(11,11) , image ="nivel0/muro2.png"),
+					   new MuroVisible(position = game.at(12,11) , image ="nivel0/muro2.png"),
+					   new MuroVisible(position = game.at(13,11) , image ="nivel0/muro2.png"),
+					   new MuroVisible(position = game.at(14,11) , image ="nivel0/muro2.png"),
+					   new MuroVisible(position = game.at(15,11) , image ="nivel0/muro2.png"),
+					   new MuroVisible(position = game.at(16,11) , image ="nivel0/muro2.png"),
+					   new MuroVisible(position = game.at(17,11) , image ="nivel0/muro2.png"),
+					   new MuroVisible(position = game.at(18,11) , image ="nivel0/muro2.png"),
+					   new MuroVisible(position = game.at(16,2) , image ="nivel0/muro2.png"),
+					   new MuroVisible(position = game.at(16,1) , image ="nivel0/muro2.png"),
+					   new MuroVisible(position = game.at(17,1) , image ="nivel0/muro2.png"),
+					   new MuroVisible(position = game.at(12,5) , image ="nivel0/muro2.png"),
+					   new MuroVisible(position = game.at(13,5) , image ="nivel0/muro2.png"),
+					   new MuroVisible(position = game.at(13,4) , image ="nivel0/muro2.png"),
+					   new MuroVisible(position = game.at(12,4) , image ="nivel0/muro2.png"),
+					   
+					   
+					   
+					   new MuroVisible(position = game.at(6,3) , image ="nivel0/muro2.png"),
+					   new MuroVisible(position = game.at(6,4) , image ="nivel0/muro2.png"),
+					   new MuroVisible(position = game.at(6,5) , image ="nivel0/muro2.png"),
+					   new MuroVisible(position = game.at(6,6) , image ="nivel0/muro2.png"),
+					   new MuroVisible(position = game.at(6,7) , image ="nivel0/muro2.png"),
+					   new MuroVisible(position = game.at(6,8) , image ="nivel0/muro2.png"),
+					   new MuroVisible(position = game.at(6,9) , image ="nivel0/muro2.png"),
+					   new MuroVisible(position = game.at(6,10) , image ="nivel0/muro2.png"),
+					   
+					    new MuroVisible(position = game.at(18,1) , image ="nivel0/muro2.png"),
+					    new MuroVisible(position = game.at(18,2) , image ="nivel0/muro2.png"),
+					    new MuroVisible(position = game.at(18,3) , image ="nivel0/muro2.png"),
+					    new MuroVisible(position = game.at(18,4) , image ="nivel0/muro2.png"),
+					    new MuroVisible(position = game.at(18,5) , image ="nivel0/muro2.png"),
+					    new MuroVisible(position = game.at(18,6) , image ="nivel0/muro2.png"),
+					    new MuroVisible(position = game.at(18,7) , image ="nivel0/muro2.png"),
+					    new MuroVisible(position = game.at(18,8) , image ="nivel0/muro2.png"),
+					    new MuroVisible(position = game.at(18,9) , image ="nivel0/muro2.png"),
+					    new MuroVisible(position = game.at(18,10) , image ="nivel0/muro2.png"),
+					    
+					    
+					    new MuroVisible(position = game.at(8,1) , image ="nivel0/muro2.png"),
+					    new MuroVisible(position = game.at(8,2) , image ="nivel0/muro2.png"),
+					    new MuroVisible(position = game.at(9,2) , image ="nivel0/muro2.png"),
+					    new MuroVisible(position = game.at(9,1) , image ="nivel0/muro2.png"),
+					    new MuroVisible(position = game.at(12,2) , image ="nivel0/muro2.png"),
+					    new MuroVisible(position = game.at(13,2) , image ="nivel0/muro2.png"),
+					    new MuroVisible(position = game.at(14,2) , image ="nivel0/muro2.png"),
+					    new MuroVisible(position = game.at(10,2) , image ="nivel0/muro2.png")
+					    
+					    
+					    
+					   
+				   
 	]
 	
-	const listaMeta= [  new Meta(position = game.at(2,9)  ),
-						new Meta(position = game.at(2,1)  ),
-						new Meta(position = game.at(22,9) ),
-						new Meta(position = game.at(16,7) ),
-					    new Meta(position = game.at(16,3)  , image="nivel1/meta2.png", tipo=2 ),
-					    new Meta(position = game.at(18,3) , image="nivel1/meta2.png", tipo=2 )			
-					]
-
-	const listaPared = [
-		/* Muros Visibles */
-						new MuroVisible(position = game.at(4,7)),
-						new MuroVisible(position = game.at(4,3)),
-	
-		/* Muros Invisibles */
-		/* VERTICAL */
-						new Muro(position = game.at(0,1) ) ,
-						new Muro(position = game.at(0,3) ) ,
-	     				new Muro(position = game.at(0,5) ) ,
-						new Muro(position = game.at(0,7) ) ,
-						new Muro(position = game.at(0,9) ) ,
-		
-		 				new Muro(position = game.at(24,9) ) ,
-		 				new Muro(position = game.at(24,7) ) ,
-		 				new Muro(position = game.at(24,5) ) ,
-					    new Muro(position = game.at(24,1) ) ,
-		
-		/* HORIZONTAL */
-	    				new Muro(position = game.at(2,11) ) ,
-	   				    new Muro(position = game.at(4,11) ) ,
-	   				    new Muro(position = game.at(6,11) ) ,
-	    				new Muro(position = game.at(6,11) ) ,
-						new Muro(position = game.at(8,11) ) ,
-						new Muro(position = game.at(10,11) ) ,
-	   				    new Muro(position = game.at(12,11) ) ,
-	   				    new Muro(position = game.at(14,11) ) ,
-	    				new Muro(position = game.at(16,11) ) ,
-	   				    new Muro(position = game.at(18,11) ) ,
-	    				new Muro(position = game.at(20,11) ) ,
-	    				new Muro(position = game.at(22,11) ) ,
-		
-						new Muro(position = game.at(2,-1) ) ,
-	   				    new Muro(position = game.at(4,-1) ) ,
-						new Muro(position = game.at(6,-1) ) ,
-	    				new Muro(position = game.at(8,-1) ) ,
-	    				new Muro(position = game.at(10,-1) ) ,
-	    				new Muro(position = game.at(12,-1) ) ,
-	    				new Muro(position = game.at(14,-1) ) ,
-						new Muro(position = game.at(16,-1) ) ,
-	   				    new Muro(position = game.at(18,-1) ) ,
-						new Muro(position = game.at(20,-1) ) ,
-	   					new Muro(position = game.at(22,-1) ) 
-	]
-
 	method cargarNivel(){
-		configuraciones.configMusic("macariaDespierta.mp3")
-				
-		game.addVisual(self)
-
-		/* JUGADOR 1 */
-		jugador1.posicionInicial(game.at(2,1))
-
-		
+		const duplicador=1	
+		configuraciones.nivelActual(self)	
+		configuraciones.configMusic("nivel1a.mp3")
 		self.cargarObjetos(listaMeta)
-		
-		self.cargarObjetos(listaPared)
-		game.addVisual(jugador1)
 		self.cargarObjetos(listaObjetos)
+		self.cargarObjetos(listaPared)
 		
-		self.configNivel1(jugador1)
-	}
+		jugador1.position(game.at(7,1))
+		jugador1.posicionInicial(game.at(7,1))
+		game.addVisual(jugador1)
+		
+		
 
+		self.configNivel(jugador1,duplicador)
+	}
+	
+	method image()   = "nivel0/prueba2.png"
+	
+	method position()=game.at(6,2)
+	
 	override method listaObjetos() = listaObjetos
 	
 	override method listaParedes()= listaPared
 	
 	override method listaMeta()= listaMeta
-	
-	method image()   = "nivel1/scene-lv1.png"
-	
-	method position() = game.origin()
-	
-	method removerTodosLosObjetos(){ //esto estaba puesto en la clase de nivel ,pero por ahora lo dejo aca
-		self.listaObjetos().forEach{ objetos => game.removeVisual(objetos)}
-		self.listaParedes().forEach{ objetos => game.removeVisual(objetos)}
-		self.listaMeta().forEach{ objetos => game.removeVisual(objetos)}
-		//jugador1.enQueNivelEsta(nivel2)
-		
-		//nivel2.cargarNivel()
-		//self.musica().stop()	
-		
+	//override method  configNivel
+	method configNivel(personaje1,duplicador){
+
+		duplicaDireccion.direccionDuplicador(duplicador)
+		configuraciones.configTeclas(personaje1) //Si las configuraciones estan en juego.wpgm no las podemos modificar in game ,por eso las coloco aca
+		configuraciones.reiniciador(self.listaObjetos())
+		configuraciones.configColisiones(personaje1)
 	}
-	
-	method verificarMetas(){
-			return self.listaObjetos().all({unaCaja=>unaCaja.llegoMeta()})
-		
-	}
+
+
 	
 }
+
 

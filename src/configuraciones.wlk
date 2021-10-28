@@ -1,34 +1,45 @@
 import wollok.game.*
 import direcciones.*
 import niveles.*
-import pepita.*
 import timeline.*
+import jugador.*
+import objetos.*
 
 //import niveles.*
 object configuraciones {
 
 	var property altura = 13 /* height lo vuelvo var solo por ahora, Lo correcto es que sea Const*/
 	var property ancho = 25 /* width */
+	var jugadorp
 	var numero = 1
+	var nivelActual
+	var elJugador
 
-	/*
-	 *  Dependiendo que tecla presione el jugador se movera.
-	 * 	Jugador1.irHacia(parametro) esta en pepita.wlk 
-	 * (Por ahora es innecesario aclarar esto pero cuando 
-	 * tengamos mas archivos va a ser una buena practica para guiarnos)
-	 */
+ 
+	 
+	method nivelActual(unNivel){
+		nivelActual=unNivel
+		
+	}
+	method nivelActual() = nivelActual
+	
+	
+	method elJugador() = jugadorp
+	
+	
+	
 	method configTeclas(jugador) {
 
-			
-		keyboard.up().onPressDo{ jugador.preIrHacia(arriba)} // irHacia(arriba)
-		keyboard.down().onPressDo{ jugador.preIrHacia(abajo)}
-		keyboard.left().onPressDo{ jugador.preIrHacia(izquierda)}
-		keyboard.right().onPressDo{ jugador.preIrHacia(derecha)}
-		keyboard.w().onPressDo{ jugador.preIrHacia(arriba)}
-		keyboard.s().onPressDo{ jugador.preIrHacia(abajo)}
-		keyboard.a().onPressDo{ jugador.preIrHacia(izquierda)}
-		keyboard.d().onPressDo{ jugador.preIrHacia(derecha)}
-		//keyboard.r().onPressDo {niveles.elementosPorNivel().forEach{objeto=>objeto.posicioninicial()} }	
+		elJugador=jugador
+		keyboard.up().onPressDo{ jugador.cambiarPosicion(arriba)} // irHacia(arriba)
+		keyboard.down().onPressDo{ jugador.cambiarPosicion(abajo)}
+		keyboard.left().onPressDo{ jugador.cambiarPosicion(izquierda)}
+		keyboard.right().onPressDo{ jugador.cambiarPosicion(derecha)}
+		keyboard.w().onPressDo{ jugador.cambiarPosicion(arriba)}
+		keyboard.s().onPressDo{ jugador.cambiarPosicion(abajo)}
+		keyboard.a().onPressDo{ jugador.cambiarPosicion(izquierda)}
+		keyboard.d().onPressDo{ jugador.cambiarPosicion(derecha)}
+		keyboard.r().onPressDo{ jugador.posicioninicial()}
 		keyboard.x().onPressDo{ game.clear()} //el game.clear puede ser clave para transiciones entre niveles
 		keyboard.z().onPressDo{ self.cambio()}
 		
@@ -42,23 +53,16 @@ object configuraciones {
 		musicaDprueba.volume(0.1)
 	}
 
-	/* 
-	 * Si un jugador colisiona con una caja entonces la mueve
-	 * Si un jugador intenta mover un muro se adelanta y retrocede a la vez
-	 */
+
 	method configColisiones(jugador) {
-		
-			game.onCollideDo(jugador, { elemento => jugador.preColisionaConAlgo(jugador.ultimaPosicion(), elemento)})
-		
-		
-		/* 
-		if(!libreMovimiento.activado()){
-			game.onCollideDo(jugador1, { elemento => jugador1.colisionaConAlgo(jugador1.ultimaPosicion(), elemento)})
-		}
-		* 
-		* No funciona para nada bien esto y desconosco la razon . No voy a profundizar mucho ya que al final es codigo que se va a descartar en la version final
-		*/
-		
+			jugadorp=jugador
+			
+				
+			
+			game.onCollideDo(jugador, { elemento => elemento.hacerAlgo(jugador.ultimaDireccion())})
+			
+			 //game.onCollideDo(jugador, { elemento => elemento.cambiarPosicion(jugador.ultimaDireccion())})
+	
 	}
 	method reiniciador(lista){
 		keyboard.r().onPressDo {lista.forEach{objeto=>objeto.posicioninicial() }}	
@@ -88,8 +92,7 @@ object configuraciones {
 		* ya no pasa al siguiente nivel
 		*/
 	}
-	
-	
+
 
 }
 
