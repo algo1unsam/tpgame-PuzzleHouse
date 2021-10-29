@@ -6,9 +6,8 @@ import timeline.*
 import jugador.*
 import niveles.*
 
-
 object nivel1R inherits Niveles (siguienteNivel = nivel0){
-	const jugador1 = new Jugador(position = game.at(14, 1) ,tamanio="nivel1" ,nombreJugador = "jugador1", nivel= nivel1)
+	const jugador1 = new Jugador(position = game.at(14, 1) ,tamanio="mayorResolucion" ,nombreJugador = "jugadora1")
 	
 	const listaObjetos=[new Caja(position = game.at(16,7),resolucion="mayorResolucion",caja="caja2.png",cajaEnMeta="caja_ok2.png",tipo=2), 
 						new Caja(position = game.at(16,3),resolucion="mayorResolucion",caja="caja1.png",cajaEnMeta="caja_ok1.png",tipo=1),
@@ -30,54 +29,54 @@ object nivel1R inherits Niveles (siguienteNivel = nivel0){
 	
 		/* Muros Invisibles */
 		/* VERTICAL */
-						new MuroVisible(position = game.at(2,1) ) ,
-						new MuroVisible(position = game.at(2,3) ) ,
-	     				new MuroVisible(position = game.at(2,5) ) ,
-						new MuroVisible(position = game.at(2,7) ) ,
-						new MuroVisible(position = game.at(2,9) ) ,
+						new MuroVisible(position = game.at(2,1) ,image="mayorResolucion/muro.png") ,
+						new MuroVisible(position = game.at(2,3) ,image="mayorResolucion/muro.png") ,
+	     				new MuroVisible(position = game.at(2,5) ,image="mayorResolucion/muro.png") ,
+						new MuroVisible(position = game.at(2,7) ,image="mayorResolucion/muro.png") ,
+						new MuroVisible(position = game.at(2,9) ,image="mayorResolucion/muro.png") ,
 		
-		 				new MuroVisible(position = game.at(22,9) ) ,
-		 				new MuroVisible(position = game.at(22,7) ) ,
-		 				new MuroVisible(position = game.at(22,5) ) ,
-					    new MuroVisible(position = game.at(22,1) ) ,
-					    new MuroVisible(position = game.at(22,3) ) ,
+		 				new MuroVisible(position = game.at(22,9),image="mayorResolucion/muro.png" ) ,
+		 				new MuroVisible(position = game.at(22,7) ,image="mayorResolucion/muro.png") ,
+		 				new MuroVisible(position = game.at(22,5) ,image="mayorResolucion/muro.png") ,
+					    new MuroVisible(position = game.at(22,1) ,image="mayorResolucion/muro.png") ,
+					    new MuroVisible(position = game.at(22,3) ,image="mayorResolucion/muro.png") ,
 		
 		/* HORIZONTAL */
-	    				new MuroVisible(position = game.at(2,11) ) ,
-	   				    new MuroVisible(position = game.at(4,11) ) ,
-	   				    new MuroVisible(position = game.at(6,11) ) ,
-	    				new MuroVisible(position = game.at(6,11) ) ,
-						new MuroVisible(position = game.at(8,11) ) ,
-						new MuroVisible(position = game.at(10,13) ) ,
-	   				    new MuroVisible(position = game.at(12,13) ) ,
-	   				    new MuroVisible(position = game.at(14,13) ) ,
-	    				new MuroVisible(position = game.at(16,11) ) ,
-	   				    new MuroVisible(position = game.at(18,11) ) ,
-	    				new MuroVisible(position = game.at(20,11) ) ,
-	    				new MuroVisible(position = game.at(22,11) ) ,
+	    				new MuroVisible(position = game.at(2,11),image="mayorResolucion/muro.png" ) ,
+	   				    new MuroVisible(position = game.at(4,11) ,image="mayorResolucion/muro.png") ,
+	   				    new MuroVisible(position = game.at(6,11) ,image="mayorResolucion/muro.png") ,
+	    				new MuroVisible(position = game.at(6,11) ,image="mayorResolucion/muro.png") ,
+						new MuroVisible(position = game.at(8,11) ,image="mayorResolucion/muro.png") ,
+						new MuroVisible(position = game.at(10,13) ,image="mayorResolucion/muro.png") ,
+	   				    new MuroVisible(position = game.at(12,13) ,image="mayorResolucion/muro.png") ,
+	   				    new MuroVisible(position = game.at(14,13),image="mayorResolucion/muro.png" ) ,
+	    				new MuroVisible(position = game.at(16,11) ,image="mayorResolucion/muro.png") ,
+	   				    new MuroVisible(position = game.at(18,11) ,image="mayorResolucion/muro.png") ,
+	    				new MuroVisible(position = game.at(20,11) ,image="mayorResolucion/muro.png") ,
+	    				new MuroVisible(position = game.at(22,11) ,image="mayorResolucion/muro.png") ,
 		
-						new MuroVisible(position = game.at(2,-1) ) ,
-	   				    new MuroVisible(position = game.at(4,-1) ) ,
-						new MuroVisible(position = game.at(6,-1) ) ,
-	    				new MuroVisible(position = game.at(8,-1) ) ,
-	    				new MuroVisible(position = game.at(10,-1) ) ,
-	    				new MuroVisible(position = game.at(12,-1) ) ,
-	    				new MuroVisible(position = game.at(14,-1) ) ,
-						new MuroVisible(position = game.at(16,-1) ) ,
-	   				    new MuroVisible(position = game.at(18,-1) ) ,
-						new MuroVisible(position = game.at(20,-1) ) ,
-	   					new MuroVisible(position = game.at(22,-1) ) ,
+						new MuroVisible(position = game.at(2,-1) ,image="mayorResolucion/muro.png") ,
+	   				    new MuroVisible(position = game.at(4,-1) ,image="mayorResolucion/muro.png") ,
+						new MuroVisible(position = game.at(6,-1) ,image="mayorResolucion/muro.png") ,
+	    				new MuroVisible(position = game.at(8,-1) ,image="mayorResolucion/muro.png") ,
+	    				new MuroVisible(position = game.at(10,-1),image="mayorResolucion/muro.png" ) ,
+	    				new MuroVisible(position = game.at(12,-1) ,image="mayorResolucion/muro.png") ,
+	    				new MuroVisible(position = game.at(14,-1),image="mayorResolucion/muro.png" ) ,
+						new MuroVisible(position = game.at(16,-1),image="mayorResolucion/muro.png" ) ,
+	   				    new MuroVisible(position = game.at(18,-1) ,image="mayorResolucion/muro.png") ,
+						new MuroVisible(position = game.at(20,-1) ,image="mayorResolucion/muro.png") ,
+	   					new MuroVisible(position = game.at(22,-1) ,image="mayorResolucion/muro.png") ,
 	   					
 	   					//mitad del mapa
-	   					new MuroVisible(position = game.at(4,5) ) ,
-	   					new MuroVisible(position = game.at(6,5) ) ,
-	   					new MuroVisible(position = game.at(8,5) ) ,
-	   					new MuroVisible(position = game.at(10,5) ) ,
+	   					new MuroVisible(position = game.at(4,5) ,image="mayorResolucion/muro.png") ,
+	   					new MuroVisible(position = game.at(6,5) ,image="mayorResolucion/muro.png") ,
+	   					new MuroVisible(position = game.at(8,5) ,image="mayorResolucion/muro.png") ,
+	   					new MuroVisible(position = game.at(10,5) ,image="mayorResolucion/muro.png") ,
 	   					
-	   					new MuroVisible(position = game.at(14,5) ) ,
-	   					new MuroVisible(position = game.at(16,5) ) ,
-	   					new MuroVisible(position = game.at(18,5) ) ,
-	   					new MuroVisible(position = game.at(20,5) ) 
+	   					new MuroVisible(position = game.at(14,5),image="mayorResolucion/muro.png" ) ,
+	   					new MuroVisible(position = game.at(16,5) ,image="mayorResolucion/muro.png") ,
+	   					new MuroVisible(position = game.at(18,5),image="mayorResolucion/muro.png" ) ,
+	   					new MuroVisible(position = game.at(20,5) ,image="mayorResolucion/muro.png") 
 	   					
 	]
 	
@@ -87,7 +86,7 @@ object nivel1R inherits Niveles (siguienteNivel = nivel0){
 		
 		game.addVisual(self)
 		configuraciones.nivelActual(self)	
-		configuraciones.configMusic("musica2.mp3")
+		configuraciones.configMusic("hogar.mp3")
 		self.cargarObjetos(listaMeta)
 		self.cargarObjetos(listaObjetos)
 		self.cargarObjetos(listaPared)
@@ -120,9 +119,6 @@ object nivel1R inherits Niveles (siguienteNivel = nivel0){
 		//self.musica().stop()	
 		
 	}
-	
-	
-	
 
 		method configNivel(personaje1,duplicador){
 		
@@ -131,7 +127,6 @@ object nivel1R inherits Niveles (siguienteNivel = nivel0){
 		configuraciones.reiniciador(self.listaObjetos())
 		configuraciones.configColisiones(personaje1)
 	}
-	
-	
-	
+
 }
+

@@ -4,42 +4,34 @@ import configuraciones.*
 import niveles.*
 import jugador.*
 
-
-class SonidosDeObjetos { //esto por ahora es temporal
+object SonidoObjeto { ///Me parece que queda mejor como objeto que como clase
 
 	method emitirSonido(unSonido) {
 		const sonido = game.sound(unSonido)
-		sonido.volume(0.1)
+		sonido.volume(0.3)
 		sonido.play()
 	}
 
 }
 
+class Caja   {
 
-//idea para el futuro , tanto caja1 como caja 2 deben estar en una lista . Cuando las cajas llegan a su meta hay que preguntar con colecciones si todos estan en la "cruz"
-class Caja inherits SonidosDeObjetos {
-	const resolucion
-	const caja
-	const cajaEnMeta
+	const resolucion="menorResolucion"
+	const caja="caja1.png"
+	const cajaEnMeta ="caja_ok.png"
 	var property position = game.center()
-
 	const property tipo = 1
 	const posicionInicial = position
-	
 
 	method esPisable() = false
 
 	method posicioninicial() {
-		
-		
-		
-		self.emitirSonido("reinicio.mp3")
+		SonidoObjeto.emitirSonido("reinicio.mp3")
 		self.position(posicionInicial)
-		
 	}
-	method image() = if (self.llegoMeta()) {resolucion+"/"+cajaEnMeta}else{resolucion+"/"+caja} //estif (self.llegoMeta()) {"nivel0/caja_ok.png"}else{"nivel0/caja2.png"}
-								  
-		
+
+	method image() = if (self.llegoMeta()) {resolucion + "/" + cajaEnMeta} else {resolucion + "/" + caja} // estif (self.llegoMeta()) {"nivel0/caja_ok.png"}else{"nivel0/caja2.png"}
+
 	method cambiarPosicion(direccion) {
 		const siguienteUbicacion = direccion.moverse(self)
 		if (self.proximaUbicacionLibre(siguienteUbicacion)) {
@@ -48,23 +40,22 @@ class Caja inherits SonidosDeObjetos {
 		} else {
 			configuraciones.elJugador().position(direccion.dirOpuesto(configuraciones.elJugador()))
 		}
-		self.emitirSonido("caja_mover.mp3")
+		SonidoObjeto.emitirSonido("caja_mover.mp3")
 	}
+
 	method hacerAlgo(direccion) {
 		self.cambiarPosicion(direccion)
 	}
+
 	method proximaUbicacionLibre(direccion) = game.getObjectsIn(direccion).all{ unObj => unObj.esPisable() }
 
-
 	method llegoMeta() {
-		if (configuraciones.nivelActual().listaMeta().any{ unaMeta => unaMeta.position() == self.position() && !(unaMeta.tipo() == self.tipo()) }) {
-			//self.emitirSonido("ouch.mp3")
-		}
 		return configuraciones.nivelActual().listaMeta().any{ unaMeta => unaMeta.position() == self.position() && unaMeta.tipo() == self.tipo() }
 	}
+
 }
 
-class Muro inherits SonidosDeObjetos{
+class Muro  {
 
 	var property position = game.at(4, 5)
 
@@ -73,30 +64,27 @@ class Muro inherits SonidosDeObjetos{
 
 	method cambiarPosicion(direccion) {
 		configuraciones.elJugador().position(direccion.dirOpuesto(configuraciones.elJugador()))
-		
-	
 	}
-	method hacerAlgo(direccion){
+
+	method hacerAlgo(direccion) {
 		self.cambiarPosicion(direccion)
 	}
 
 }
 
-class MuroVisible  inherits SonidosDeObjetos{
+class MuroVisible   {
 
 	var property position = game.at(4, 5)
-	var property image = "nivel1/muro.png"
+	var property image = "menorResolucion/muro.png"
 
 	method esPisable() = false
-
-
 
 	method cambiarPosicion(direccion) {
 		configuraciones.elJugador().position(direccion.dirOpuesto(configuraciones.elJugador()))
 	}
-	method hacerAlgo(direccion){
+
+	method hacerAlgo(direccion) {
 		self.cambiarPosicion(direccion)
-		
 	}
 
 }
@@ -104,12 +92,11 @@ class MuroVisible  inherits SonidosDeObjetos{
 class Checkpoint {
 
 	var property position
-	var property image = "nivel0/checkpoint.png"
+	var property image = "menorResolucion/checkpoint.png"
 
 	method esPisable() = true
-	
-	method hacerAlgo(direccion){
-		
+
+	method hacerAlgo(direccion) {
 	}
 
 }
@@ -117,25 +104,22 @@ class Checkpoint {
 class Meta {
 
 	var property position = game.at(7, 7)
-	var property image = "nivel1/meta1.png"
+	var property image = "menorResolucion/meta1.png"
 	var property tipo = 1
 
 	method esPisable() = true
 
-	
-	method hacerAlgo(direccion){
-		
+	method hacerAlgo(direccion) {
 	}
 
 }
 
 object checkpoint1 inherits Checkpoint (position = game.at(3, 2)) {
-	override method hacerAlgo(direccion){
+
+	override method hacerAlgo(direccion) {
 	}
 
 }
-
-
 
 object paleta {
 
@@ -143,4 +127,5 @@ object paleta {
 	const property rojo = "FF0000FF"
 
 }
+
 

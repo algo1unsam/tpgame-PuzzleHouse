@@ -5,10 +5,9 @@ import niveles.*
 import objetos.*
 
 
-class Jugador inherits SonidosDeObjetos { //cambiar
+class Jugador  { //cambiar
 
 	var property position
-	var property nivel
 	const nombreJugador
 	var property ultimaDireccion = abajo
 	var property posicionInicial = position
@@ -17,19 +16,18 @@ class Jugador inherits SonidosDeObjetos { //cambiar
 	method image() = tamanio + "/" + nombreJugador.toString() + ultimaDireccion.toString() + ".png" //vean el string "nivel0" ,revisen porque lo puse asi. 
 	
 	method cambiarPosicion(direccion) {
-		
-		
-			
+	
 		ultimaDireccion = direccion
 		self.position(direccion.moverse(self))
-		self.emitirSonido("pasosf.mp3")	
-			
-		
-		
-	}								
+		SonidoObjeto.emitirSonido("pasosf.mp3")	
+	
+	}	
+	method victoria(){
+		SonidoObjeto.emitirSonido("victoriaFem.mp3")
+	}							
 	
 	method posicioninicial() {
-		self.emitirSonido("reinicio.mp3")
+		SonidoObjeto.emitirSonido("reinicio.mp3")
 		self.position(posicionInicial) 
 	}
 	

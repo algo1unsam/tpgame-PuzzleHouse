@@ -50,7 +50,7 @@ object configuraciones {
 		keyboard.p().onPressDo({ musicaDprueba.stop()}) // Si seguimos el guion se supone que el primer nivel todo es color de rosas, por eso puse  canciones  alegres. 
 		musicaDprueba.shouldLoop(true)
 		game.schedule(0, { musicaDprueba.play()})
-		musicaDprueba.volume(0.1)
+		musicaDprueba.volume(0.2)
 	}
 
 
