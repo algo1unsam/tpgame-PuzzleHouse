@@ -7,7 +7,7 @@ import jugador.*
 import niveles.*
 
 object nivel1R inherits Niveles (siguienteNivel = nivel0){
-	const jugador1 = new Jugador(position = game.at(14, 1) ,tamanio="mayorResolucion" ,nombreJugador = "jugadora1")
+	const jugador1 = new Jugador(position = game.at(14, 1) ,resolucion="mayorResolucion" ,nombreJugador = "jugadora1")
 	
 	const listaObjetos=[new Caja(position = game.at(16,7),resolucion="mayorResolucion",caja="caja2.png",cajaEnMeta="caja_ok2.png",tipo=2), 
 						new Caja(position = game.at(16,3),resolucion="mayorResolucion",caja="caja1.png",cajaEnMeta="caja_ok1.png",tipo=1),

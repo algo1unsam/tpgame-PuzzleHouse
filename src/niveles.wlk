@@ -32,7 +32,7 @@ class Niveles {
 		const verificador=self.listaObjetos().all({unaCaja=>unaCaja.llegoMeta()})
 		
 		if(verificador){
-			SonidoObjeto.emitirSonido("victoriaFem.mp3") //es temporal
+			sonidoObjeto.emitirSonido("victoriaFem.mp3") //es temporal
 			game.say(configuraciones.elJugador(),"ganaste!")
 	}
 	
@@ -42,7 +42,7 @@ class Niveles {
 object nivel0 inherits Niveles (siguienteNivel = nivel1){
 	
 		
-	const jugador1 = new Jugador(position = game.at(10, 7) ,tamanio="menorResolucion",nombreJugador = "jugador1")
+	const jugador1 = new Jugador(position = game.at(10, 7) ,resolucion="menorResolucion",nombreJugador = "jugador1")
 	const listaObjetos = [ jugador1 ]
 	
 	const listaMeta =[]
@@ -152,11 +152,11 @@ object nivel0 inherits Niveles (siguienteNivel = nivel1){
 		
 		/* Habitaciones */
 		game.addVisual(hab1)
-		const hijo = new Jugador(position = game.at(7, 11) ,tamanio="menorResolucion" ,nombreJugador = "hijo")
+		const hijo = new Jugador(position = game.at(7, 11) ,resolucion="menorResolucion" ,nombreJugador = "hijo")
 		game.addVisual(hijo)
 		
 		game.addVisual(hab2)
-		const hija = new Jugador(position = game.at(10, 11) ,tamanio="menorResolucion", nombreJugador = "hija")
+		const hija = new Jugador(position = game.at(10, 11) ,resolucion="menorResolucion", nombreJugador = "hija")
 		game.addVisual(hija)
 		
 		game.addVisual(sombraHab1)
@@ -170,7 +170,7 @@ object nivel0 inherits Niveles (siguienteNivel = nivel1){
 		jugador1.posicionInicial(game.at(20, 3))
 		
 		/* ESPOSA */
-		const jugadora1 = new Jugador(position = game.at(23, 4) ,tamanio="menorResolucion", nombreJugador = "jugadora1")
+		const jugadora1 = new Jugador(position = game.at(23, 4) ,resolucion="menorResolucion", nombreJugador = "jugadora1")
 		game.addVisual(jugadora1)
 			
 	}
@@ -193,21 +193,30 @@ object nivel0 inherits Niveles (siguienteNivel = nivel1){
 }
 
 object nivel1 inherits Niveles (siguienteNivel = nivel0){
-	const jugador1 = new Jugador(position = game.at(22, 1) , tamanio="menorResolucion",nombreJugador = "jugador1")
+	const jugador1 = new Jugador(position = game.at(15, 3) , resolucion="menorResolucion",nombreJugador = "jugador1")
 	
 	
-	const listaMeta =[  new Meta(position = game.at(15,7), image="menorResolucion/meta1.png" ),
-						new Meta(position = game.at(8,7), image="menorResolucion/meta1.png" ),
-						new Meta(position = game.at(7,9),  image="menorResolucion/meta2.png",tipo=2 ),
-						new Meta(position = game.at(7,10),  image="menorResolucion/meta2.png",tipo=2 )
+	const listaMeta =[   new Meta(position = game.at(7,1), image="menorResolucion/meta1.png" ),
+						new Meta(position = game.at(7,2), image="menorResolucion/meta1.png" ),
+						new Meta(position = game.at(7,3), image="menorResolucion/meta1.png" ),
+						new Meta(position = game.at(7,4), image="menorResolucion/meta1.png" ),
+						new Meta(position = game.at(7,5), image="menorResolucion/meta1.png" ),
+						new Meta(position = game.at(8,5), image="menorResolucion/meta1.png" ),
+						new Meta(position = game.at(8,4), image="menorResolucion/meta1.png" ),
+						new Meta(position = game.at(8,3), image="menorResolucion/meta1.png" ),
+						new Meta(position = game.at(10,1),  image="menorResolucion/meta2.png",tipo=2 )
 						
 		
 	]
-	const listaObjetos=[new Caja(position = game.at(10,5),resolucion="menorResolucion",caja="caja1.png",cajaEnMeta="caja_ok.png"), 
-					    new Caja(position = game.at(9,4),resolucion="menorResolucion",caja="caja1.png",cajaEnMeta="caja_ok.png"),
-					    new Caja(position = game.at(10,7),resolucion="menorResolucion",caja="caja2.png",cajaEnMeta="caja_ok2.png",tipo=2),
-					   new Caja(position = game.at(11,7),resolucion="menorResolucion",caja="caja2.png",cajaEnMeta="caja_ok2.png",tipo=2)
-		
+	const listaObjetos=[  new Caja(position = game.at(13,3),resolucion="menorResolucion",caja="caja1.png",cajaEnMeta="caja_ok.png",tipo=1),
+					     new Caja(position = game.at(11,2),resolucion="menorResolucion",caja="caja1.png",cajaEnMeta="caja_ok.png",tipo=1),
+					     new Caja(position = game.at(11,4),resolucion="menorResolucion",caja="caja1.png",cajaEnMeta="caja_ok.png",tipo=1),
+					     new Caja(position = game.at(10,5),resolucion="menorResolucion",caja="caja1.png",cajaEnMeta="caja_ok.png",tipo=1),
+						 new Caja(position = game.at(13,1),resolucion="menorResolucion",caja="caja2.png",cajaEnMeta="caja_ok2.png",tipo=2),
+						  new Caja(position = game.at(13,9),resolucion="menorResolucion",caja="caja1.png",cajaEnMeta="caja_ok.png",tipo=1),
+					     new Caja(position = game.at(14,10),resolucion="menorResolucion",caja="caja1.png",cajaEnMeta="caja_ok.png",tipo=1),
+					     new Caja(position = game.at(9,9),resolucion="menorResolucion",caja="caja1.png",cajaEnMeta="caja_ok.png",tipo=1),
+					   	 new Caja(position = game.at(11,7),resolucion="menorResolucion",caja="caja1.png",cajaEnMeta="caja_ok.png",tipo=1)
 	]
 		
 	const listaPared =[]
@@ -221,8 +230,8 @@ object nivel1 inherits Niveles (siguienteNivel = nivel0){
 		//self.cargarObjetos(listaPared)
 		self.generarMuros(listaPared)
 		
-		jugador1.position(game.at(7,1))
-		jugador1.posicionInicial(game.at(7,1))
+		jugador1.position(game.at(15, 3))
+		jugador1.posicionInicial(game.at(15, 3))
 		game.addVisual(jugador1)
 		
 		self.configNivel(jugador1,duplicador)

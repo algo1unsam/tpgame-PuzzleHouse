@@ -4,14 +4,13 @@ import configuraciones.*
 import niveles.*
 import jugador.*
 
-object SonidoObjeto { ///Me parece que queda mejor como objeto que como clase
+object sonidoObjeto { ///Me parece que queda mejor como objeto que como clase
 
 	method emitirSonido(unSonido) {
 		const sonido = game.sound(unSonido)
 		sonido.volume(0.3)
 		sonido.play()
 	}
-
 }
 
 class Caja   {
@@ -26,7 +25,7 @@ class Caja   {
 	method esPisable() = false
 
 	method posicioninicial() {
-		SonidoObjeto.emitirSonido("reinicio.mp3")
+		sonidoObjeto.emitirSonido("reinicio.mp3")
 		self.position(posicionInicial)
 	}
 
@@ -40,7 +39,7 @@ class Caja   {
 		} else {
 			configuraciones.elJugador().position(direccion.dirOpuesto(configuraciones.elJugador()))
 		}
-		SonidoObjeto.emitirSonido("caja_mover.mp3")
+		sonidoObjeto.emitirSonido("caja_mover.mp3")
 	}
 
 	method hacerAlgo(direccion) {
@@ -49,9 +48,8 @@ class Caja   {
 
 	method proximaUbicacionLibre(direccion) = game.getObjectsIn(direccion).all{ unObj => unObj.esPisable() }
 
-	method llegoMeta() {
-		return configuraciones.nivelActual().listaMeta().any{ unaMeta => unaMeta.position() == self.position() && unaMeta.tipo() == self.tipo() }
-	}
+	method llegoMeta() = game.colliders(self).any{ unaMeta => unaMeta.position() == self.position() && unaMeta.tipo() == self.tipo() }
+	
 
 }
 

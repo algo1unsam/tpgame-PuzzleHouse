@@ -11,23 +11,23 @@ class Jugador  { //cambiar
 	const nombreJugador
 	var property ultimaDireccion = abajo
 	var property posicionInicial = position
-	var property tamanio
+	var property resolucion
 
-	method image() = tamanio + "/" + nombreJugador.toString() + ultimaDireccion.toString() + ".png" //vean el string "nivel0" ,revisen porque lo puse asi. 
+	method image() = resolucion + "/" + nombreJugador.toString() + ultimaDireccion.toString() + ".png" //vean el string "nivel0" ,revisen porque lo puse asi. 
 	
 	method cambiarPosicion(direccion) {
 	
 		ultimaDireccion = direccion
 		self.position(direccion.moverse(self))
-		SonidoObjeto.emitirSonido("pasosf.mp3")	
+		sonidoObjeto.emitirSonido("pasosf.mp3")	
 	
 	}	
 	method victoria(){
-		SonidoObjeto.emitirSonido("victoriaFem.mp3")
+		sonidoObjeto.emitirSonido("victoriaFem.mp3")
 	}							
 	
 	method posicioninicial() {
-		SonidoObjeto.emitirSonido("reinicio.mp3")
+		sonidoObjeto.emitirSonido("reinicio.mp3")
 		self.position(posicionInicial) 
 	}
 	
