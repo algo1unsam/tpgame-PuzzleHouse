@@ -18,20 +18,27 @@ object nivel1R inherits Niveles (siguienteNivel = nivel0){
 					    new Meta(position = game.at(16,1),  image="mayorResolucion/meta2.png", tipo=2 )]
 
 	const listaPared = []
+	
+	const listaObjetosYjugador=[]
 
+	
 	method cargarNivel(){
 		const duplicador=2	
+		configuraciones.configMusic("hogar.mp3")
 		
 		game.addVisual(self)
-		configuraciones.nivelActual(self)	
-		configuraciones.configMusic("hogar.mp3")
+		
+		
 		self.cargarObjetos(listaMeta)
 		self.cargarObjetos(listaObjetos)
+		
+		
 		//self.cargarObjetos(listaPared)
+			
 		self.generarMuros(listaPared)
 		
 		game.addVisual(jugador1)
-		
+		configuraciones.nivelActual(self)
 		self.configNivel(jugador1,duplicador)
 	}
 

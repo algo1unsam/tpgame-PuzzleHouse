@@ -4,6 +4,7 @@ import direcciones.*
 import configuraciones.*
 import timeline.*
 import jugador.*
+import Nivel1R.*
 
 class Niveles {
 	var property siguienteNivel
@@ -17,16 +18,7 @@ class Niveles {
 	
 	method dibujar(objeto) = game.addVisual(objeto)
 	
-	method eliminaTodo(){
-		game.clear()
-	}
-	
-	
-	method avanzarA(){
-		self.eliminaTodo()
-		(self.siguienteNivel()).cargarNivel()
-	}
-	
+
 	
 	method verificarMetas(){
 		const verificador=self.listaObjetos().all({unaCaja=>unaCaja.llegoMeta()})
@@ -34,6 +26,9 @@ class Niveles {
 		if(verificador){
 			sonidoObjeto.emitirSonido("victoriaFem.mp3") //es temporal
 			game.say(configuraciones.elJugador(),"ganaste!")
+			configuraciones.configStopMusic()
+			game.clear()
+			siguienteNivel.cargarNivel()
 	}
 	
 	}
@@ -114,9 +109,12 @@ object nivel0 inherits Niveles (siguienteNivel = nivel1){
 					   new Muro(position = game.at(16,3) )
 	]
 	
+
+	
+	
 	method cargarNivel(){		
 		 const duplicador=1
-		configuraciones.configMusic("nivel1cc.mp3")
+		configuraciones.configMusic("hogar1.mp3")
 		game.addVisual(map)
 		
 		game.addVisual(checkpoint1)
@@ -192,7 +190,7 @@ object nivel0 inherits Niveles (siguienteNivel = nivel1){
 	override method listaMeta()= listaMeta
 }
 
-object nivel1 inherits Niveles (siguienteNivel = nivel0){
+object nivel1 inherits Niveles (siguienteNivel = nivel1R){
 	const jugador1 = new Jugador(position = game.at(15, 3) , resolucion="menorResolucion",nombreJugador = "jugador1")
 	
 	
@@ -221,10 +219,11 @@ object nivel1 inherits Niveles (siguienteNivel = nivel0){
 		
 	const listaPared =[]
 	
+
+	
 	method cargarNivel(){
 		const duplicador=1	
-		configuraciones.nivelActual(self)	
-		configuraciones.configMusic("nivel1a.mp3")
+		configuraciones.configMusic("cancion2.mp3")
 		self.cargarObjetos(listaMeta)
 		self.cargarObjetos(listaObjetos)
 		//self.cargarObjetos(listaPared)
@@ -233,7 +232,7 @@ object nivel1 inherits Niveles (siguienteNivel = nivel0){
 		jugador1.position(game.at(15, 3))
 		jugador1.posicionInicial(game.at(15, 3))
 		game.addVisual(jugador1)
-		
+		configuraciones.nivelActual(self)	
 		self.configNivel(jugador1,duplicador)
 	}
 	
