@@ -12,7 +12,7 @@ class Jugador  { //cambiar
 	var property ultimaDireccion = abajo
 	var property posicionInicial = position
 	var property resolucion
-
+	
 	method image() = resolucion + "/" + nombreJugador.toString() + ultimaDireccion.toString() + ".png" //vean el string "nivel0" ,revisen porque lo puse asi. 
 	
 	method cambiarPosicion(direccion) {

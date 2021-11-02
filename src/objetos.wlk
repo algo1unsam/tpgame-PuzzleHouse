@@ -56,7 +56,7 @@ class Caja   {
 class Muro  {
 
 	var property position = game.at(4, 5)
-
+	const property tipo = 6
 //	var property image = "muro.png"
 	method esPisable() = false
 
@@ -71,7 +71,7 @@ class Muro  {
 }
 
 class MuroVisible   {
-
+	const property tipo = 6
 	var property position = game.at(4, 5)
 	var property image = "menorResolucion/muro.png"
 
@@ -88,7 +88,7 @@ class MuroVisible   {
 }
 
 class Checkpoint {
-
+	const property tipo = 6
 	var property position
 	var property image = "menorResolucion/checkpoint.png"
 

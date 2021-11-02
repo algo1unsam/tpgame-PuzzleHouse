@@ -13,7 +13,6 @@ object configuraciones {
 	var jugadorp
 	var numero = 1
 	var nivelActual
-	var elJugador
 	var cancionActual = null
 
 	method nivelActual(unNivel) {
@@ -25,7 +24,6 @@ object configuraciones {
 	method elJugador() = jugadorp
 
 	method configTeclas(jugador) {
-		elJugador = jugador
 		keyboard.up().onPressDo{ jugador.cambiarPosicion(arriba)} // irHacia(arriba)
 		keyboard.down().onPressDo{ jugador.cambiarPosicion(abajo)}
 		keyboard.left().onPressDo{ jugador.cambiarPosicion(izquierda)}

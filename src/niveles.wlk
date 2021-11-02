@@ -16,10 +16,25 @@ class Niveles {
 
 	method cargarObjetos(objeto) = objeto.forEach{ unObjeto => game.addVisual(unObjeto)}
 	
-	method dibujar(objeto) = game.addVisual(objeto)
+	method dibujarMuros(objeto) = game.addVisual(objeto)
 	
 	
-
+	
+	
+	method bordearVerticalmente(yInicial,yFinal,xCoordenada,stringObjeto){
+		const lista=[]
+		(yInicial .. yFinal).forEach({ n => lista.add( new Position( x=xCoordenada, y=n))})
+		lista.forEach { p => self.dibujarMuros(new MuroVisible(position = p, image=stringObjeto))}
+	}
+	method bordearHorizontalmente(xInicial,xFinal,yCordenada,stringObjeto){
+		const lista=[]
+		(xInicial-1.. xFinal).forEach({ n => lista.add( new Position( x=n, y=yCordenada))}) 	
+		lista.forEach { p => self.dibujarMuros(new MuroVisible(position = p, image=stringObjeto))}	
+	}
+	
+	
+	
+	
 	
 	method verificarMetas() {
 		const verificador = self.listaObjetos().all({ unaCaja => unaCaja.llegoMeta() })
@@ -220,7 +235,7 @@ object nivel1 inherits Niveles (siguienteNivel = nivel1R){
 					     new Caja(position = game.at(10,5),resolucion="menorResolucion",caja="caja1.png",cajaEnMeta="caja_ok.png",tipo=1),
 						 new Caja(position = game.at(13,1),resolucion="menorResolucion",caja="caja2.png",cajaEnMeta="caja_ok2.png",tipo=2),
 						 new Caja(position = game.at(13,9),resolucion="menorResolucion",caja="caja1.png",cajaEnMeta="caja_ok.png",tipo=1),
-					     new Caja(position = game.at(14,10),resolucion="menorResolucion",caja="caja1.png",cajaEnMeta="caja_ok.png",tipo=1),
+					     new Caja(position = game.at(14,9),resolucion="menorResolucion",caja="caja1.png",cajaEnMeta="caja_ok.png",tipo=1),
 					     new Caja(position = game.at(9,9),resolucion="menorResolucion",caja="caja1.png",cajaEnMeta="caja_ok.png",tipo=1),
 					   	 new Caja(position = game.at(11,7),resolucion="menorResolucion",caja="caja1.png",cajaEnMeta="caja_ok.png",tipo=1)
 	]
@@ -250,18 +265,18 @@ object nivel1 inherits Niveles (siguienteNivel = nivel1R){
 		const largo = game.height() - 1
 		
 		/* Bordes */
-		(7 .. ancho-7).forEach({ n => lista.add( new Position( x=n, y=0))}) // BOTTOM
-		(7 .. ancho-7).forEach{ n => lista.add(new Position(x=n, y=largo))} // TOP 
-		(0 .. largo).forEach({ n => lista.add( new Position( x=6, y=n))}) // LEFT
-		(0 .. largo).forEach({ n => lista.add( new Position( x=ancho-6, y=n))}) // RIGHT
+		(7 .. ancho-7).forEach({ n => lista.add( new Position( x=n, y=0))}) // BOTTOM - borde abajo
+		(7 .. ancho-7).forEach{ n => lista.add(new Position(x=n, y=largo-1))} // TOP  -borde arriba
+		(0 .. largo).forEach({ n => lista.add( new Position( x=6, y=n-1))}) // LEFT borde izquierda
+		(0 .. largo).forEach({ n => lista.add( new Position( x=ancho-6, y=n-1))}) // RIGHT borde derecha
 		
 		/* Custom */
 		lista.addAll([ new Position(x=8, y=1), new Position(x=9,y=1) , new Position(x=8,y=2)  , new Position(x=9,y=2),
 					   new Position(x=10,y=2), new Position(x=12,y=2), new Position(x=13,y=2) , new Position(x=14, y=2),
-					   new Position(x=12,y=5), new Position(x=13,y=5), new Position(x=12,y=6) , new Position(x=13,y=6)
+					   new Position(x=12,y=4), new Position(x=13,y=4), new Position(x=12,y=5) , new Position(x=13,y=5)
 			     	])
 		
-		lista.forEach { p => self.dibujar(new MuroVisible(position = p, image="menorResolucion/muro2.png"))}
+		lista.forEach { p => self.dibujarMuros(new MuroVisible(position = p, image="menorResolucion/muro2.png"))}
 	}
 	
 	method image()   = "menorResolucion/prueba2.png"

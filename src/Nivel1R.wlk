@@ -62,7 +62,7 @@ object nivel1R inherits Niveles (siguienteNivel = nivel0){
 							new Position(x=16,y=11), new Position(x=18,y=11), new Position(x=20,y=11) ,
 							new Position(x=10,y=13), new Position(x=12,y=13), new Position(x=14, y=13)])
 							
-		lista.forEach { p => self.dibujar(new MuroVisible(position = p, image="mayorResolucion/muro.png"))}
+		lista.forEach { p => self.dibujarMuros(new MuroVisible(position = p, image="mayorResolucion/muro.png"))}
 	}
 	
 	override method listaMeta()= listaMeta
@@ -89,4 +89,76 @@ object nivel1R inherits Niveles (siguienteNivel = nivel0){
 	}
 
 }
+
+
+object nivel1A inherits Niveles (siguienteNivel = nivel1){
+	const jugador1 = new Jugador(position = game.at(15, 3) , resolucion="menorResolucion",nombreJugador = "jugador1")
+	
+	
+	
+	const listaMeta =[   new Meta(position = game.at(7,1), image="menorResolucion/meta1.png" ),
+						 new Meta(position = game.at(10,1),  image="menorResolucion/meta2.png",tipo=2 )
+					
+		
+	]
+	const listaObjetos=[ new Caja(position = game.at(13,3),resolucion="menorResolucion",caja="caja1.png",cajaEnMeta="caja_ok.png",tipo=1),
+						 new Caja(position = game.at(13,1),resolucion="menorResolucion",caja="caja2.png",cajaEnMeta="caja_ok2.png",tipo=2)	  
+	]
+		
+	const listaPared =[]
+	
+
+	
+	method cargarNivel(){
+		const duplicador=1	
+		configuraciones.configMusic("hogar1.mp3")
+		
+		
+		
+		self.cargarObjetos(listaMeta)
+		self.cargarObjetos(listaObjetos)
+		//self.cargarObjetos(listaPared)
+		self.generarMuros(listaPared)
+		
+		game.addVisual(jugador1)
+		configuraciones.nivelActual(self)	
+		self.configNivel(jugador1,duplicador)
+	}
+	
+	method generarMuros(lista){
+
+		self.bordearHorizontalmente(7,18,11,"menorResolucion/muro2.png")
+		self.bordearHorizontalmente(7,18,0,"menorResolucion/muro2.png")
+		self.bordearHorizontalmente(12,14,2,"menorResolucion/muro2.png")
+		self.bordearVerticalmente(1,10,18,"menorResolucion/muro2.png")
+		self.bordearVerticalmente(1,10,6,"menorResolucion/muro2.png")
+		self.bordearVerticalmente(1,2,8,"menorResolucion/muro2.png")
+		self.bordearVerticalmente(1,2,9,"menorResolucion/muro2.png")
+
+	}
+	
+	method image()   = "menorResolucion/prueba2.png"
+	
+	method position()=game.at(6,2)
+	
+	override method listaObjetos() = listaObjetos
+
+	override method listaParedes()= listaPared
+	
+
+	
+	override method listaMeta()= listaMeta
+	//override method  configNivel
+	method configNivel(personaje1,duplicador){
+		duplicaDireccion.direccionDuplicador(duplicador)
+		configuraciones.configTeclas(personaje1) //Si las configuraciones estan en juego.wpgm no las podemos modificar in game ,por eso las coloco aca	
+		configuraciones.configColisiones(personaje1)
+	}
+	
+	
+}
+
+
+
+
 
