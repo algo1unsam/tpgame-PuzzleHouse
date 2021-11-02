@@ -19,7 +19,7 @@ object nivel1R inherits Niveles (siguienteNivel = nivel0){
 
 	const listaPared = []
 	
-	const listaObjetosYjugador=[]
+	
 
 	
 	method cargarNivel(){
@@ -84,7 +84,7 @@ object nivel1R inherits Niveles (siguienteNivel = nivel0){
 		
 		duplicaDireccion.direccionDuplicador(duplicador)
 		configuraciones.configTeclas(personaje1) //Si las configuraciones estan en juego.wpgm no las podemos modificar in game ,por eso las coloco aca
-		configuraciones.reiniciador(self.listaObjetos())
+	
 		configuraciones.configColisiones(personaje1)
 	}
 

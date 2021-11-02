@@ -18,7 +18,7 @@ program juego {
 	 * Para entrar al nivel 0
 	 * Eliminar comentario  de la linea 19 y comentar el de la linea 21
 	 */
-  	nivel1R.cargarNivel()
+  	nivel1.cargarNivel()
   	
   	//nivel1R.cargarNivel() //nivel0,nivel1 .nivel1R
 

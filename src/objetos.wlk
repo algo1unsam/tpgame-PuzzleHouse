@@ -39,7 +39,7 @@ class Caja   {
 		} else {
 			configuraciones.elJugador().position(direccion.dirOpuesto(configuraciones.elJugador()))
 		}
-		sonidoObjeto.emitirSonido("caja_mover.mp3")
+		sonidoObjeto.emitirSonido("caja_mover2.mp3")
 	}
 
 	method hacerAlgo(direccion) {

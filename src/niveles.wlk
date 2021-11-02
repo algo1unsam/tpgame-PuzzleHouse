@@ -18,26 +18,32 @@ class Niveles {
 	
 	method dibujar(objeto) = game.addVisual(objeto)
 	
+	
 
 	
-	method verificarMetas(){
-		const verificador=self.listaObjetos().all({unaCaja=>unaCaja.llegoMeta()})
-		
-		if(verificador){
-			sonidoObjeto.emitirSonido("victoriaFem.mp3") //es temporal
-			game.say(configuraciones.elJugador(),"ganaste!")
+	method verificarMetas() {
+		const verificador = self.listaObjetos().all({ unaCaja => unaCaja.llegoMeta() })
+		if (verificador) {
+			sonidoObjeto.emitirSonido("victoriaFem.mp3") // es temporal
+			game.say(configuraciones.elJugador(), "ganaste!")
 			configuraciones.configStopMusic()
 			game.clear()
 			siguienteNivel.cargarNivel()
+		}
 	}
-	
+	method reiniciarNivel(){
+		configuraciones.nivelActual().listaObjetos().forEach{ objeto => objeto.posicioninicial()}
+		configuraciones.elJugador().posicioninicial()
+		
 	}
+
 }
 
 object nivel0 inherits Niveles (siguienteNivel = nivel1){
 	
+	const cajasYjugador=[]
 		
-	const jugador1 = new Jugador(position = game.at(10, 7) ,resolucion="menorResolucion",nombreJugador = "jugador1")
+	const jugador1 = new Jugador(position = game.at(20, 3) ,resolucion="menorResolucion",nombreJugador = "jugador1")
 	const listaObjetos = [ jugador1 ]
 	
 	const listaMeta =[]
@@ -164,8 +170,7 @@ object nivel0 inherits Niveles (siguienteNivel = nivel1){
 		/* ESPOSO */
 		game.addVisual(jugador1)
 		self.configNivel(jugador1,duplicador)
-		jugador1.position(game.at(20, 3))
-		jugador1.posicionInicial(game.at(20, 3))
+	
 		
 		/* ESPOSA */
 		const jugadora1 = new Jugador(position = game.at(23, 4) ,resolucion="menorResolucion", nombreJugador = "jugadora1")
@@ -188,10 +193,13 @@ object nivel0 inherits Niveles (siguienteNivel = nivel1){
 	override method listaParedes()= listaPared
 	
 	override method listaMeta()= listaMeta
+	
+	
 }
 
 object nivel1 inherits Niveles (siguienteNivel = nivel1R){
 	const jugador1 = new Jugador(position = game.at(15, 3) , resolucion="menorResolucion",nombreJugador = "jugador1")
+	
 	
 	
 	const listaMeta =[   new Meta(position = game.at(7,1), image="menorResolucion/meta1.png" ),
@@ -206,12 +214,12 @@ object nivel1 inherits Niveles (siguienteNivel = nivel1R){
 						
 		
 	]
-	const listaObjetos=[  new Caja(position = game.at(13,3),resolucion="menorResolucion",caja="caja1.png",cajaEnMeta="caja_ok.png",tipo=1),
+	const listaObjetos=[ new Caja(position = game.at(13,3),resolucion="menorResolucion",caja="caja1.png",cajaEnMeta="caja_ok.png",tipo=1),
 					     new Caja(position = game.at(11,2),resolucion="menorResolucion",caja="caja1.png",cajaEnMeta="caja_ok.png",tipo=1),
 					     new Caja(position = game.at(11,4),resolucion="menorResolucion",caja="caja1.png",cajaEnMeta="caja_ok.png",tipo=1),
 					     new Caja(position = game.at(10,5),resolucion="menorResolucion",caja="caja1.png",cajaEnMeta="caja_ok.png",tipo=1),
 						 new Caja(position = game.at(13,1),resolucion="menorResolucion",caja="caja2.png",cajaEnMeta="caja_ok2.png",tipo=2),
-						  new Caja(position = game.at(13,9),resolucion="menorResolucion",caja="caja1.png",cajaEnMeta="caja_ok.png",tipo=1),
+						 new Caja(position = game.at(13,9),resolucion="menorResolucion",caja="caja1.png",cajaEnMeta="caja_ok.png",tipo=1),
 					     new Caja(position = game.at(14,10),resolucion="menorResolucion",caja="caja1.png",cajaEnMeta="caja_ok.png",tipo=1),
 					     new Caja(position = game.at(9,9),resolucion="menorResolucion",caja="caja1.png",cajaEnMeta="caja_ok.png",tipo=1),
 					   	 new Caja(position = game.at(11,7),resolucion="menorResolucion",caja="caja1.png",cajaEnMeta="caja_ok.png",tipo=1)
@@ -224,13 +232,14 @@ object nivel1 inherits Niveles (siguienteNivel = nivel1R){
 	method cargarNivel(){
 		const duplicador=1	
 		configuraciones.configMusic("cancion2.mp3")
+		
+		
+		
 		self.cargarObjetos(listaMeta)
 		self.cargarObjetos(listaObjetos)
 		//self.cargarObjetos(listaPared)
 		self.generarMuros(listaPared)
 		
-		jugador1.position(game.at(15, 3))
-		jugador1.posicionInicial(game.at(15, 3))
 		game.addVisual(jugador1)
 		configuraciones.nivelActual(self)	
 		self.configNivel(jugador1,duplicador)
@@ -260,20 +269,19 @@ object nivel1 inherits Niveles (siguienteNivel = nivel1R){
 	method position()=game.at(6,2)
 	
 	override method listaObjetos() = listaObjetos
-	
+
 	override method listaParedes()= listaPared
+	
+
 	
 	override method listaMeta()= listaMeta
 	//override method  configNivel
 	method configNivel(personaje1,duplicador){
-
 		duplicaDireccion.direccionDuplicador(duplicador)
-		configuraciones.configTeclas(personaje1) //Si las configuraciones estan en juego.wpgm no las podemos modificar in game ,por eso las coloco aca
-		configuraciones.reiniciador(self.listaObjetos())
+		configuraciones.configTeclas(personaje1) //Si las configuraciones estan en juego.wpgm no las podemos modificar in game ,por eso las coloco aca	
 		configuraciones.configColisiones(personaje1)
 	}
-
-
+	
 	
 }
 

@@ -34,7 +34,7 @@ object configuraciones {
 		keyboard.s().onPressDo{ jugador.cambiarPosicion(abajo)}
 		keyboard.a().onPressDo{ jugador.cambiarPosicion(izquierda)}
 		keyboard.d().onPressDo{ jugador.cambiarPosicion(derecha)}
-		keyboard.r().onPressDo{ jugador.posicioninicial()}
+		keyboard.r().onPressDo{ nivelActual.reiniciarNivel()}
 		keyboard.x().onPressDo{ game.clear()} // el game.clear puede ser clave para transiciones entre niveles
 		keyboard.z().onPressDo{ self.cambio()}
 		
@@ -62,10 +62,6 @@ object configuraciones {
 		game.onCollideDo(jugador, { elemento => elemento.hacerAlgo(jugador.ultimaDireccion())})
 	}
 
-	method reiniciador(lista) {
-		keyboard.r().onPressDo{ lista.forEach{ objeto => objeto.posicioninicial()}}
-		
-	}
 
 	method libreMoviento() = numero % 2 == 0
 
