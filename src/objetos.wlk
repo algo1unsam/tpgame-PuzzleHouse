@@ -13,31 +13,45 @@ object sonidoObjeto { ///Me parece que queda mejor como objeto que como clase
 	}
 }
 
-class Caja   {
+class Posicion{
+	var property position
+	const property posicionInicial = position
+	
+	method posicioninicial() {
+		sonidoObjeto.emitirSonido("reinicio.mp3")
+		self.position(posicionInicial) 
+	}
+	
+	method cambiarPosicion(direccion)
+}
+class Caja inherits Posicion{
 
 	const resolucion="menorResolucion"
 	const caja="caja1.png"
 	const cajaEnMeta ="caja_ok.png"
-	var property position = game.center()
+	//var property position = game.center()
 	const property tipo = 1
-	const posicionInicial = position
+	//const posicionInicial = position
 
 	method esPisable() = false
 
+	/* 
 	method posicioninicial() {
 		sonidoObjeto.emitirSonido("reinicio.mp3")
 		self.position(posicionInicial)
 	}
+	*/
 
 	method image() = if (self.llegoMeta()) {resolucion + "/" + cajaEnMeta} else {resolucion + "/" + caja} // estif (self.llegoMeta()) {"nivel0/caja_ok.png"}else{"nivel0/caja2.png"}
 
-	method cambiarPosicion(direccion) {
+	override method cambiarPosicion(direccion) {
 		const siguienteUbicacion = direccion.moverse(self)
 		if (self.proximaUbicacionLibre(siguienteUbicacion)) {
 			self.position(direccion.moverse(self))
 			configuraciones.nivelActual().verificarMetas()
 		} else {
-			configuraciones.elJugador().position(direccion.dirOpuesto(configuraciones.elJugador()))
+			//Decirle al jugador que se mueva para atras
+			configuraciones.elJugador().retroceder(direccion)
 		}
 		sonidoObjeto.emitirSonido("caja_mover2.mp3")
 	}
@@ -53,6 +67,7 @@ class Caja   {
 
 }
 
+/* 
 class Muro  {
 
 	var property position = game.at(4, 5)
@@ -63,14 +78,15 @@ class Muro  {
 	method cambiarPosicion(direccion) {
 		configuraciones.elJugador().position(direccion.dirOpuesto(configuraciones.elJugador()))
 	}
-
+	//Aprovechar el método de arriba
 	method hacerAlgo(direccion) {
 		self.cambiarPosicion(direccion)
 	}
 
 }
+*/
 
-class MuroVisible   {
+class MuroVisible{
 	const property tipo = 6
 	var property position = game.at(4, 5)
 	var property image = "menorResolucion/muro.png"
@@ -87,36 +103,31 @@ class MuroVisible   {
 
 }
 
-class Checkpoint {
-	const property tipo = 6
+class Pisable {
+	
 	var property position
-	var property image = "menorResolucion/checkpoint.png"
-
+	var property image
+	
 	method esPisable() = true
-
 	method hacerAlgo(direccion) {
 	}
-
 }
 
-class Meta {
+class Checkpoint inherits Pisable{
+	const property tipo = 6
+	 
+}
 
-	var property position = game.at(7, 7)
-	var property image = "menorResolucion/meta1.png"
+class Meta inherits Pisable{
+
 	var property tipo = 1
-
-	method esPisable() = true
-
-	method hacerAlgo(direccion) {
-	}
+	//override method position() = game.at(7, 7)
 
 }
 
-object checkpoint1 inherits Checkpoint (position = game.at(3, 2)) {
-
-	override method hacerAlgo(direccion) {
-	}
-
+class Checkpoint1 inherits Checkpoint{
+	
+	override method position() = game.at(3,2)
 }
 
 object paleta {

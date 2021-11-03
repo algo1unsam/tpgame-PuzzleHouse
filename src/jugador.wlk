@@ -5,18 +5,23 @@ import niveles.*
 import objetos.*
 
 
-class Jugador  { //cambiar
+class Jugador inherits Posicion{ //cambiar
 
-	var property position
+	//var property position
 	const nombreJugador
 	var property ultimaDireccion = abajo
-	var property posicionInicial = position
+	//var property posicionInicial = position
 	var property resolucion
 	var property tipo =3
 	
 	method image() = resolucion + "/" + nombreJugador.toString() + ultimaDireccion.toString() + ".png" //vean el string "nivel0" ,revisen porque lo puse asi. 
 	
-	method cambiarPosicion(direccion) {
+	/*method posicioninicial() {
+		sonidoObjeto.emitirSonido("reinicio.mp3")
+		self.position(posicionInicial) 
+	}*/
+	
+	override method cambiarPosicion(direccion) {
 	
 		ultimaDireccion = direccion
 		self.position(direccion.moverse(self))
@@ -26,11 +31,6 @@ class Jugador  { //cambiar
 	method victoria(){
 		sonidoObjeto.emitirSonido("victoriaFem.mp3")
 	}							
-	
-	method posicioninicial() {
-		sonidoObjeto.emitirSonido("reinicio.mp3")
-		self.position(posicionInicial) 
-	}
 	
 	method text() = if (!configuraciones.libreMoviento()) {	""} else {"[ " + position.x().toString() + " , " + position.y().toString() + " ]"}
 
@@ -51,6 +51,10 @@ class Jugador  { //cambiar
 	method hacerAlgo(direccion){
 		configuraciones.elJugador().position(direccion.dirOpuesto(configuraciones.elJugador()))
 		game.say(self,"que sucede?")
+	}
+	
+	method retroceder(direccion){
+		self.position(direccion.dirOpuesto(configuraciones.elJugador()))	
 	}
 }
 	
