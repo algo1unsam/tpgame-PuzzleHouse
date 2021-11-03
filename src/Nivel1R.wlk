@@ -6,7 +6,7 @@ import timeline.*
 import jugador.*
 import niveles.*
 
-object nivel1R inherits Niveles (siguienteNivel = nivel0){
+object nivel1R inherits Nivel (siguienteNivel = nivel0){
 	const jugador1 = new Jugador(position = game.at(14, 1) ,resolucion="mayorResolucion" ,nombreJugador = "jugadora1")
 	
 	const listaCajas=[new Caja(position = game.at(16,7),resolucion="mayorResolucion",caja="caja2.png",cajaEnMeta="caja_ok2.png",tipo=2), 

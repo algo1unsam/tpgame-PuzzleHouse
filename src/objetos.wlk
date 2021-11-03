@@ -3,7 +3,7 @@ import direcciones.*
 import configuraciones.*
 import niveles.*
 import jugador.*
-
+//configuraciones.nivelActual().listaMeta().any{ unaMeta => unaMeta.position() == self.position() && unaMeta.tipo() == self.tipo() }
 object sonidoObjeto { ///Me parece que queda mejor como objeto que como clase
 
 	method emitirSonido(unSonido) {

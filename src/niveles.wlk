@@ -6,7 +6,7 @@ import timeline.*
 import jugador.*
 import Nivel1R.*
 
-class Niveles {
+class Nivel {
 	var property siguienteNivel
 	method listaCajas()
 
@@ -45,7 +45,7 @@ class Niveles {
 
 }
 
-object nivel0 inherits Niveles (siguienteNivel = nivel1){
+object nivel0 inherits Nivel (siguienteNivel = nivel1){
 
 	const jugador1 = new Jugador(position = game.at(20, 3) ,resolucion="menorResolucion",nombreJugador = "jugador1")
 	
@@ -148,7 +148,7 @@ object nivel0 inherits Niveles (siguienteNivel = nivel1){
 	
 }
 
-object nivel1 inherits Niveles (siguienteNivel = nivel1R){
+object nivel1 inherits Nivel (siguienteNivel = nivel1R){
 	
 	const jugador1 = new Jugador(position = game.at(15, 3) , resolucion="menorResolucion",nombreJugador = "jugador1")
 	const meta1 = "menorResolucion/meta1.png"
@@ -160,26 +160,26 @@ object nivel1 inherits Niveles (siguienteNivel = nivel1R){
 	const cajaMeta2 = "caja_ok2.png"
 
 	const listaMeta =[   new Meta(position = game.at(7,1), image= meta1),
-						 new Meta(position = game.at(10,1),image= meta2,tipo=2)
-						 //new Meta(position = game.at(7,2), image= meta2,tipo=2),
-						 //new Meta(position = game.at(7,3), image= meta1),
-						 //new Meta(position = game.at(7,4), image= meta1),
-						 //new Meta(position = game.at(7,5), image= meta2,tipo=2),
-						 //new Meta(position = game.at(8,3), image= meta1),
-						 //new Meta(position = game.at(8,4), image= meta1),
-						 //new Meta(position = game.at(8,5), image= meta1)
+						 new Meta(position = game.at(10,1),image= meta2,tipo=2),
+						 new Meta(position = game.at(7,2), image= meta2,tipo=2),
+						 new Meta(position = game.at(7,3), image= meta1),
+						 new Meta(position = game.at(7,4), image= meta1),
+						 new Meta(position = game.at(7,5), image= meta2,tipo=2),
+						 new Meta(position = game.at(8,3), image= meta1),
+						 new Meta(position = game.at(8,4), image= meta1),
+						 new Meta(position = game.at(8,5), image= meta1)
 					
 		
 	]
 	const listaCajas=[   new Caja(position = game.at(13,3),resolucion=resolucionCaja,caja=caja1,cajaEnMeta=cajaMeta1,tipo=1),
-						 //new Caja(position = game.at(11,4),resolucion=resolucionCaja,caja=caja1,cajaEnMeta=cajaMeta1,tipo=1),
-						 //new Caja(position = game.at(10,5),resolucion=resolucionCaja,caja=caja1,cajaEnMeta=cajaMeta1,tipo=1),
-						 //new Caja(position = game.at(11,2),resolucion=resolucionCaja,caja=caja1,cajaEnMeta=cajaMeta1,tipo=1),
-						 //new Caja(position = game.at(13,6),resolucion=resolucionCaja,caja=caja1,cajaEnMeta=cajaMeta1,tipo=1),
-						 //new Caja(position = game.at(11,7),resolucion=resolucionCaja,caja=caja1,cajaEnMeta=cajaMeta1,tipo=1),
-						 new Caja(position = game.at(13,9),resolucion=resolucionCaja,caja=caja2,cajaEnMeta=cajaMeta2,tipo=2)
-						 //new Caja(position = game.at(9,9),resolucion=resolucionCaja,caja=caja2,cajaEnMeta=cajaMeta2,tipo=2),
-						 //new Caja(position = game.at(13,1),resolucion=resolucionCaja,caja=caja2,cajaEnMeta=cajaMeta2,tipo=2)	  
+						 new Caja(position = game.at(11,4),resolucion=resolucionCaja,caja=caja1,cajaEnMeta=cajaMeta1,tipo=1),
+						 new Caja(position = game.at(10,5),resolucion=resolucionCaja,caja=caja1,cajaEnMeta=cajaMeta1,tipo=1),
+						 new Caja(position = game.at(11,2),resolucion=resolucionCaja,caja=caja1,cajaEnMeta=cajaMeta1,tipo=1),
+						 new Caja(position = game.at(13,6),resolucion=resolucionCaja,caja=caja1,cajaEnMeta=cajaMeta1,tipo=1),
+						 new Caja(position = game.at(11,7),resolucion=resolucionCaja,caja=caja1,cajaEnMeta=cajaMeta1,tipo=1),
+						 new Caja(position = game.at(13,9),resolucion=resolucionCaja,caja=caja2,cajaEnMeta=cajaMeta2,tipo=2),
+						 new Caja(position = game.at(9,9),resolucion=resolucionCaja,caja=caja2,cajaEnMeta=cajaMeta2,tipo=2),
+						 new Caja(position = game.at(13,1),resolucion=resolucionCaja,caja=caja2,cajaEnMeta=cajaMeta2,tipo=2)	  
 	]
 
 	method cargarNivel(){
