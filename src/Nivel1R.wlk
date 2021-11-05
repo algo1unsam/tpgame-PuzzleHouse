@@ -6,7 +6,7 @@ import timeline.*
 import jugador.*
 import niveles.*
 
-object nivel1R inherits Nivel (siguienteNivel = nivel0){
+object nivel1R inherits Nivel (siguienteNivel = nivel0 ,duplicador=2){
 	const jugador1 = new Jugador(position = game.at(14, 1) ,resolucion="mayorResolucion" ,nombreJugador = "jugadora1")
 	
 	const listaCajas=[new Caja(position = game.at(16,7),resolucion="mayorResolucion",caja="caja2.png",cajaEnMeta="caja_ok2.png",tipo=2), 
@@ -17,13 +17,8 @@ object nivel1R inherits Nivel (siguienteNivel = nivel0){
 						new Meta(position = game.at(8,1) ,	image="mayorResolucion/meta1.png"  ),
 					    new Meta(position = game.at(16,1),  image="mayorResolucion/meta2.png", tipo=2 )]
 
-	const listaPared = []
-	
-	
-
-	
 	method cargarNivel(){
-		const duplicador=2	
+		
 		configuraciones.configMusic("hogar.mp3")
 		
 		game.addVisual(self)
@@ -35,7 +30,7 @@ object nivel1R inherits Nivel (siguienteNivel = nivel0){
 		
 		//self.cargarObjetos(listaPared)
 			
-		self.generarMuros(listaPared)
+		self.generarMuros()
 		
 		game.addVisual(jugador1)
 		configuraciones.nivelActual(self)
@@ -43,26 +38,19 @@ object nivel1R inherits Nivel (siguienteNivel = nivel0){
 	}
 
 	override method listaCajas() = listaCajas
-	
-	 method listaParedes()= listaPared
-	
-	method generarMuros(lista){
-		const ancho = game.width() - 1
-		const largo = game.height() - 1
+
+	method generarMuros(){
+		const muro = "mayorResolucion/muro.png"
+		self.bordearVerticalmente(1,11,2,muro)
+		self.bordearHorizontalmente(4,8,11,muro)
+		self.bordearHorizontalmente(16,24,11,muro)
+		self.bordearVerticalmente(-1,1,24,muro)
+		self.bordearVerticalmente(5,9,24,muro)
+		self.bordearHorizontalmente(2,22,-1,muro)
+		self.bordearHorizontalmente(14,22,5,muro)
+		self.bordearHorizontalmente(4,10,5,muro)
+		self.bordearHorizontalmente(10,14,13,muro)
 		
-		/* Bordes */
-		(4 .. ancho-4).forEach({ n => lista.add( new Position( x=n, y=-1))}) // BOTTOM
-		(4 .. 8).forEach{ n => lista.add(new Position(x=n, y=largo-1))} // TOP 
-		(4 .. 10).forEach{ n => lista.add(new Position(x=n, y=largo-7))} // MID		
-		(0 .. largo).forEach({ n => lista.add( new Position( x=2, y=n))}) // LEFT
-		(0 .. largo).forEach({ n => lista.add( new Position( x=ancho-2, y=n))}) // RIGHT
-		
-		/* Custom */
-		lista.addAll([ new Position(x=14, y=5), new Position(x=16,y=5) , new Position(x=18,y=5)  , new Position(x=20,y=5),
-							new Position(x=16,y=11), new Position(x=18,y=11), new Position(x=20,y=11) ,
-							new Position(x=10,y=13), new Position(x=12,y=13), new Position(x=14, y=13)])
-							
-		lista.forEach { p => self.dibujarMuros(new MuroVisible(position = p, image="mayorResolucion/muro.png"))}
 	}
 	
 	 method listaMeta()= listaMeta

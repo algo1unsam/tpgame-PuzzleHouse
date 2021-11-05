@@ -35,6 +35,7 @@ object configuraciones {
 		keyboard.r().onPressDo{ nivelActual.reiniciarNivel()}
 		keyboard.x().onPressDo{ game.clear()} // el game.clear puede ser clave para transiciones entre niveles
 		keyboard.z().onPressDo{ self.cambio()}
+		keyboard.p().onPressDo({ self.configStopMusic()})
 		
 	}
 

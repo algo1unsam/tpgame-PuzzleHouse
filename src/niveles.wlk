@@ -8,25 +8,23 @@ import Nivel1R.*
 
 class Nivel {
 	var property siguienteNivel
+	const duplicador=1
 	method listaCajas()
 
 	method cargarObjetos(objeto) = objeto.forEach{ unObjeto => game.addVisual(unObjeto)}
 	
 	method dibujarMuros(objeto) = game.addVisual(objeto)
-	
 
 	method bordearVerticalmente(yInicial,yFinal,xCoordenada,stringObjeto){
 		const lista=[]
-		(yInicial .. yFinal).forEach({ n => lista.add( new Position( x=xCoordenada, y=n))})
+		new Range(start = yInicial, end =yFinal , step = duplicador).forEach({ n => lista.add( new Position( x=xCoordenada, y=n))})
 		lista.forEach { p => self.dibujarMuros(new MuroVisible(position = p, image=stringObjeto))}
 	}
 	method bordearHorizontalmente(xInicial,xFinal,yCordenada,stringObjeto){
 		const lista=[]
-		(xInicial.. xFinal).forEach({ n => lista.add( new Position( x=n, y=yCordenada))}) 	
+		new Range(start = xInicial, end =xFinal , step = duplicador).forEach({ n => lista.add( new Position( x=n, y=yCordenada))}) 	
 		lista.forEach { p => self.dibujarMuros(new MuroVisible(position = p, image=stringObjeto))}	
 	}
-	
-
 
 	method verificarMetas() {
 		const verificador = self.listaCajas().all({ unaCaja => unaCaja.llegoMeta() })
@@ -34,9 +32,13 @@ class Nivel {
 			sonidoObjeto.emitirSonido("victoriaFem.mp3") // es temporal
 			game.say(configuraciones.elJugador(), "ganaste!")
 			configuraciones.configStopMusic()
-			game.clear()
-			siguienteNivel.cargarNivel()
+			game.schedule(1200,{self.cambiarNivel()})
 		}
+	}
+	
+	method cambiarNivel(){
+		game.clear()
+		siguienteNivel.cargarNivel()
 	}
 	method reiniciarNivel(){
 		configuraciones.nivelActual().listaCajas().forEach{ objeto => objeto.posicioninicial()}
@@ -48,12 +50,11 @@ class Nivel {
 object nivel0 inherits Nivel (siguienteNivel = nivel1){
 
 	const jugador1 = new Jugador(position = game.at(20, 3) ,resolucion="menorResolucion",nombreJugador = "jugador1")
-	
 	const listaCajas=[]
 	const listaMeta =[]
 	
 	method cargarNivel(){		
-		 const duplicador=1
+		
 		configuraciones.configMusic("hogar1.mp3")
 		game.addVisual(map)
 		game.addVisual(new Checkpoint1(position = game.at(3,2), image = "menorResolucion/checkpoint.png"))
@@ -92,7 +93,7 @@ object nivel0 inherits Nivel (siguienteNivel = nivel1){
 		self.generarMuros()
 		/* ESPOSO */
 		game.addVisual(jugador1)
-		self.configNivel(jugador1,duplicador)
+		self.configNivel(jugador1)
 	
 		
 		/* ESPOSA */
@@ -101,7 +102,7 @@ object nivel0 inherits Nivel (siguienteNivel = nivel1){
 			
 	}
 	
-		method configNivel(personaje1,duplicador){
+		method configNivel(personaje1){
 		duplicaDireccion.direccionDuplicador(duplicador)
 		configuraciones.configTeclas(personaje1)
 		configuraciones.configColisiones(personaje1)
@@ -112,8 +113,7 @@ object nivel0 inherits Nivel (siguienteNivel = nivel1){
 	
 
 	override method listaCajas() = listaCajas
-	
-     
+
 	
 	 method listaMeta()= listaMeta
 	
@@ -184,7 +184,7 @@ object nivel1 inherits Nivel (siguienteNivel = nivel1R){
 
 	method cargarNivel(){
 		const duplicador=1	
-		configuraciones.configMusic("Nivel2MoiraB.mp3")
+		configuraciones.configMusic("macariaDespierta.mp3")
 		self.cargarObjetos(listaMeta)
 		self.cargarObjetos(listaCajas)
 		self.generarMuros()
