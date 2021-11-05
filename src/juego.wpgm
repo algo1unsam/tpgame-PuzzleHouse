@@ -13,7 +13,7 @@ program juego {
 	game.width( configuraciones.ancho() )
   	game.height( configuraciones.altura() ) 
   	game.cellSize(50)
-	game.boardGround("menorResolucion/verde.png")
+	//game.boardGround("menorResolucion/verde.png")
 	/*  
 	 * Para entrar al nivel 0
 	 * Eliminar comentario  de la linea 19 y comentar el de la linea 21

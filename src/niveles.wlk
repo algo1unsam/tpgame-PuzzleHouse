@@ -49,7 +49,7 @@ class Nivel {
 
 object nivel0 inherits Nivel (siguienteNivel = nivel1){
 
-	const jugador1 = new Jugador(position = game.at(20, 3) ,resolucion="menorResolucion",nombreJugador = "jugador1")
+	const jugador1 = new Jugador(position = game.at(3, 1) ,resolucion="menorResolucion",nombreJugador = "jugador1")
 	const listaCajas=[]
 	const listaMeta =[]
 	
@@ -57,7 +57,9 @@ object nivel0 inherits Nivel (siguienteNivel = nivel1){
 		
 		configuraciones.configMusic("hogar1.mp3")
 		game.addVisual(map)
-		game.addVisual(new Checkpoint1(position = game.at(3,2), image = "menorResolucion/checkpoint.png"))
+		//game.addVisual(mapR)
+		
+		//game.addVisual(new Checkpoint1(position = game.at(3,2), image = "menorResolucion/checkpoint.png"))
 		game.addVisual(sombra4)
 		game.addVisual(sombraInv1)
 		game.addVisual(sombraInv2)
@@ -143,7 +145,6 @@ object nivel0 inherits Nivel (siguienteNivel = nivel1){
 		self.bordearVerticalmente(8,11,0,muroInvisible)
 		self.bordearVerticalmente(1,5,0,muroInvisible)
 		self.bordearHorizontalmente(1,5,5,muroInvisible)
-	
 	}
 	
 }
@@ -185,6 +186,7 @@ object nivel1 inherits Nivel (siguienteNivel = nivel1R){
 	method cargarNivel(){
 		const duplicador=1	
 		configuraciones.configMusic("macariaDespierta.mp3")
+		game.addVisual(self)
 		self.cargarObjetos(listaMeta)
 		self.cargarObjetos(listaCajas)
 		self.generarMuros()
@@ -195,7 +197,8 @@ object nivel1 inherits Nivel (siguienteNivel = nivel1R){
 	
 	method generarMuros(){
 		
-		const muro2 = "menorResolucion/muro2.png"
+		//const muro2 = "menorResolucion/muro2.png"
+		const muro2 = "menorResolucion/muro3.png"
 		self.bordearHorizontalmente(6,15,0,muro2)
 		self.bordearHorizontalmente(8,9,1,muro2)
 		self.bordearHorizontalmente(8,10,2,muro2)
@@ -217,9 +220,8 @@ object nivel1 inherits Nivel (siguienteNivel = nivel1R){
 
 	}
 	
-	method image()   = "menorResolucion/prueba2.png"
-	
-	method position()=game.at(6,2)
+	method image()   = "nivel1/nivel1-map.png"
+	method position()=game.at(0,0)
 	
 	override method listaCajas() = listaCajas
 

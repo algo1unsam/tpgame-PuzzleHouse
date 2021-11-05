@@ -32,6 +32,7 @@ class SombraInvisible{
 }
 
 object map inherits Imagen(	position = game.at(0,0), imagen = "nivel0/map.png"	){}
+object mapR inherits Imagen(	position = game.at(0,0), imagen = "nivel0/mapR.png"	){}
 									
 object sombra1 inherits Imagen(	esPisable = false, position = game.at(0,0), imagen = "nivel0/sombras1.png"){}
 
@@ -61,11 +62,11 @@ object hab1 inherits Imagen(	esPisable = false, position = game.at(0,0), imagen 
 
 object hab2 inherits Imagen(	esPisable = false, position = game.at(0,0), imagen = "nivel0/habitaciones/Hab2.png"){}
 
-object sombraInv1 inherits SombraInvisible( position = game.at(18,2)){}
+object sombraInv1 inherits SombraInvisible( position = game.at(6,2)){}
 
 object sombraInv2 inherits SombraInvisible( position = game.at(12,2)){}
 
-object sombraInv3 inherits SombraInvisible( position = game.at(6,2 )){}
+object sombraInv3 inherits SombraInvisible( position = game.at(18,2 )){}
 
 object pasadizoInv2 inherits SombraInvisible ( position = game.at(7, 3)){}
 
