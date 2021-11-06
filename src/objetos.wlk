@@ -94,6 +94,7 @@ class Checkpoint inherits Pisable {
 	const property tipo = 6
 	
 	override method hacerAlgo(direccion){
+		configuraciones.configStopMusic()
 		configuraciones.nivelActual().cambiarNivel()
 	}
 }
