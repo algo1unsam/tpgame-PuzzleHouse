@@ -19,10 +19,10 @@ program juego {
 	 * Eliminar comentario  de la linea 19 y comentar el de la linea 21
 	 */
 	 
-	menu.cargarNivel()
+	//menu.cargarNivel()
   	//nivel1.cargarNivel()
   	
-  	//nivel1R.cargarNivel() //nivel0,nivel1 .nivel1R
+  	nivel1.cargarNivel() //nivel0,nivel1 .nivel1R
 
 	game.start()
 	

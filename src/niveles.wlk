@@ -183,13 +183,13 @@ object nivel0 inherits Nivel (siguienteNivel = nivel1){
 object nivel1 inherits Nivel (siguienteNivel = nivel0){
 	
 	const jugador1 = new Jugador(position = game.at(15, 3) , resolucion="menorResolucion",nombreJugador = "jugador1")
-	const meta1 = "menorResolucion/meta1.png"
-	const meta2 = "menorResolucion/meta2.png"
+	const meta1 = "menorResolucion/meta_bonus1.png"
+	const meta2 = "menorResolucion/meta_bonus2.png"
 	const resolucionCaja = "menorResolucion"
-	const caja1 = "caja1.png"
-	const caja2 = "caja2.png"
-	const cajaMeta1 = "caja_ok.png"
-	const cajaMeta2 = "caja_ok2.png"
+	const caja1 = "oveja1.png"
+	const caja2 = "oveja2.png"
+	const cajaMeta1 = "oveja_ok1.png"
+	const cajaMeta2 = "oveja_ok2.png"
 
 	const listaMeta =[   new Meta(position = game.at(7,1), image= meta1),
 						 new Meta(position = game.at(10,1),image= meta2,tipo=2),
@@ -227,31 +227,46 @@ object nivel1 inherits Nivel (siguienteNivel = nivel0){
 	}
 	
 	method generarMuros(){
+		const vallaH = "menorResolucion/vallaH.png"
+		const vallaV = "menorResolucion/vallaV.png"
+		const arbusto = "menorResolucion/arbusto.png"
+		const muroInvisible = "menorResolucion/invisible.png"
 		
-		//const muro2 = "menorResolucion/muro2.png"
-		const muro2 = "menorResolucion/muro3.png"
-		self.bordearHorizontalmente(6,15,0,muro2)
-		self.bordearHorizontalmente(8,9,1,muro2)
-		self.bordearHorizontalmente(8,10,2,muro2)
-		self.bordearVerticalmente(1,6,6,muro2)
-		self.bordearHorizontalmente(12,14,2,muro2)
-		self.bordearHorizontalmente(12,13,4,muro2)
-		self.bordearHorizontalmente(12,13,5,muro2)
-		self.bordearVerticalmente(6,7,15,muro2)
-		self.bordearVerticalmente(7,11,14,muro2)
-		self.bordearHorizontalmente(6,13,11,muro2)
-		self.bordearVerticalmente(0,2,16,muro2)
-		self.bordearHorizontalmente(17,18,1,muro2)
-		self.bordearVerticalmente(2,5,18,muro2)
-		self.bordearHorizontalmente(15,17,5,muro2)
-		self.bordearHorizontalmente(7,9,6,muro2)
-		self.bordearVerticalmente(7,8,9,muro2)
-		self.bordearHorizontalmente(6,8,8,muro2)
-		self.bordearVerticalmente(9,10,6,muro2)
+		/* Arbustos */
+		self.bordearHorizontalmente(8,9,1,arbusto)
+		self.bordearHorizontalmente(8,9,2,arbusto)
+		self.bordearHorizontalmente(12,13,4,arbusto)
+		self.bordearHorizontalmente(12,13,5,arbusto)
+		
+		/* Vallas Horizontales */
+		self.bordearHorizontalmente(7,15,0,vallaH)
+		self.bordearHorizontalmente(10,10,2,vallaH)
+		self.bordearHorizontalmente(12,14,2,vallaH)
+		self.bordearHorizontalmente(7,13,11,vallaH)
+		self.bordearHorizontalmente(17,17,1,vallaH)
+		self.bordearHorizontalmente(16,17,5,vallaH)
+		self.bordearHorizontalmente(7,8,6,vallaH)
+		self.bordearHorizontalmente(7,8,8,vallaH)
+		
+		/*Vallas Verticales */
+		self.bordearVerticalmente(1,5,6,vallaV)
+		self.bordearVerticalmente(6,6,15,vallaV)
+		self.bordearVerticalmente(8,10,14,vallaV)
+		self.bordearVerticalmente(2,4,18,vallaV)
+		self.bordearVerticalmente(7,7,9,vallaV)
+		self.bordearVerticalmente(9,10,6,vallaV)
+		
+		/*Muros invisibles */
+		self.bordearVerticalmente(1,2,16,muroInvisible)
+		self.bordearVerticalmente(7,7,14,muroInvisible)
+		self.bordearVerticalmente(5,5,15,muroInvisible)
+		self.bordearVerticalmente(6,6,9,muroInvisible)
+		self.bordearVerticalmente(8,8,9,muroInvisible)
+		
 
 	}
 	
-	method image() = "nivel1/nivel1-map.png"
+	method image() = "nivelBonus/map_bonus.png"
 	method position()=game.at(0,0)
 	
 	override method listaCajas() = listaCajas
