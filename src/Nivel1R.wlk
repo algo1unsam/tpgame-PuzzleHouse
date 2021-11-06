@@ -13,9 +13,9 @@ object nivel1R inherits Nivel (siguienteNivel = nivel0 ,duplicador=2){
 						new Caja(position = game.at(8,7),resolucion="mayorResolucion",caja="caja1.png",cajaEnMeta="caja_ok1.png",tipo=1),
 						new Caja(position = game.at(12,5),resolucion="mayorResolucion",caja="caja1.png",cajaEnMeta="caja_ok1.png",tipo=1)]
 	
-	const listaMeta= [  new Meta(position = game.at(16,3) ,	image="mayorResolucion/meta1.png"  ),
-						new Meta(position = game.at(16,9) ,	image="mayorResolucion/meta1.png"  ),
-					    new Meta(position = game.at(8,9),  image="mayorResolucion/meta2.png", tipo=2 )]
+	const listaMeta= [  new Meta(position = game.at(16,3) ,	image="mayorResolucion/meta1rosado.png"  ),
+						new Meta(position = game.at(16,9) ,	image="mayorResolucion/meta1rosado.png"  ),
+					    new Meta(position = game.at(8,9),  image="mayorResolucion/meta2rosado.png", tipo=2 )]
 
 	method cargarNivel(){
 		

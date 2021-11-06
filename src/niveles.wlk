@@ -151,7 +151,10 @@ object nivel0 inherits Nivel (siguienteNivel = nivel1){
 		
 		const muroInvisible = "menorResolucion/invisible.png"
 		
-		self.bordearHorizontalmente(0,5,0,muroInvisible)
+		
+		self.bordearHorizontalmente(0,2,0,muroInvisible)
+		self.bordearHorizontalmente(4,5,0,muroInvisible)
+		self.bordearHorizontalmente(3,3,-1,muroInvisible)
 		self.bordearHorizontalmente(13,17,0,muroInvisible)
 		self.bordearVerticalmente(0,1,18,muroInvisible)
 		self.bordearHorizontalmente(19,24,0,muroInvisible)
