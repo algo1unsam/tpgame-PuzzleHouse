@@ -7,6 +7,7 @@ import jugador.*
 import Nivel1R.*
 
 class Nivel {
+	
 	var property siguienteNivel
 	const duplicador=1
 	method listaCajas()
@@ -44,6 +45,32 @@ class Nivel {
 		configuraciones.nivelActual().listaCajas().forEach{ objeto => objeto.posicioninicial()}
 		configuraciones.elJugador().posicioninicial()	
 	}
+	
+	method configNivel(personaje){
+		duplicaDireccion.direccionDuplicador(duplicador)
+		configuraciones.configTeclas(personaje) //Si las configuraciones estan en juego.wpgm no las podemos modificar in game ,por eso las coloco aca
+		configuraciones.configColisiones(personaje)
+	}
+
+}
+
+object menu inherits Nivel(siguienteNivel = nivel1R, duplicador = 2){
+	
+	const jugador1 = new Jugador(position = game.at(11, 6) ,resolucion="mayorResolucion",nombreJugador = "jugador1")
+	
+	method cargarNivel(){
+		configuraciones.configMusic("menu.mp3")
+		game.boardGround("oscuro.png")
+		game.addVisual(new Checkpoint(position = game.at(7,6), image = "mayorResolucion/caja_ok1.png", siguienteNivel = nivel0))
+		game.addVisual(new CheckpointSalir(position = game.at(17,6), image = "mayorResolucion/caja_ok2.png", siguienteNivel = nivel0))
+		game.addVisual(jugador1)
+		configuraciones.nivelActual(self)
+		self.configNivel(jugador1)
+	}
+	
+	
+	
+	override method listaCajas() = []
 
 }
 
@@ -52,8 +79,8 @@ object nivel0 inherits Nivel (siguienteNivel = nivel1){
 	const jugador1 = new Jugador(position = game.at(3, 1) ,resolucion="menorResolucion",nombreJugador = "jugador1")
 	const listaCajas=[]
 	const listaMeta =[]
-	
-	method cargarNivel(){		
+
+		method cargarNivel(){		
 		
 		configuraciones.configMusic("hogar1.mp3")
 		game.addVisual(map)
@@ -69,18 +96,18 @@ object nivel0 inherits Nivel (siguienteNivel = nivel1){
 		game.addVisual(sombraHabInv1)
 		game.addVisual(sombraHabInv2)
 		game.addVisual(sombra3)
-		/* Puerta 2 */
+		// Puerta 2 
 		game.addVisual(pasadizo5)
 		game.addVisual(pasadizo4)
-		/* Puerta 1 */
+		// Puerta 1 
 		game.addVisual(pasadizo3)
 		game.addVisual(pasadizo2)
-		/* Escena Pasadizo */
+		// Escena Pasadizo 
 		game.addVisual(pasadizo0)
 		game.addVisual(sombra2)
 		game.addVisual(sombra1)
 		
-		/* Habitaciones */
+		//habitaciones
 		game.addVisual(hab1)
 		const hijo = new Jugador(position = game.at(7, 11) ,resolucion="menorResolucion" ,nombreJugador = "hijo")
 		game.addVisual(hijo)
@@ -93,18 +120,19 @@ object nivel0 inherits Nivel (siguienteNivel = nivel1){
 		game.addVisual(sombraHab2)
 		
 		self.generarMuros()
-		/* ESPOSO */
+		//esposo
 		game.addVisual(jugador1)
 		self.configNivel(jugador1)
 	
 		
-		/* ESPOSA */
+		//esposa
 		const jugadora1 = new Jugador(position = game.at(23, 4) ,resolucion="menorResolucion", nombreJugador = "jugadora1")
 		game.addVisual(jugadora1)
 			
 	}
 	
-		method configNivel(personaje1){
+	
+		override method configNivel(personaje1){
 		duplicaDireccion.direccionDuplicador(duplicador)
 		configuraciones.configTeclas(personaje1)
 		configuraciones.configColisiones(personaje1)
@@ -117,13 +145,16 @@ object nivel0 inherits Nivel (siguienteNivel = nivel1){
 	override method listaCajas() = listaCajas
 
 	
-	 method listaMeta()= listaMeta
+    method listaMeta()= listaMeta
 	
 	method generarMuros(){
 		
 		const muroInvisible = "menorResolucion/invisible.png"
 		
-		self.bordearHorizontalmente(0,5,0,muroInvisible)
+		
+		self.bordearHorizontalmente(0,2,0,muroInvisible)
+		self.bordearHorizontalmente(4,5,0,muroInvisible)
+		self.bordearHorizontalmente(3,3,-1,muroInvisible)
 		self.bordearHorizontalmente(13,17,0,muroInvisible)
 		self.bordearVerticalmente(0,1,18,muroInvisible)
 		self.bordearHorizontalmente(19,24,0,muroInvisible)
@@ -149,7 +180,7 @@ object nivel0 inherits Nivel (siguienteNivel = nivel1){
 	
 }
 
-object nivel1 inherits Nivel (siguienteNivel = nivel1R){
+object nivel1 inherits Nivel (siguienteNivel = nivel0){
 	
 	const jugador1 = new Jugador(position = game.at(15, 3) , resolucion="menorResolucion",nombreJugador = "jugador1")
 	const meta1 = "menorResolucion/meta1.png"
@@ -184,15 +215,15 @@ object nivel1 inherits Nivel (siguienteNivel = nivel1R){
 	]
 
 	method cargarNivel(){
-		const duplicador=1	
-		configuraciones.configMusic("macariaDespierta.mp3")
+		
+		configuraciones.configMusic("nivelBonus.mp3")
 		game.addVisual(self)
 		self.cargarObjetos(listaMeta)
 		self.cargarObjetos(listaCajas)
 		self.generarMuros()
 		game.addVisual(jugador1)
 		configuraciones.nivelActual(self)	
-		self.configNivel(jugador1,duplicador)
+		self.configNivel(jugador1)
 	}
 	
 	method generarMuros(){
@@ -220,17 +251,13 @@ object nivel1 inherits Nivel (siguienteNivel = nivel1R){
 
 	}
 	
-	method image()   = "nivel1/nivel1-map.png"
+	method image() = "nivel1/nivel1-map.png"
 	method position()=game.at(0,0)
 	
 	override method listaCajas() = listaCajas
 
  method listaMeta()= listaMeta
 	//override method  configNivel
-	method configNivel(personaje1,duplicador){
-		duplicaDireccion.direccionDuplicador(duplicador)
-		configuraciones.configTeclas(personaje1) //Si las configuraciones estan en juego.wpgm no las podemos modificar in game ,por eso las coloco aca	
-		configuraciones.configColisiones(personaje1)
-	}
+
 
 }

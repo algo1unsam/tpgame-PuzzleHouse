@@ -89,9 +89,14 @@ class Pisable {
 }
 
 class Checkpoint inherits Pisable {
-
+	
+	var property siguienteNivel
 	const property tipo = 6
-
+	
+	override method hacerAlgo(direccion){
+		configuraciones.configStopMusic()
+		configuraciones.nivelActual().cambiarNivel()
+	}
 }
 
 class Meta inherits Pisable {
@@ -100,9 +105,13 @@ class Meta inherits Pisable {
 
 }
 
-class Checkpoint1 inherits Checkpoint {
-
-	override method position() = game.at(3, 2)
+class CheckpointSalir inherits Checkpoint {
+	
+	override method hacerAlgo(direccion){
+		game.clear()
+		game.stop()
+	}
+	//override method position() = game.at(3, 2)
 
 }
 
