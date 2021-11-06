@@ -7,6 +7,7 @@ import jugador.*
 import Nivel1R.*
 
 class Nivel {
+	
 	var property siguienteNivel
 	const duplicador=1
 	method listaCajas()
@@ -44,6 +45,30 @@ class Nivel {
 		configuraciones.nivelActual().listaCajas().forEach{ objeto => objeto.posicioninicial()}
 		configuraciones.elJugador().posicioninicial()	
 	}
+
+}
+
+object menu inherits Nivel(siguienteNivel = nivel1R, duplicador = 2){
+	
+	const jugador1 = new Jugador(position = game.at(11, 6) ,resolucion="mayorResolucion",nombreJugador = "jugador1")
+	
+	method cargarNivel(){
+		game.boardGround("oscuro.png")
+		game.addVisual(new Checkpoint(position = game.at(7,6), image = "mayorResolucion/caja_ok1.png", siguienteNivel = nivel0))
+		game.addVisual(new CheckpointSalir(position = game.at(17,6), image = "mayorResolucion/caja_ok2.png", siguienteNivel = nivel0))
+		game.addVisual(jugador1)
+		configuraciones.nivelActual(self)
+		self.configNivel(jugador1,duplicador)
+	}
+	
+	method configNivel(personaje1,duplicador){
+		
+		duplicaDireccion.direccionDuplicador(duplicador)
+		configuraciones.configTeclas(personaje1) //Si las configuraciones estan en juego.wpgm no las podemos modificar in game ,por eso las coloco aca
+		configuraciones.configColisiones(personaje1)
+	}
+	
+	override method listaCajas() = []
 
 }
 
@@ -220,7 +245,7 @@ object nivel1 inherits Nivel (siguienteNivel = nivel1R){
 
 	}
 	
-	method image()   = "nivel1/nivel1-map.png"
+	method image() = "nivel1/nivel1-map.png"
 	method position()=game.at(0,0)
 	
 	override method listaCajas() = listaCajas
