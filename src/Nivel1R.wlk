@@ -44,22 +44,23 @@ object nivel1R inherits Nivel (siguienteNivel = nivel0 ,duplicador=2){
 	override method listaCajas() = listaCajas
 
 	method generarMuros(){
-		const muro = "mayorResolucion/muro3.png"
-		self.bordearVerticalmente(1,11,0,muro)
-		self.bordearHorizontalmente(0,8,-1,muro)
-		self.bordearHorizontalmente(16,24,-1,muro)
-		self.bordearVerticalmente(-1,1,24,muro)
-		self.bordearVerticalmente(5,9,24,muro)
-		self.bordearHorizontalmente(0,24,11,muro)
-		self.bordearHorizontalmente(14,22,5,muro)
-		self.bordearHorizontalmente(2,10,5,muro)
-		self.bordearHorizontalmente(10,14,-3,muro)
+		const muroinvisible = "mayorResolucion/invisible.png"
+		const muroVisible="mayorResolucion/muro3.png"
+		self.bordearVerticalmente(1,11,0,muroinvisible)
+		self.bordearHorizontalmente(0,8,-1,muroinvisible)
+		self.bordearHorizontalmente(16,24,-1,muroinvisible)
+		self.bordearVerticalmente(-1,1,24,muroinvisible)
+		self.bordearVerticalmente(5,9,24,muroinvisible)
+		self.bordearHorizontalmente(0,24,11,muroinvisible)
+		self.bordearHorizontalmente(14,22,5,muroVisible)
+		self.bordearHorizontalmente(2,10,5,muroVisible)
+		self.bordearHorizontalmente(10,14,-3,muroinvisible)
 		
 	}
 	
 	 method listaMeta()= listaMeta
 	
-	method image()   = "nivel1/nivel1R-map.png"
+	method image()   = "nivel1/nivel1Rc-Map.png"
 	
 	method position() = game.origin()
 
