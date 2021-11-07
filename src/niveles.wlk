@@ -141,11 +141,7 @@ object nivel0 inherits Nivel (siguienteNivel = pasadizo){
 		//esposo
 		game.addVisual(jugador1)
 		self.configNivel(jugador1)
-	
-		
 	}
-	
-	
 		override method configNivel(personaje1){
 		duplicaDireccion.direccionDuplicador(duplicador)
 		configuraciones.configTeclas(personaje1)

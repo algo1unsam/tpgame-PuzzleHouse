@@ -6,6 +6,7 @@ import jugador.*
 import objetos.*
 import nivel1.*
 import nivelB.*
+import nivelW.*
 
 /* si el codigo solo complica las cosas, no duden en cambiar todo!! */
 
@@ -15,12 +16,14 @@ program juego {
   	game.height( configuraciones.altura() ) 
   	game.cellSize(50)
 	
-	menu.cargarNivel() 			/* MENU */
+	//menu.cargarNivel() 			/* MENU */
 	//nivel1.cargarNivel()			/* NIVEL 1 */
-	//nivel0.cargarNivel()			/* ESCENARIO CASA /*
+	nivel0.cargarNivel()			/* ESCENARIO CASA /*
 	
 	//pasadizo.cargarNivel()		/* BONUS */
 	//nivel_bonus.cargarNivel()		
+	
+	//nivelW.cargarNivel()			/* */
 	
 	game.start()
 	
