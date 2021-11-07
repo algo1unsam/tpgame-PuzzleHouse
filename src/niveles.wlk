@@ -6,6 +6,7 @@ import timeline.*
 import jugador.*
 import nivel1.*
 import nivelB.*
+import nivelW.*
 
 class Nivel {
 	var property siguienteNivel
@@ -122,12 +123,12 @@ object nivel0 inherits Nivel (siguienteNivel = pasadizo){
 		game.addVisual(sombra2)
 		game.addVisual(sombra1)
 		
-		
-		//habitaciones
+		//hab hijo
 		game.addVisual(hab1)
 		const hijo = new Jugador(position = game.at(7, 11) ,resolucion="menorResolucion" ,nombreJugador = "hijo")
 		game.addVisual(hijo)
 		
+		//hab hija
 		game.addVisual(hab2)
 		const hija = new Jugador(position = game.at(10, 11) ,resolucion="menorResolucion", nombreJugador = "hija")
 		game.addVisual(hija)
@@ -135,12 +136,12 @@ object nivel0 inherits Nivel (siguienteNivel = pasadizo){
 		game.addVisual(sombraHab1)
 		game.addVisual(sombraHab2)
 		
-		
-		
 		self.generarMuros()
 		//esposo
 		game.addVisual(jugador1)
 		self.configNivel(jugador1)
+		
+		game.addVisual(new Checkpoint(position = game.at(7,11), image = "menorResolucion/invisible.png", siguienteNivel = nivelW))
 	}
 		override method configNivel(personaje1){
 		duplicaDireccion.direccionDuplicador(duplicador)
