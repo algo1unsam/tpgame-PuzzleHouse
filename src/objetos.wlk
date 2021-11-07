@@ -95,7 +95,9 @@ class Checkpoint inherits Pisable {
 	
 	override method hacerAlgo(direccion){
 		configuraciones.configStopMusic()
-		configuraciones.nivelActual().cambiarNivel()
+		//configuraciones.nivelActual().cambiarNivel()
+		game.clear()
+		siguienteNivel.cargarNivel()
 	}
 }
 

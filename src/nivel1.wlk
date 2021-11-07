@@ -6,7 +6,7 @@ import timeline.*
 import jugador.*
 import niveles.*
 
-object nivel1R inherits Nivel (siguienteNivel = nivel0 ,duplicador=2){
+object nivel1 inherits Nivel (siguienteNivel = nivel0 ,duplicador=2){
 	const jugador1 = new Jugador(position = game.at(14, 1) ,resolucion="mayorResolucion" ,nombreJugador = "jugadora1")
 	
 	const listaCajas=[new Caja(position = game.at(8,3),resolucion="mayorResolucion",caja="caja2.png",cajaEnMeta="caja_ok2.png",tipo=2), 
@@ -23,14 +23,8 @@ object nivel1R inherits Nivel (siguienteNivel = nivel0 ,duplicador=2){
 		
 		game.addVisual(self)
 		
-		
 		self.cargarObjetos(listaMeta)
 		self.cargarObjetos(listaCajas)
-		
-		
-		
-		
-		
 		
 		//self.cargarObjetos(listaPared)
 			
@@ -55,7 +49,6 @@ object nivel1R inherits Nivel (siguienteNivel = nivel0 ,duplicador=2){
 		self.bordearHorizontalmente(14,22,5,muroVisible)
 		self.bordearHorizontalmente(2,10,5,muroVisible)
 		self.bordearHorizontalmente(10,14,-3,muroinvisible)
-		
 	}
 	
 	 method listaMeta()= listaMeta

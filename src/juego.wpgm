@@ -4,7 +4,8 @@ import configuraciones.*
 import niveles.*
 import jugador.*
 import objetos.*
-import Nivel1R.*
+import nivel1.*
+import nivelB.*
 
 /* si el codigo solo complica las cosas, no duden en cambiar todo!! */
 
@@ -13,17 +14,14 @@ program juego {
 	game.width( configuraciones.ancho() )
   	game.height( configuraciones.altura() ) 
   	game.cellSize(50)
-	//game.boardGround("menorResolucion/verde.png")
-	/*  
-	 * Para entrar al nivel 0
-	 * Eliminar comentario  de la linea 19 y comentar el de la linea 21
-	 */
-	 
-	menu.cargarNivel()
-  	//nivel1R.cargarNivel()
-  	
-  	//nivel1.cargarNivel() //nivel0,nivel1 .nivel1R
-
+	
+	menu.cargarNivel() 			/* MENU */
+	//nivel1.cargarNivel()			/* NIVEL 1 */
+	//nivel0.cargarNivel()			/* ESCENARIO CASA /*
+	
+	//pasadizo.cargarNivel()		/* BONUS */
+	//nivel_bonus.cargarNivel()		
+	
 	game.start()
 	
 }
