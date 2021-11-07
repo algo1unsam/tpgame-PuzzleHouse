@@ -30,21 +30,21 @@ object nivelW inherits Nivel (siguienteNivel = nivel0){
 					
 		
 	]
-	const listaCajas=[   new Caja(position = game.at(7,7),resolucion=resolucionCaja,caja=caja1,cajaEnMeta=cajaMeta1,tipo=1),
-						 new Caja(position = game.at(6,9) ,resolucion=resolucionCaja,caja=caja1,cajaEnMeta=cajaMeta1,tipo=1),
-						 new Caja(position = game.at(9,9) ,resolucion=resolucionCaja,caja=caja2,cajaEnMeta=cajaMeta2,tipo=2),
+	const listaCajas=[   new Caja(position = game.at(7,7),resolucion=resolucionCaja,stringDeObjeto=caja1,cajaEnMeta=cajaMeta1,tipo=1),
+						 new Caja(position = game.at(6,9) ,resolucion=resolucionCaja,stringDeObjeto=caja1,cajaEnMeta=cajaMeta1,tipo=1),
+						 new Caja(position = game.at(9,9) ,resolucion=resolucionCaja,stringDeObjeto=caja2,cajaEnMeta=cajaMeta2,tipo=2),
 						 
-						 new Caja(position = game.at(17,7),resolucion=resolucionCaja,caja=caja1,cajaEnMeta=cajaMeta1,tipo=1),
-						 new Caja(position = game.at(18,9),resolucion=resolucionCaja,caja=caja1,cajaEnMeta=cajaMeta1,tipo=1),
-						 new Caja(position = game.at(15,9),resolucion=resolucionCaja,caja=caja2,cajaEnMeta=cajaMeta2,tipo=2),
+						 new Caja(position = game.at(17,7),resolucion=resolucionCaja,stringDeObjeto=caja1,cajaEnMeta=cajaMeta1,tipo=1),
+						 new Caja(position = game.at(18,9),resolucion=resolucionCaja,stringDeObjeto=caja1,cajaEnMeta=cajaMeta1,tipo=1),
+						 new Caja(position = game.at(15,9),resolucion=resolucionCaja,stringDeObjeto=caja2,cajaEnMeta=cajaMeta2,tipo=2),
 						 
-						 new Caja(position = game.at(6,2),resolucion=resolucionCaja,caja=caja1,cajaEnMeta=cajaMeta1,tipo=1),
-						 new Caja(position = game.at(8,2),resolucion=resolucionCaja,caja=caja2,cajaEnMeta=cajaMeta2,tipo=2)	  
+						 new Caja(position = game.at(6,2),resolucion=resolucionCaja,stringDeObjeto=caja1,cajaEnMeta=cajaMeta1,tipo=1),
+						 new Caja(position = game.at(8,2),resolucion=resolucionCaja,stringDeObjeto=caja2,cajaEnMeta=cajaMeta2,tipo=2)	  
 	]
 
 	method cargarNivel(){
 		
-		//configuraciones.configMusic("nivelBonus.mp3")
+		configuraciones.configMusic("nivelW-A.mp3")
 		game.addVisual(self)
 		self.cargarObjetos(listaMeta)
 		self.cargarObjetos(listaCajas)

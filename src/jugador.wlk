@@ -9,7 +9,7 @@ class Jugador inherits Posicion{ //cambiar
 
 	//var property position
 	const nombreJugador
-	var property ultimaDireccion = abajo
+	//var property ultimaDireccion = abajo
 	//var property posicionInicial = position
 	var property resolucion
 	var property tipo =3
@@ -48,7 +48,7 @@ class Jugador inherits Posicion{ //cambiar
 	method llegoCheckpoint(){
 		configuraciones.nivelActual().avanzarA()
 	}
-	method hacerAlgo(direccion){
+	override method hacerAlgo(direccion){
 		configuraciones.elJugador().position(direccion.dirOpuesto(configuraciones.elJugador()))
 		game.say(self,"que sucede?")
 	}

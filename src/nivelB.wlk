@@ -63,15 +63,15 @@ object nivel_bonus inherits Nivel (siguienteNivel = pasadizo){
 					
 		
 	]
-	const listaCajas=[   new Oveja(position = game.at(13,3),resolucion=resolucionCaja,ovejaString=caja1,tipo=1,sonido=sonidoOveja),
-						 new Oveja(position = game.at(11,4),resolucion=resolucionCaja,ovejaString=caja1,tipo=1,sonido=sonidoOveja),
-						 new Oveja(position = game.at(10,5),resolucion=resolucionCaja,ovejaString=caja1,tipo=1,sonido=sonidoOveja),
-						 new Oveja(position = game.at(11,2),resolucion=resolucionCaja,ovejaString=caja1,tipo=1,sonido=sonidoOveja),
-						 new Oveja(position = game.at(13,6),resolucion=resolucionCaja,ovejaString=caja1,tipo=1,sonido=sonidoOveja),
-						 new Oveja(position = game.at(11,7),resolucion=resolucionCaja,ovejaString=caja1,tipo=1,sonido=sonidoOveja),
-						 new Oveja(position = game.at(13,9),resolucion=resolucionCaja,ovejaString=caja2,tipo=2,sonido=sonidoOveja2),
-						 new Oveja(position = game.at(9,9),resolucion=resolucionCaja,ovejaString=caja2,tipo=2,sonido=sonidoOveja2),
-						 new Oveja(position = game.at(13,1),resolucion=resolucionCaja,ovejaString=caja2,tipo=2,sonido=sonidoOveja2)	  
+	const listaCajas=[   new Oveja(position = game.at(13,3),resolucion=resolucionCaja,stringDeObjeto=caja1,tipo=1,sonido=sonidoOveja,ultimaDireccion=arriba),
+						 new Oveja(position = game.at(11,4),resolucion=resolucionCaja,stringDeObjeto=caja1,tipo=1,sonido=sonidoOveja,ultimaDireccion=abajo),
+						 new Oveja(position = game.at(10,5),resolucion=resolucionCaja,stringDeObjeto=caja1,tipo=1,sonido=sonidoOveja,ultimaDireccion=izquierda),
+						 new Oveja(position = game.at(11,2),resolucion=resolucionCaja,stringDeObjeto=caja1,tipo=1,sonido=sonidoOveja,ultimaDireccion=derecha),
+						 new Oveja(position = game.at(13,6),resolucion=resolucionCaja,stringDeObjeto=caja1,tipo=1,sonido=sonidoOveja,ultimaDireccion=derecha),
+						 new Oveja(position = game.at(11,7),resolucion=resolucionCaja,stringDeObjeto=caja1,tipo=1,sonido=sonidoOveja,ultimaDireccion=izquierda),
+						 new Oveja(position = game.at(13,9),resolucion=resolucionCaja,stringDeObjeto=caja2,tipo=2,sonido=sonidoOveja2,ultimaDireccion=abajo),
+						 new Oveja(position = game.at(9,9),resolucion=resolucionCaja,stringDeObjeto=caja2,tipo=2,sonido=sonidoOveja2,ultimaDireccion=derecha),
+						 new Oveja(position = game.at(13,1),resolucion=resolucionCaja,stringDeObjeto=caja2,tipo=2,sonido=sonidoOveja2,ultimaDireccion=arriba)	  
 	]
 
 	method cargarNivel(){
