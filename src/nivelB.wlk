@@ -45,10 +45,11 @@ object nivel_bonus inherits Nivel (siguienteNivel = pasadizo){
 	const meta1 = "menorResolucion/meta_bonus1.png"
 	const meta2 = "menorResolucion/meta_bonus2.png"
 	const resolucionCaja = "menorResolucion"
-	const caja1 = "oveja1.png"
-	const caja2 = "oveja2.png"
-	const cajaMeta1 = "oveja_ok1.png"
-	const cajaMeta2 = "oveja_ok2.png"
+	const caja1 = "oveja"
+	const caja2 = "oveja2"
+	const sonidoOveja="oveja1a.mp3"
+	const sonidoOveja2="oveja2a.mp3"
+	
 
 	const listaMeta =[   new Meta(position = game.at(7,1), image= meta1),
 						 new Meta(position = game.at(10,1),image= meta2,tipo=2),
@@ -62,20 +63,20 @@ object nivel_bonus inherits Nivel (siguienteNivel = pasadizo){
 					
 		
 	]
-	const listaCajas=[   new Caja(position = game.at(13,3),resolucion=resolucionCaja,caja=caja1,cajaEnMeta=cajaMeta1,tipo=1),
-						 new Caja(position = game.at(11,4),resolucion=resolucionCaja,caja=caja1,cajaEnMeta=cajaMeta1,tipo=1),
-						 new Caja(position = game.at(10,5),resolucion=resolucionCaja,caja=caja1,cajaEnMeta=cajaMeta1,tipo=1),
-						 new Caja(position = game.at(11,2),resolucion=resolucionCaja,caja=caja1,cajaEnMeta=cajaMeta1,tipo=1),
-						 new Caja(position = game.at(13,6),resolucion=resolucionCaja,caja=caja1,cajaEnMeta=cajaMeta1,tipo=1),
-						 new Caja(position = game.at(11,7),resolucion=resolucionCaja,caja=caja1,cajaEnMeta=cajaMeta1,tipo=1),
-						 new Caja(position = game.at(13,9),resolucion=resolucionCaja,caja=caja2,cajaEnMeta=cajaMeta2,tipo=2),
-						 new Caja(position = game.at(9,9),resolucion=resolucionCaja,caja=caja2,cajaEnMeta=cajaMeta2,tipo=2),
-						 new Caja(position = game.at(13,1),resolucion=resolucionCaja,caja=caja2,cajaEnMeta=cajaMeta2,tipo=2)	  
+	const listaCajas=[   new Oveja(position = game.at(13,3),resolucion=resolucionCaja,ovejaString=caja1,tipo=1,sonido=sonidoOveja),
+						 new Oveja(position = game.at(11,4),resolucion=resolucionCaja,ovejaString=caja1,tipo=1,sonido=sonidoOveja),
+						 new Oveja(position = game.at(10,5),resolucion=resolucionCaja,ovejaString=caja1,tipo=1,sonido=sonidoOveja),
+						 new Oveja(position = game.at(11,2),resolucion=resolucionCaja,ovejaString=caja1,tipo=1,sonido=sonidoOveja),
+						 new Oveja(position = game.at(13,6),resolucion=resolucionCaja,ovejaString=caja1,tipo=1,sonido=sonidoOveja),
+						 new Oveja(position = game.at(11,7),resolucion=resolucionCaja,ovejaString=caja1,tipo=1,sonido=sonidoOveja),
+						 new Oveja(position = game.at(13,9),resolucion=resolucionCaja,ovejaString=caja2,tipo=2,sonido=sonidoOveja2),
+						 new Oveja(position = game.at(9,9),resolucion=resolucionCaja,ovejaString=caja2,tipo=2,sonido=sonidoOveja2),
+						 new Oveja(position = game.at(13,1),resolucion=resolucionCaja,ovejaString=caja2,tipo=2,sonido=sonidoOveja2)	  
 	]
 
 	method cargarNivel(){
 		
-		configuraciones.configMusic("nivelBonus.mp3")
+		configuraciones.configMusic("nivelBonusb.mp3")
 		game.addVisual(self)
 		self.cargarObjetos(listaMeta)
 		self.cargarObjetos(listaCajas)
