@@ -39,6 +39,8 @@ class Caja inherits Posicion {
 	const caja = "caja1.png"
 	const cajaEnMeta = "caja_ok.png"
 	const property tipo = 1
+	var property ultimaDireccion = abajo
+    const sonido="caja_mover2.mp3"
 
 	method esPisable() = false
 
@@ -50,13 +52,14 @@ class Caja inherits Posicion {
 
 	override method cambiarPosicion(direccion) {
 		const siguienteUbicacion = direccion.moverse(self)
+		ultimaDireccion=direccion
 		if (self.proximaUbicacionLibre(siguienteUbicacion)) {
 			self.position(direccion.moverse(self))
 			configuraciones.nivelActual().verificarMetas()
 		} else {
 			configuraciones.elJugador().retroceder(direccion)
 		}
-		sonidoObjeto.emitirSonido("caja_mover2.mp3")
+		sonidoObjeto.emitirSonido(sonido)
 	}
 
 	method proximaUbicacionLibre(direccion) = game.getObjectsIn(direccion).all{ unObj => unObj.esPisable() }
@@ -64,6 +67,11 @@ class Caja inherits Posicion {
 	method llegoMeta() = game.colliders(self).any{ unaMeta => unaMeta.position() == self.position() && unaMeta.tipo() == self.tipo() } // configuraciones.nivelActual().listaMeta().any{ unaMeta => unaMeta.position() == self.position() && unaMeta.tipo() == self.tipo() }
 
 }
+class Oveja inherits Caja{
+	const ovejaString = "oveja"
+	override method image()= if (!self.llegoMeta()) { resolucion + "/" + ovejaString + self.ultimaDireccion().toString() + ".png" } else{resolucion + "/" + ovejaString+"Ok.png"}
+
+	}
 class MuroVisible inherits Posicion {
 
 	const property tipo = 6
