@@ -56,16 +56,24 @@ class Nivel {
 
 object menu inherits Nivel(siguienteNivel = nivel1R, duplicador = 2){
 	
-	const jugador1 = new Jugador(position = game.at(11, 6) ,resolucion="mayorResolucion",nombreJugador = "jugador1")
+	const jugador1 = new Jugador(position = game.at(10, 1) ,resolucion="mayorResolucion",nombreJugador = "jugador1")
 	
 	method cargarNivel(){
 		configuraciones.configMusic("menu.mp3")
 		game.boardGround("oscuro.png")
-		game.addVisual(new Checkpoint(position = game.at(7,6), image = "mayorResolucion/caja_ok1.png", siguienteNivel = nivel0))
-		game.addVisual(new CheckpointSalir(position = game.at(17,6), image = "mayorResolucion/caja_ok2.png", siguienteNivel = nivel0))
+		game.addVisual(new Checkpoint(position = game.at(6,5), image = "mayorResolucion/invisible.png", siguienteNivel = nivel0))
+		game.addVisual(new Checkpoint(position = game.at(4,5), image = "mayorResolucion/invisible.png", siguienteNivel = nivel0))
+		game.addVisual(new Checkpoint(position = game.at(2,5), image = "mayorResolucion/invisible.png", siguienteNivel = nivel0))
+		
+		game.addVisual(new CheckpointSalir(position = game.at(16,5), image = "mayorResolucion/invisible.png", siguienteNivel = nivel0))
+		game.addVisual(new CheckpointSalir(position = game.at(18,5), image = "mayorResolucion/invisible.png", siguienteNivel = nivel0))
+		game.addVisual(new CheckpointSalir(position = game.at(20,5), image = "mayorResolucion/invisible.png", siguienteNivel = nivel0))
+		
 		game.addVisual(jugador1)
 		configuraciones.nivelActual(self)
 		self.configNivel(jugador1)
+		
+		/* Falta agregar bloques invisibles o una interrupcion cuando salga del mapa */
 	}
 	
 	
