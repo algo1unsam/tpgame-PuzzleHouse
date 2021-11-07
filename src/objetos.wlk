@@ -17,6 +17,7 @@ object sonidoObjeto { ///Me parece que queda mejor como objeto que como clase
 
 class Posicion {
 
+	var property ultimaDireccion = abajo
 	var property position
 	const property posicionInicial = position
 
@@ -36,10 +37,10 @@ class Posicion {
 class Caja inherits Posicion {
 
 	const resolucion = "menorResolucion"
-	const caja = "caja1.png"
+	const stringDeObjeto = "caja1.png"
 	const cajaEnMeta = "caja_ok.png"
 	const property tipo = 1
-	var property ultimaDireccion = abajo
+	
     const sonido="caja_mover2.mp3"
 
 	method esPisable() = false
@@ -47,7 +48,7 @@ class Caja inherits Posicion {
 	method image() = if (self.llegoMeta()) {
 		resolucion + "/" + cajaEnMeta
 	} else {
-		resolucion + "/" + caja
+		resolucion + "/" + stringDeObjeto
 	} // estif (self.llegoMeta()) {"nivel0/caja_ok.png"}else{"nivel0/caja2.png"}
 
 	override method cambiarPosicion(direccion) {
@@ -68,9 +69,8 @@ class Caja inherits Posicion {
 
 }
 class Oveja inherits Caja{
-	const ovejaString = "oveja"
-	override method image()= if (!self.llegoMeta()) { resolucion + "/" + ovejaString + self.ultimaDireccion().toString() + ".png" } else{resolucion + "/" + ovejaString+"Ok.png"}
-
+	
+	override method image()= if (!self.llegoMeta()) { resolucion + "/" + stringDeObjeto + self.ultimaDireccion().toString() + ".png" } else{resolucion + "/" + stringDeObjeto+"Ok.png"}
 	}
 class MuroVisible inherits Posicion {
 

@@ -9,9 +9,9 @@ import niveles.*
 object nivel1 inherits Nivel (siguienteNivel = nivel0 ,duplicador=2){
 	const jugador1 = new Jugador(position = game.at(14, 1) ,resolucion="mayorResolucion" ,nombreJugador = "jugadora1")
 	
-	const listaCajas=[new Caja(position = game.at(8,3),resolucion="mayorResolucion",caja="caja2.png",cajaEnMeta="caja_ok2.png",tipo=2), 
-						new Caja(position = game.at(8,7),resolucion="mayorResolucion",caja="caja1.png",cajaEnMeta="caja_ok1.png",tipo=1),
-						new Caja(position = game.at(12,5),resolucion="mayorResolucion",caja="caja1.png",cajaEnMeta="caja_ok1.png",tipo=1)]
+	const listaCajas=[new Caja(position = game.at(8,3),resolucion="mayorResolucion",stringDeObjeto="caja2.png",cajaEnMeta="caja_ok2.png",tipo=2), 
+						new Caja(position = game.at(8,7),resolucion="mayorResolucion",stringDeObjeto="caja1.png",cajaEnMeta="caja_ok1.png",tipo=1),
+						new Caja(position = game.at(12,5),resolucion="mayorResolucion",stringDeObjeto="caja1.png",cajaEnMeta="caja_ok1.png",tipo=1)]
 	
 	const listaMeta= [  new Meta(position = game.at(16,3) ,	image="mayorResolucion/meta1.png"  ),
 						new Meta(position = game.at(16,9) ,	image="mayorResolucion/meta1.png"  ),

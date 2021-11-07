@@ -16,6 +16,7 @@ program juego {
   	game.height( configuraciones.altura() ) 
   	game.cellSize(50)
 	
+	
 	menu.cargarNivel() 			/* MENU */
 	//nivel1.cargarNivel()			/* NIVEL 1 */
 	//nivel0.cargarNivel()			/* ESCENARIO CASA /*
