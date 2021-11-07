@@ -91,11 +91,21 @@ object nivel0 inherits Nivel (siguienteNivel = pasadizo){
 		method cargarNivel(){		
 		
 		configuraciones.configMusic("hogar1.mp3")
-		game.addVisual(map)
+		game.addVisual(self)
 		//game.addVisual(mapR)
 		
 		//game.addVisual(new Checkpoint1(position = game.at(3,2), image = "menorResolucion/checkpoint.png"))
 		game.addVisual(sombra4)
+		
+		//hab hijo
+		const hijo = new Jugador(position = game.at(7, 11) ,resolucion="menorResolucion" ,nombreJugador = "hijo")
+		game.addVisual(hijo)
+		game.addVisual(sombraHab1)
+		
+		//hab hija
+		const hija = new Jugador(position = game.at(10, 11) ,resolucion="menorResolucion", nombreJugador = "hija")
+		game.addVisual(hija)
+		game.addVisual(sombraHab2)
 		
 		//esposa
 		const jugadora1 = new Jugador(position = game.at(23, 4) ,resolucion="menorResolucion", nombreJugador = "jugadora1")
@@ -108,6 +118,7 @@ object nivel0 inherits Nivel (siguienteNivel = pasadizo){
 		game.addVisual(pasadizoInv4)
 		game.addVisual(sombraHabInv1)
 		game.addVisual(sombraHabInv2)
+		
 		game.addVisual(sombra3)
 		/*  */
 		game.addVisual(new Checkpoint(position = game.at(16,4), image = "mayorResolucion/invisible.png", siguienteNivel = pasadizo))
@@ -123,18 +134,6 @@ object nivel0 inherits Nivel (siguienteNivel = pasadizo){
 		game.addVisual(sombra2)
 		game.addVisual(sombra1)
 		
-		//hab hijo
-		game.addVisual(hab1)
-		const hijo = new Jugador(position = game.at(7, 11) ,resolucion="menorResolucion" ,nombreJugador = "hijo")
-		game.addVisual(hijo)
-		
-		//hab hija
-		game.addVisual(hab2)
-		const hija = new Jugador(position = game.at(10, 11) ,resolucion="menorResolucion", nombreJugador = "hija")
-		game.addVisual(hija)
-		
-		game.addVisual(sombraHab1)
-		game.addVisual(sombraHab2)
 		
 		self.generarMuros()
 		//esposo
@@ -185,4 +184,7 @@ object nivel0 inherits Nivel (siguienteNivel = pasadizo){
 		self.bordearVerticalmente(1,5,0,muroInvisible)
 		self.bordearHorizontalmente(1,5,5,muroInvisible)
 	}
+	
+	method image() = "nivel0/map2.png"
+	method position()=game.at(0,0)
 }
