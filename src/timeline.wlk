@@ -69,3 +69,25 @@ object pasadizoInv4 inherits SombraInvisible ( position = game.at(10,3)){}
 object sombraHabInv1 inherits SombraInvisible ( position = game.at(7,5)){}
 
 object sombraHabInv2 inherits SombraInvisible ( position = game.at(10,5)){}
+
+
+class CheckpointDeSombras{
+
+	var property position = game.at(6,2)
+	
+	var property esPisable = true
+	var property seAtraveso=false
+	const sombraDeReferencia=sombra1
+	
+	method hacerAlgo(direccion){
+		if(!seAtraveso){
+			game.removeVisual(sombraDeReferencia)
+			seAtraveso=true
+		}
+	
+	}
+	method agregarSombra(){
+		game.addVisual(sombraDeReferencia)
+	}
+
+}

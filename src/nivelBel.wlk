@@ -37,7 +37,7 @@ object nivelBel inherits Nivel(siguienteNivel = nivel0){
 
 	method cargarNivel(){
 		
-		configuraciones.configMusic("nivelBonus.mp3")
+		configuraciones.configMusic("macariaDespierta.mp3")
 		game.addVisual(self)
 		self.cargarObjetos(listaMeta)
 		self.cargarObjetos(listaCajas)
@@ -45,6 +45,7 @@ object nivelBel inherits Nivel(siguienteNivel = nivel0){
 		game.addVisual(jugador1)
 		configuraciones.nivelActual(self)	
 		self.configNivel(jugador1)
+		nivel0.posicionInitial(game.at(12,11))
 		
 	}
 	

@@ -13,6 +13,7 @@ class Nivel {
 	var property siguienteNivel
 	const duplicador=1
 	method listaCajas()
+	
 
 	method cargarObjetos(objeto) = objeto.forEach{ unObjeto => game.addVisual(unObjeto)}
 	
@@ -89,53 +90,48 @@ object nivel0 inherits Nivel (siguienteNivel = pasadizo){
 	const jugador1 = new Jugador(position = game.at(3, 1) ,resolucion="menorResolucion",nombreJugador = "jugador1")
 	const listaCajas=[]
 	const listaMeta =[]
+	const listaSombras=[
+		new CheckpointDeSombras(position=game.at(7,5),sombraDeReferencia=sombraHab1),
+		new CheckpointDeSombras(position=game.at(10,5),sombraDeReferencia=sombraHab2),
+		new CheckpointDeSombras(position=game.at(7,3),sombraDeReferencia=pasadizo2),
+		new CheckpointDeSombras(position=game.at(10,3),sombraDeReferencia=pasadizo4),
 
+		new CheckpointDeSombras(position=game.at(6,2),sombraDeReferencia=sombra1),
+		new CheckpointDeSombras(position=game.at(12,2),sombraDeReferencia=sombra2),
+		new CheckpointDeSombras(position=game.at(18,2 ),sombraDeReferencia=sombra3)
+	
+	]
+	
+	
+	
+	var property posicionInitial = game.at(3,1)
 		method cargarNivel(){		
-		const posicionInitial = game.at(3,1)
+		
 		configuraciones.configMusic("hogar1.mp3")
 		game.addVisual(self)
 		//game.addVisual(mapR)
 		
 		//game.addVisual(new Checkpoint1(position = game.at(3,2), image = "menorResolucion/checkpoint.png"))
-		game.addVisual(sombra4)
+	
 		
 		//hab hijo
 		const hijo = new Jugador(position = game.at(7, 11) ,resolucion="menorResolucion" ,nombreJugador = "hijo")
 		game.addVisual(hijo)
-		game.addVisual(sombraHab1)
+		
 		
 		//hab hija
 		const hija = new Jugador(position = game.at(10, 11) ,resolucion="menorResolucion", nombreJugador = "hija")
 		game.addVisual(hija)
-		game.addVisual(sombraHab2)
+		
 		
 		//esposa
 		const jugadora1 = new Jugador(position = game.at(23, 4) ,resolucion="menorResolucion", nombreJugador = "jugadora1")
 		game.addVisual(jugadora1)	
 		
-		game.addVisual(sombraInv1)
-		game.addVisual(sombraInv2)
-		game.addVisual(sombraInv3)
-		game.addVisual(pasadizoInv2)
-		game.addVisual(pasadizoInv4)
-		game.addVisual(sombraHabInv1)
-		game.addVisual(sombraHabInv2)
-		
-		game.addVisual(sombra3)
-		/*  */
+
 		game.addVisual(new Checkpoint(position = game.at(16,4), image = "mayorResolucion/invisible.png", siguienteNivel = pasadizo))
 		
-		// Puerta 2 
-		game.addVisual(pasadizo5)
-		game.addVisual(pasadizo4)
-		// Puerta 1 
-		game.addVisual(pasadizo3)
-		game.addVisual(pasadizo2)
-		// Escena Pasadizo 
-		game.addVisual(pasadizo0)
-		game.addVisual(sombra2)
-		game.addVisual(sombra1)
-		
+	
 		
 		self.generarMuros()
 		
@@ -146,16 +142,24 @@ object nivel0 inherits Nivel (siguienteNivel = pasadizo){
 		
 		game.addVisual(new Checkpoint(position = game.at(7,11), image = "menorResolucion/invisible.png", siguienteNivel = nivelW))
 		game.addVisual(new Checkpoint(position = game.at(10,11), image = "menorResolucion/invisible.png", siguienteNivel = nivelBel))		
+	
+		self.cargarObjetos(listaSombras)
+		self.listaSombrasNoAtravesadas().forEach({unaSombra=>unaSombra.agregarSombra()})
+	
+	
 	}
 		
 		override method configNivel(personaje1){
 		duplicaDireccion.direccionDuplicador(duplicador)
 		configuraciones.configTeclas(personaje1)
 		configuraciones.configColisiones(personaje1)
-		configuraciones.configColisionesNivel0()
+		
 		configuraciones.nivelActual(self)
-		//Recomiendo crear un metodo en configuraciones que retorne como parametros el nivel actual y el siguiente
+
 	}
+	
+	method listaSombras()=listaSombras
+	method listaSombrasNoAtravesadas()=self.listaSombras().filter({unaSombra=>!unaSombra.seAtraveso()})
 	
 	override method listaCajas() = listaCajas
 

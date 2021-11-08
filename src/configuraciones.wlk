@@ -68,19 +68,6 @@ object configuraciones {
 		numero += 1
 	}
 
-	method configColisionesNivel0() {
-		game.onCollideDo(sombraInv1, { elemento => elemento.desbloquear(sombra1)})
-		game.onCollideDo(sombraInv2, { elemento => elemento.desbloquear(sombra2)})
-		game.onCollideDo(sombraInv3, { elemento => elemento.desbloquear(sombra3)})
-		game.onCollideDo(pasadizoInv2, { elemento => elemento.desbloquear(pasadizo2)})
-		game.onCollideDo(pasadizoInv4, { elemento => elemento.desbloquear(pasadizo4)})
-		game.onCollideDo(sombraHabInv1, { elemento => elemento.desbloquear(sombraHab1)})
-		game.onCollideDo(sombraHabInv2, { elemento => elemento.desbloquear(sombraHab2)})
-	/* AVANZAR AL NIVEL 1 
-	 * game.onCollideDo(checkpoint1, { elemento => ( elemento.llegoCheckpoint() ) })
-	 * Por algun motivo se rompe al empezar desde el nivel 0, al terminar el nivel 1
-	 * ya no pasa al siguiente nivel
-	 */
-	}
+	
 
 }

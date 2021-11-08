@@ -19,7 +19,7 @@ program juego {
 	
 	//menu.cargarNivel() 			/* MENU */
 	//nivel1.cargarNivel()			/* NIVEL 1 */
-	nivel0.cargarNivel()			/* ESCENARIO CASA /*
+	menu.cargarNivel()			/* ESCENARIO CASA /*
 	//pasadizo.cargarNivel()		/* BONUS */
 	//nivel_bonus.cargarNivel()		
 	
