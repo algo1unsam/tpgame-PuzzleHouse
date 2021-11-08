@@ -24,6 +24,8 @@ program juego {
 	
 	//nivelW.cargarNivel()			/* */
 	
+	//nivelBel.cargarNivel()
+	
 	game.start()
 	
 }
