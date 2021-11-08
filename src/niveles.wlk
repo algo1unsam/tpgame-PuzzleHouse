@@ -7,6 +7,7 @@ import jugador.*
 import nivel1.*
 import nivelB.*
 import nivelW.*
+import nivelBel.*
 
 class Nivel {
 	var property siguienteNivel
@@ -141,6 +142,7 @@ object nivel0 inherits Nivel (siguienteNivel = pasadizo){
 		self.configNivel(jugador1)
 		
 		game.addVisual(new Checkpoint(position = game.at(7,11), image = "menorResolucion/invisible.png", siguienteNivel = nivelW))
+		game.addVisual(new Checkpoint(position = game.at(10,11), image = "menorResolucion/invisible.png", siguienteNivel = nivelBel))
 	}
 		override method configNivel(personaje1){
 		duplicaDireccion.direccionDuplicador(duplicador)
