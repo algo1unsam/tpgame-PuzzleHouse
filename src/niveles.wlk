@@ -40,6 +40,7 @@ class Nivel {
 	}
 	
 	method cambiarNivel(){
+		self.reiniciarNivel()
 		game.clear()
 		siguienteNivel.cargarNivel()
 	}
@@ -48,6 +49,7 @@ class Nivel {
 		configuraciones.nivelActual().listaCajas().forEach{ objeto => objeto.posicioninicial()}
 		configuraciones.elJugador().posicioninicial()	
 	}
+	
 	
 	method configNivel(personaje){
 		duplicaDireccion.direccionDuplicador(duplicador)
@@ -84,13 +86,12 @@ object menu inherits Nivel(siguienteNivel = nivel1, duplicador = 2){
 }
 
 object nivel0 inherits Nivel (siguienteNivel = pasadizo){
-
 	const jugador1 = new Jugador(position = game.at(3, 1) ,resolucion="menorResolucion",nombreJugador = "jugador1")
 	const listaCajas=[]
 	const listaMeta =[]
 
 		method cargarNivel(){		
-		
+		const posicionInitial = game.at(3,1)
 		configuraciones.configMusic("hogar1.mp3")
 		game.addVisual(self)
 		//game.addVisual(mapR)
@@ -137,13 +138,16 @@ object nivel0 inherits Nivel (siguienteNivel = pasadizo){
 		
 		
 		self.generarMuros()
+		
 		//esposo
+		jugador1.position(posicionInitial)
 		game.addVisual(jugador1)
 		self.configNivel(jugador1)
 		
 		game.addVisual(new Checkpoint(position = game.at(7,11), image = "menorResolucion/invisible.png", siguienteNivel = nivelW))
-		game.addVisual(new Checkpoint(position = game.at(10,11), image = "menorResolucion/invisible.png", siguienteNivel = nivelBel))
+		game.addVisual(new Checkpoint(position = game.at(10,11), image = "menorResolucion/invisible.png", siguienteNivel = nivelBel))		
 	}
+		
 		override method configNivel(personaje1){
 		duplicaDireccion.direccionDuplicador(duplicador)
 		configuraciones.configTeclas(personaje1)

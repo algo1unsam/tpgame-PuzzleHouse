@@ -91,6 +91,5 @@ object nivelW inherits Nivel (siguienteNivel = nivel0){
 	override method listaCajas() = listaCajas
 
  method listaMeta()= listaMeta
-	//override method  configNivel
 
 }

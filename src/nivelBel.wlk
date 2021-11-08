@@ -22,8 +22,9 @@ object nivelBel inherits Nivel(siguienteNivel = nivel0){
 						 new Meta(position = game.at(7,9), image = meta1),
 						 new Meta(position = game.at(14,1), image = meta1),
 						 new Meta(position = game.at(8,3), image= meta1)
-	]
-	const listaCajas=[   new Caja(position = game.at(8,8),resolucion=resolucionCaja,stringDeObjeto="caja1.png",cajaEnMeta="caja_ok.png",tipo=1),
+						 ]
+						 
+	const listaCajas=[   new Caja(position = game.at(17,3),resolucion=resolucionCaja,stringDeObjeto="caja1.png",cajaEnMeta="caja_ok.png",tipo=1),
 						 new Caja(position = game.at(16,7),resolucion=resolucionCaja,stringDeObjeto="caja2.png",cajaEnMeta="caja_ok2.png",tipo=2),
 						 new Caja(position = game.at(16,6),resolucion=resolucionCaja,stringDeObjeto="caja2.png",cajaEnMeta="caja_ok2.png",tipo=2),
 						 new Caja(position = game.at(16,3),resolucion=resolucionCaja,stringDeObjeto="caja2.png",cajaEnMeta="caja_ok2.png",tipo=2),
@@ -32,7 +33,7 @@ object nivelBel inherits Nivel(siguienteNivel = nivel0){
 						 new Caja(position = game.at(10,2),resolucion=resolucionCaja,stringDeObjeto= "caja1.png", cajaEnMeta = "caja_ok.png",tipo=1),
 						 new Caja(position = game.at(11,6),resolucion=resolucionCaja,stringDeObjeto= "caja2.png", cajaEnMeta = "caja_ok2.png",tipo=2),
 						 new Caja(position = game.at(14,9),resolucion=resolucionCaja,stringDeObjeto="caja1.png",cajaEnMeta="caja_ok.png",tipo=1)
-	]
+						 ]
 
 	method cargarNivel(){
 		
