@@ -25,7 +25,7 @@ class Jugador inherits Posicion{ //cambiar
 	
 		ultimaDireccion = direccion
 		self.position(direccion.moverse(self))
-		sonidoObjeto.emitirSonido("pasosf.mp3")	
+		//sonidoObjeto.emitirSonido("pasosf.mp3")	
 	
 	}	
 	method victoria(){

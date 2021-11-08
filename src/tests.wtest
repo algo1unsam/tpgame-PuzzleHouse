@@ -1,6 +1,110 @@
+import wollok.game.*
+import configuraciones.*
+import direcciones.*
+import jugador.*
+import nivel1.*
+import nivelB.*
+import nivelBel.*
+import niveles.*
+import nivelW.*
+import objetos.*
+import timeline.*
 
-test "testX" {
 
-	assert.that(true)
+describe "La casa de los Puzzle"{
+	
+	const caja2 = new Caja(position = game.at(8,3),resolucion="mayorResolucion",stringDeObjeto="caja2.png",cajaEnMeta="caja_ok2.png",tipo=2) 
+	const caja1 = new Caja(position = game.at(8,7),resolucion="mayorResolucion",stringDeObjeto="caja1.png",cajaEnMeta="caja_ok1.png",tipo=1)
+	
+	const listaCajas=[caja2,caja1]
+	
+	const meta1 = new Meta(position = game.at(16,9) ,	image="mayorResolucion/meta1.png")
+	const meta2 = new Meta(position = game.at(8,9),  image="mayorResolucion/meta2.png", tipo=2 )
+	
+	const listaMeta= [meta1,meta2]
+	
+	const jugador1 = new Jugador(position = game.at(14, 1) ,resolucion="mayorResolucion" ,nombreJugador = "jugadora1")
+	
+	method initialize(){
+		configuraciones.configMusic("menu.mp3")
+		nivel1.cargarObjetos(listaMeta)
+		nivel1.cargarObjetos(listaCajas)	
+		nivel1.generarMuros()
+		game.addVisual(jugador1)
+		configuraciones.nivelActual(nivel1)
+		nivel1.configNivel(jugador1)
+	}
+	
+	test "Si el jugador se mueve cambia su posicion y, avanza 2 valores en Y por la resolución del juego" {
+		
+		jugador1.cambiarPosicion(arriba)
+		assert.equals(game.at(14,3),jugador1.position())
+	}
+	
+	test "Si el jugador se mueve hasta una pared no puede seguir avanzando" {
+		jugador1.cambiarPosicion(izquierda)
+		jugador1.cambiarPosicion(izquierda)
+		jugador1.cambiarPosicion(arriba)
+		assert.equals(game.at(10,3), jugador1.position())	
+	}
+	
+	test "Si el jugador se choca con una caja, puede empujarla"{
+		jugador1.cambiarPosicion(izquierda)
+		jugador1.cambiarPosicion(arriba)
+		jugador1.cambiarPosicion(arriba)
+		assert.equals(game.at(12,5),jugador1.position())
+	}
+	
+	test "Si la caja1 llega a una meta1, cambia de color"{
+		jugador1.cambiarPosicion(izquierda)
+		jugador1.cambiarPosicion(arriba)
+		jugador1.cambiarPosicion(arriba)
+		jugador1.cambiarPosicion(arriba)
+		jugador1.cambiarPosicion(izquierda)	
+		jugador1.cambiarPosicion(arriba)
+		jugador1.cambiarPosicion(derecha)
+		jugador1.cambiarPosicion(derecha)
+		assert.that(caja1.llegoMeta())	
+	}
+	
+	test "Si la caja2 llega a una meta1, cambia de color"{
+		jugador1.cambiarPosicion(izquierda)
+		jugador1.cambiarPosicion(arriba)
+		jugador1.cambiarPosicion(arriba)
+		jugador1.cambiarPosicion(arriba)
+		jugador1.cambiarPosicion(izquierda)	
+		jugador1.cambiarPosicion(arriba)
+		jugador1.cambiarPosicion(derecha)
+		jugador1.cambiarPosicion(derecha)
+		jugador1.cambiarPosicion(izquierda)
+		jugador1.cambiarPosicion(abajo)
+		jugador1.cambiarPosicion(abajo)
+		jugador1.cambiarPosicion(abajo)
+		jugador1.cambiarPosicion(abajo)
+		jugador1.cambiarPosicion(izquierda)
+		jugador1.cambiarPosicion(izquierda)
+		jugador1.cambiarPosicion(izquierda)
+		jugador1.cambiarPosicion(arriba)
+		jugador1.cambiarPosicion(abajo)
+		jugador1.cambiarPosicion(derecha)
+		jugador1.cambiarPosicion(derecha)
+		jugador1.cambiarPosicion(abajo)
+		jugador1.cambiarPosicion(derecha)
+		jugador1.cambiarPosicion(arriba)
+		jugador1.cambiarPosicion(arriba)
+		jugador1.cambiarPosicion(arriba)
+		jugador1.cambiarPosicion(derecha)
+		jugador1.cambiarPosicion(arriba)
+		jugador1.cambiarPosicion(izquierda)
+		jugador1.cambiarPosicion(izquierda)
+		assert.that(caja2.llegoMeta())	
+	}
+	
+	test "Si todas las cajas llegaron a su meta correspondiente,avanza al siguiente Nivel"{
+		caja1.position(game.at(16,9))
+		caja2.position(game.at(8,9))
+		assert.equals(nivel0,nivel1.siguienteNivel())		
+	}
 
 }
+
