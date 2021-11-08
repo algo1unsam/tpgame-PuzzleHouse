@@ -2,10 +2,10 @@
 Se tratará de un padre o madre que va a tener que ingeniárselas para salvar a su familia.
 
 -Nivel 0 Puzzle inicio
-![](nivel0.png)
+![](nivel1.png)
 	
 -Nivel 1 Exploracion de la casa del personaje principal
-![](nivel1.png)
+![](mapa.png)
 	
 -Nivel 2 Puzzle
 ![](nivel2.png)
