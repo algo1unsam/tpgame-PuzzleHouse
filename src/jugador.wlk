@@ -4,22 +4,16 @@ import configuraciones.*
 import niveles.*
 import objetos.*
 
-
 class Jugador inherits Posicion{ //cambiar
 
-	//var property position
 	const nombreJugador
-	//var property ultimaDireccion = abajo
-	//var property posicionInicial = position
+	
 	var property resolucion
 	var property tipo =3
 	
 	method image() = resolucion + "/" + nombreJugador.toString() + ultimaDireccion.toString() + ".png" //vean el string "nivel0" ,revisen porque lo puse asi. 
 	
-	/*method posicioninicial() {
-		sonidoObjeto.emitirSonido("reinicio.mp3")
-		self.position(posicionInicial) 
-	}*/
+	
 	
 	override method cambiarPosicion(direccion) {
 	
@@ -38,12 +32,6 @@ class Jugador inherits Posicion{ //cambiar
 	
 	method esPisable() = false
 	
-	method desbloquear(sombra){
-		try 
-			game.removeVisual( sombra )
-		catch e {}		
-		
-	}
 	
 	method llegoCheckpoint(){
 		configuraciones.nivelActual().avanzarA()

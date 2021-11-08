@@ -10,7 +10,7 @@ import nivelW.*
 import objetos.*
 import timeline.*
 
-
+/* 
 describe "La casa de los Puzzle"{
 	
 	const caja2 = new Caja(position = game.at(8,3),resolucion="mayorResolucion",stringDeObjeto="caja2.png",cajaEnMeta="caja_ok2.png",tipo=2) 
@@ -107,4 +107,4 @@ describe "La casa de los Puzzle"{
 	}
 
 }
-
+*/
