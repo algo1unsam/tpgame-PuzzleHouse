@@ -44,7 +44,7 @@ object nivelW inherits Nivel (siguienteNivel = nivel0){
 
 	method cargarNivel(){
 		
-		configuraciones.configMusic("nivelW-A.mp3")
+		configuraciones.configMusic("nivelW-B.mp3")
 		game.addVisual(self)
 		self.cargarObjetos(listaMeta)
 		self.cargarObjetos(listaCajas)
