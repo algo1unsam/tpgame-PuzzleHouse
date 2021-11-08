@@ -11,7 +11,7 @@ object pasadizo inherits Nivel(siguienteNivel = nivel0, duplicador = 2){
 	const jugador1 = new Jugador(position = game.at(2, 3) ,resolucion="mayorResolucion",nombreJugador = "jugador1")
 	
 	method cargarNivel(){
-		//configuraciones.configMusic("menu.mp3")
+		configuraciones.configMusic("menu.mp3")
 		game.addVisual(self)
 		game.addVisual(jugador1)
 		configuraciones.nivelActual(self)
