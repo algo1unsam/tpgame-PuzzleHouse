@@ -8,6 +8,7 @@ import nivel1.*
 import nivelB.*
 import nivelW.*
 import nivelBel.*
+import nivelL.*
 
 class Nivel {
 	var property siguienteNivel
@@ -100,7 +101,7 @@ object menu inherits Nivel(siguienteNivel = nivel1, duplicador = 2){
 }
 
 object nivel0 inherits Nivel (siguienteNivel = pasadizo){
-	
+	var property image = "nivel0/map3.png"
 	const jugador1 = new Jugador(position = game.at(3, 1) ,resolucion="menorResolucion",nombreJugador = "jugador1")
 	const listaCajas=[]
 	const listaMeta =[]
@@ -118,6 +119,7 @@ object nivel0 inherits Nivel (siguienteNivel = pasadizo){
 		 * al siguienteNivel
 		 */
 	]
+	const listaDeNivelesCompletados=[]
 	
 	var property posicionInitial = game.at(3,1)
 		method cargarNivel(){		
@@ -140,8 +142,8 @@ object nivel0 inherits Nivel (siguienteNivel = pasadizo){
 		game.addVisual(jugadora1)	
 		
 
-		game.addVisual(new Checkpoint(position = game.at(16,4), image = "mayorResolucion/invisible.png", siguienteNivel = pasadizo))
-		
+		//game.addVisual(new Checkpoint(position = game.at(16,4), image = "mayorResolucion/invisible.png", siguienteNivel = pasadizo))
+		game.addVisual(checkpointBonus)
 		self.generarMuros()
 		
 		//Esposo
@@ -151,7 +153,7 @@ object nivel0 inherits Nivel (siguienteNivel = pasadizo){
 		
 		game.addVisual(new Checkpoint(position = game.at(7,11), image = "menorResolucion/invisible.png", siguienteNivel = nivelW))
 		game.addVisual(new Checkpoint(position = game.at(10,11), image = "menorResolucion/invisible.png", siguienteNivel = nivelBel))		
-	
+		game.addVisual(new Checkpoint(position = game.at(23,4), image = "menorResolucion/invisible.png", siguienteNivel = nivelL))	
 		self.cargarObjetos(listaSombras)
 		self.listaSombrasNoAtravesadas().forEach({unaSombra=>unaSombra.agregarSombra()})
 	
@@ -166,6 +168,11 @@ object nivel0 inherits Nivel (siguienteNivel = pasadizo){
 	
 	method listaSombras()=listaSombras
 	method listaSombrasNoAtravesadas()=self.listaSombras().filter({unaSombra=>!unaSombra.seAtraveso()})
+	method agregarNivelCompletado(unNivel){
+		listaDeNivelesCompletados.add(unNivel)
+	}
+	method listaDeNivelesCompletados()=listaDeNivelesCompletados
+	method nivelBonusHabilitado() =self.listaDeNivelesCompletados().asSet().size()==3
 	
 	override method listaCajas() = listaCajas
 
@@ -202,6 +209,8 @@ object nivel0 inherits Nivel (siguienteNivel = pasadizo){
 	}
 	
 	//method image() = "nivel0/map2.png" /* Mapa con game over */ 
-	method image() = "nivel0/map3.png"
+	
 	method position()=game.at(0,0)
+
+
 }

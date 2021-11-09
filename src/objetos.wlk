@@ -4,16 +4,15 @@ import configuraciones.*
 import niveles.*
 import jugador.*
 import sonido.*
+import nivelB.*
 
 //configuraciones.nivelActual().listaMeta().any{ unaMeta => unaMeta.position() == self.position() && unaMeta.tipo() == self.tipo() }
 object sonidoObjeto { 
-
 	method emitirSonido(unSonido) {
 		const sonido = soundProducer.sound(unSonido)//game.sound(unSonido)
 		sonido.volume(0.3)
 		sonido.play()
 	}
-
 }
 
 class Posicion {
@@ -132,4 +131,20 @@ object paleta {
 
 }
 
+object checkpointBonus{ //lo creo como objeto porque este checkpoint es unico 
+	
+	 method position()=game.at(16,4)
+	
+	 method hacerAlgo(direccion){
+		if(!nivel0.nivelBonusHabilitado()){
+			self.error("No puedes pasar si no terminas todos los puzzles!!")
+		}
+		configuraciones.configStopMusic()
+		game.clear()
+		pasadizo.cargarNivel()
+		
+	}
+	
+	
+}
 
