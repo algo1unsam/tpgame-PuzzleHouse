@@ -46,4 +46,4 @@ direccionamiento del teclado
 
 - Algoritmos I/Unsam
 - Versión de wollok 3.0.0
-- Una vez terminado, no tenemos problemas en que el repositorio sea público / queremos manternerlo privado
+- Una vez terminado, no tenemos problemas en que el repositorio sea público
