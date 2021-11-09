@@ -1,8 +1,6 @@
 import wollok.game.*
 import jugador.*
 import objetos.*
-//import configuraciones.*
-//import niveles.*
 
 object izquierda{
 	

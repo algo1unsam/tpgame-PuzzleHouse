@@ -11,11 +11,11 @@ import nivelBel.*
 import nivelL.*
 
 class Nivel {
+	
 	var property siguienteNivel
 	const duplicador=1
 	method listaCajas()
 	
-
 	method cargarObjetos(objeto) = objeto.forEach{ unObjeto => game.addVisual(unObjeto)}
 	
 	method dibujarMuros(objeto) = game.addVisual(objeto)
@@ -83,7 +83,6 @@ object menu inherits Nivel(siguienteNivel = nivel1, duplicador = 2){
 		self.generarMuros()
 	}
 	
-	//Lo resolví con muros porque intenté hacerlo con las coordenadas para que lance un error pero no logré que me evalúe bien lo que le pasaba
 	method generarMuros(){
 		
 		const muroInvisible = "menorResolucion/invisible.png"
@@ -113,12 +112,9 @@ object nivel0 inherits Nivel (siguienteNivel = pasadizo){
 
 		new CheckpointDeSombras(position=game.at(6,2),sombraDeReferencia=sombra1),
 		new CheckpointDeSombras(position=game.at(12,2),sombraDeReferencia=sombra2),
-		new CheckpointDeSombras(position=game.at(18,2 ),sombraDeReferencia=sombra3)/* , 
-		new CheckpointDeSombras(position=game.at(16,4 ),sombraDeReferencia=sombra4)*/
-		/* No remueve la sombra al pisar 16,4 y tira error de no encontrar la sombra4 ya que entra muy rapido
-		 * al siguienteNivel
-		 */
+		new CheckpointDeSombras(position=game.at(18,2 ),sombraDeReferencia=sombra3)
 	]
+	
 	const listaDeNivelesCompletados=[]
 	
 	var property posicionInitial = game.at(3,1)
@@ -141,8 +137,6 @@ object nivel0 inherits Nivel (siguienteNivel = pasadizo){
 		const jugadora1 = new Jugador(position = game.at(23, 4) ,resolucion="menorResolucion", nombreJugador = "jugadora1")
 		game.addVisual(jugadora1)	
 		
-
-		//game.addVisual(new Checkpoint(position = game.at(16,4), image = "mayorResolucion/invisible.png", siguienteNivel = pasadizo))
 		game.addVisual(checkpointBonus)
 		self.generarMuros()
 		
@@ -207,8 +201,6 @@ object nivel0 inherits Nivel (siguienteNivel = pasadizo){
 		self.bordearVerticalmente(1,5,0,muroInvisible)
 		self.bordearHorizontalmente(1,5,5,muroInvisible)
 	}
-	
-	//method image() = "nivel0/map2.png" /* Mapa con game over */ 
 	
 	method position()=game.at(0,0)
 

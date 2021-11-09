@@ -6,7 +6,6 @@ import jugador.*
 import sonido.*
 import nivelB.*
 
-//configuraciones.nivelActual().listaMeta().any{ unaMeta => unaMeta.position() == self.position() && unaMeta.tipo() == self.tipo() }
 object sonidoObjeto { 
 	method emitirSonido(unSonido) {
 		const sonido = soundProducer.sound(unSonido)//game.sound(unSonido)
@@ -131,7 +130,7 @@ object paleta {
 
 }
 
-object checkpointBonus{ //lo creo como objeto porque este checkpoint es unico 
+object checkpointBonus{
 	
 	 method position()=game.at(16,4)
 	
@@ -144,7 +143,5 @@ object checkpointBonus{ //lo creo como objeto porque este checkpoint es unico
 		pasadizo.cargarNivel()
 		
 	}
-	
-	
 }
 

@@ -6,7 +6,6 @@ import jugador.*
 import objetos.*
 import sonido.*
 
-//import niveles.*
 object configuraciones {
 
 	const property altura = 13 

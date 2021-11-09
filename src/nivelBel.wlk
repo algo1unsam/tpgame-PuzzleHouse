@@ -52,7 +52,6 @@ object nivelBel inherits Nivel(siguienteNivel = nivel0){
 	
 	method generarMuros(){
 		const muroVisible = "menorResolucion/muro3.png"
-		const muroInvisible = "menorResolucion/invisible.png"
 			
 		/* Muros Horizontales */
 		self.bordearHorizontalmente(11,13,9,muroVisible)

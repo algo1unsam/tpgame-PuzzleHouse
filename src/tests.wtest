@@ -24,7 +24,6 @@ describe "La casa de los Puzzle"{
 	const listaMeta= [meta1,meta2]
 	
 	const jugador1 = new Jugador(position = game.at(14, 1) ,resolucion="mayorResolucion" ,nombreJugador = "jugadora1")
-	const muroinvisible = "mayorResolucion/invisible.png"
 	
 	method initialize(){
 		soundProducer.provider(soundProviderMock)
