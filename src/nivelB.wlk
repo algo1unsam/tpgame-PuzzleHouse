@@ -40,8 +40,8 @@ object pasadizo inherits Nivel(siguienteNivel = nivel0, duplicador = 2){
 object nivel_bonus inherits Nivel (siguienteNivel = nivel0){
 	
 	const jugador1 = new Jugador(position = game.at(15, 3) , resolucion="menorResolucion",nombreJugador = "jugador1")
-	const meta1 = "menorResolucion/meta_bonus1.png"
-	const meta2 = "menorResolucion/meta_bonus2.png"
+	const meta1 = "menorResolucion/meta_bonus11.png"
+	const meta2 = "menorResolucion/meta_bonus22.png"
 	const resolucionCaja = "menorResolucion"
 	const caja1 = "oveja"
 	const caja2 = "oveja2"
@@ -86,9 +86,9 @@ object nivel_bonus inherits Nivel (siguienteNivel = nivel0){
 	}
 	
 	method generarMuros(){
-		const vallaH = "menorResolucion/vallaH.png"
-		const vallaV = "menorResolucion/vallaV.png"
-		const arbusto = "menorResolucion/arbusto.png"
+		const vallaH = "menorResolucion/vallaH1.png"
+		const vallaV = "menorResolucion/vallaV1.png"
+		const arbusto = "menorResolucion/arbusto2.png"
 		const muroInvisible = "menorResolucion/invisible.png"
 		
 		/* Arbustos */
@@ -123,7 +123,7 @@ object nivel_bonus inherits Nivel (siguienteNivel = nivel0){
 		self.bordearVerticalmente(8,8,9,muroInvisible)
 	}
 	
-	method image() = "nivelBonus/map_bonus.png"
+	method image() = "nivelBonus/map_bonus2.png"
 	method position()=game.at(0,0)
 	
 	override method listaCajas() = listaCajas
