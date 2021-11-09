@@ -8,7 +8,7 @@ import niveles.*
 
 object nivelBel inherits Nivel(siguienteNivel = nivel0){
 	
-	const jugador1 = new Jugador(position = game.at(17,10) , resolucion="menorResolucion",nombreJugador = "jugador1")
+	const jugador1 = new Jugador(position = game.at(17,10) , resolucion="menorResolucion",nombreJugador = "jugadora2")
 	const meta1 = "menorResolucion/meta1.png"
 	const meta2=  "menorResolucion/meta2.png"
 	const resolucionCaja = "menorResolucion"

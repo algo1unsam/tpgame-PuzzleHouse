@@ -2,6 +2,8 @@
 <img src="https://user-images.githubusercontent.com/22482325/140875712-7ab24fba-04ea-4e80-8fd4-99c6c4cb5199.png" />
 Desafiate recorriendo las distintas habitaciones y poniendo a prueba tu capacidad para resolver puzzles
 
+## Niveles
+
 <details>
  	<summary>Nivel 0 Puzzle inicio</summary>
 	<img src="https://github.com/algo1unsam/tpgame-juegoooo/blob/master/nivel1.png?raw=true" />
