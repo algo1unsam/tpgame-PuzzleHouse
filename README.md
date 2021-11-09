@@ -36,9 +36,10 @@ Se tratará de un padre o madre que va a tener que ingeniárselas para salvar a 
 
 ## Reglas de Juego / Instrucciones
 
-El juego consiste en ir recorriendo las distintas habitaciones,por medio de las flechas de direccionamiento del teclado y, al ingresar en cada habitación y, acercardse a
+El juego consiste en ir recorriendo las distintas habitaciones,por medio de las flechas de direccionamiento del teclado y, al ingresar en cada habitación y, acercarse a
 la persona que está en la misma, se desbloquea un nuevo puzzle el cual debe resolverse para liberar al personaje.
-Para resolver el puzzle todas las cajas deben posicionarse en la meta correspondiente a su color y, para moverlas al igual que el personaje, es con las flechas de direccionamiento del teclado
+Para resolver el puzzle todas las cajas deben posicionarse en la meta correspondiente a su color y, para moverlas al igual que el personaje, es con las flechas de 
+direccionamiento del teclado
 
 ## Otros
 
