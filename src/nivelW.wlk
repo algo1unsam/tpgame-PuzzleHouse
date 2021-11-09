@@ -26,7 +26,8 @@ object nivelW inherits Nivel (siguienteNivel = nivel0){
 						 new Meta(position = game.at(16,5), image= meta1),
 						 
 						 new Meta(position = game.at(5,2), image= meta1),
-						 new Meta(position = game.at(6,2), image= meta2, tipo=2)
+						 new Meta(position = game.at(6,2), image= meta2, tipo=2),
+						 new Meta(position = game.at(5,3), image= meta2, tipo=2)
 					
 		
 	]
@@ -39,7 +40,8 @@ object nivelW inherits Nivel (siguienteNivel = nivel0){
 						 new Caja(position = game.at(15,9),resolucion=resolucionCaja,stringDeObjeto=caja2,cajaEnMeta=cajaMeta2,tipo=2),
 						 
 						 new Caja(position = game.at(6,2),resolucion=resolucionCaja,stringDeObjeto=caja1,cajaEnMeta=cajaMeta1,tipo=1),
-						 new Caja(position = game.at(8,2),resolucion=resolucionCaja,stringDeObjeto=caja2,cajaEnMeta=cajaMeta2,tipo=2)	  
+						 new Caja(position = game.at(8,2),resolucion=resolucionCaja,stringDeObjeto=caja2,cajaEnMeta=cajaMeta2,tipo=2),
+						 new Caja(position = game.at(12,8),resolucion=resolucionCaja,stringDeObjeto=caja2,cajaEnMeta=cajaMeta2,tipo=2)	  
 	]
 
 	method cargarNivel(){
