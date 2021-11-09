@@ -72,16 +72,16 @@ object nivelBel inherits Nivel(siguienteNivel = nivel0){
 		self.bordearVerticalmente(5,6,13,muroVisible)
 		
 		/*Muros invisibles */
-		self.bordearVerticalmente(0,2,16,muroInvisible)
-		self.bordearVerticalmente(0,11,18,muroInvisible)
-		self.bordearVerticalmente(0,11,6,muroInvisible)
+		self.bordearVerticalmente(0,2,16,muroVisible)
+		self.bordearVerticalmente(0,11,18,muroVisible)
+		self.bordearVerticalmente(0,11,6,muroVisible)
 		self.bordearHorizontalmente(6,18,0,muroVisible)
 		self.bordearHorizontalmente(6,18,11,muroVisible)
 		self.bordearHorizontalmente(17,17,1,muroVisible)
 		self.bordearHorizontalmente(15,18,5,muroVisible)
 	}
 	
-	method image() = "menorResolucion/mapBel.png"
+	method image() = "menorResolucion/mapBel2.png"
 	method position()=game.at(0,0)
 	
 	override method listaCajas() = listaCajas

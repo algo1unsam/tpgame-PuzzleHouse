@@ -152,7 +152,8 @@ object nivelL inherits Nivel (siguienteNivel = nivel0){
 		
 	}
 	
-	method image() = "oscuro2.png"
+	//method image() = "oscuro2.png"
+	method image() = "menorResolucion/mapaL.png"
 	method position()=game.at(0,0)
 	
 	override method listaCajas() = listaCajas
