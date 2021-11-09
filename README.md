@@ -1,4 +1,5 @@
 # Puzzle House
+<img src="https://user-images.githubusercontent.com/22482325/140875712-7ab24fba-04ea-4e80-8fd4-99c6c4cb5199.png" />
 Se tratará de un padre o madre que va a tener que ingeniárselas para salvar a su familia.
 
 <details>
@@ -13,12 +14,12 @@ Se tratará de un padre o madre que va a tener que ingeniárselas para salvar a 
 
 <details>
 	<summary>Nivel 2 Puzzle</summary>
-	<img src="https://github.com/algo1unsam/tpgame-juegoooo/blob/master/nivel2.png?raw=true" />
+	<img src="https://github.com/algo1unsam/tpgame-juegoooo/blob/master/mapaW.png?raw=true" />
 </details>
 
 <details>
 	<summary>Nivel 3 Puzzle</summary>
-	<img src="https://github.com/algo1unsam/tpgame-juegoooo/blob/master/nivel2.png?raw=true" />
+	<img src="https://github.com/algo1unsam/tpgame-juegoooo/blob/master/mapaBel.png?raw=true" />
 </details>
 	
 ## Equipo de desarrollo
