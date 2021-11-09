@@ -117,6 +117,5 @@ describe "La casa de los Puzzle"{
 	test "Si una caja colisiona con una pared, no avanza"{
 		caja1.cambiarPosicion(derecha)
 		assert.equals(game.at(8,7),caja1.position())		
-	}
-	
+	}	
 }

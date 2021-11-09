@@ -8,9 +8,8 @@ import niveles.*
 
 
 object pasadizo inherits Nivel(siguienteNivel = nivel0, duplicador = 2){
-	const jugador1 = new Jugador(position = game.at(2, 3) ,resolucion="mayorResolucion",nombreJugador = "jugador1")
-	
 	method cargarNivel(){
+		const jugador1 = new Jugador(position = game.at(2, 3) ,resolucion="mayorResolucion",nombreJugador = "jugador1")
 		configuraciones.configMusic("menu.mp3")
 		game.addVisual(self)
 		game.addVisual(jugador1)
@@ -38,7 +37,7 @@ object pasadizo inherits Nivel(siguienteNivel = nivel0, duplicador = 2){
 
 }
 
-object nivel_bonus inherits Nivel (siguienteNivel = pasadizo){
+object nivel_bonus inherits Nivel (siguienteNivel = nivel0){
 	
 	const jugador1 = new Jugador(position = game.at(15, 3) , resolucion="menorResolucion",nombreJugador = "jugador1")
 	const meta1 = "menorResolucion/meta_bonus1.png"
@@ -50,7 +49,7 @@ object nivel_bonus inherits Nivel (siguienteNivel = pasadizo){
 	const sonidoOveja2="oveja2a.mp3"
 	
 
-	const listaMeta =[   new Meta(position = game.at(7,1), image= meta1),
+	const listaMeta =[   new Meta(position = game.at(7,1), image= meta1) ,
 						 new Meta(position = game.at(10,1),image= meta2,tipo=2),
 						 new Meta(position = game.at(7,2), image= meta2,tipo=2),
 						 new Meta(position = game.at(7,3), image= meta1),
@@ -83,6 +82,7 @@ object nivel_bonus inherits Nivel (siguienteNivel = pasadizo){
 		game.addVisual(jugador1)
 		configuraciones.nivelActual(self)	
 		self.configNivel(jugador1)
+		nivel0.posicionInitial(game.at(17,4))
 	}
 	
 	method generarMuros(){
@@ -121,8 +121,6 @@ object nivel_bonus inherits Nivel (siguienteNivel = pasadizo){
 		self.bordearVerticalmente(5,5,15,muroInvisible)
 		self.bordearVerticalmente(6,6,9,muroInvisible)
 		self.bordearVerticalmente(8,8,9,muroInvisible)
-		
-
 	}
 	
 	method image() = "nivelBonus/map_bonus.png"

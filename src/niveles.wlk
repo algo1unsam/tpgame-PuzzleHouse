@@ -58,7 +58,6 @@ class Nivel {
 		configuraciones.configTeclas(personaje)
 		configuraciones.configColisiones(personaje)
 	}
-
 }
 
 object menu inherits Nivel(siguienteNivel = nivel1, duplicador = 2){
@@ -113,8 +112,11 @@ object nivel0 inherits Nivel (siguienteNivel = pasadizo){
 
 		new CheckpointDeSombras(position=game.at(6,2),sombraDeReferencia=sombra1),
 		new CheckpointDeSombras(position=game.at(12,2),sombraDeReferencia=sombra2),
-		new CheckpointDeSombras(position=game.at(18,2 ),sombraDeReferencia=sombra3)
-	
+		new CheckpointDeSombras(position=game.at(18,2 ),sombraDeReferencia=sombra3)/* , 
+		new CheckpointDeSombras(position=game.at(16,4 ),sombraDeReferencia=sombra4)*/
+		/* No remueve la sombra al pisar 16,4 y tira error de no encontrar la sombra4 ya que entra muy rapido
+		 * al siguienteNivel
+		 */
 	]
 	
 	var property posicionInitial = game.at(3,1)
@@ -199,6 +201,7 @@ object nivel0 inherits Nivel (siguienteNivel = pasadizo){
 		self.bordearHorizontalmente(1,5,5,muroInvisible)
 	}
 	
-	method image() = "nivel0/map2.png"
+	//method image() = "nivel0/map2.png" /* Mapa con game over */ 
+	method image() = "nivel0/map3.png"
 	method position()=game.at(0,0)
 }

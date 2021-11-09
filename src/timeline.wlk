@@ -30,9 +30,6 @@ class SombraInvisible{
 		
 	}
 }
-
-//object map inherits Imagen(	position = game.at(0,0), imagen = "nivel0/map.png"	){}
-object mapR inherits Imagen(	position = game.at(0,0), imagen = "nivel0/mapR.png"	){}
 									
 object sombra1 inherits Imagen(	esPisable = false, position = game.at(0,0), imagen = "nivel0/sombras1.png"){}
 
@@ -56,6 +53,8 @@ object sombraHab1 inherits Imagen(	esPisable = false, position = game.at(0,0), i
 
 object sombraHab2 inherits Imagen(	esPisable = false, position = game.at(0,0), imagen = "nivel0/habitaciones/sombraHab2.png"){}
 
+object gameover inherits Imagen( esPisable = false, position = game.at(0,0), imagen = "nivel0/gameover.png"){}
+
 object sombraInv1 inherits SombraInvisible( position = game.at(6,2)){}
 
 object sombraInv2 inherits SombraInvisible( position = game.at(12,2)){}
@@ -78,16 +77,16 @@ class CheckpointDeSombras{
 	var property esPisable = true
 	var property seAtraveso=false
 	const sombraDeReferencia=sombra1
-	
 	method hacerAlgo(direccion){
 		if(!seAtraveso){
 			game.removeVisual(sombraDeReferencia)
 			seAtraveso=true
 		}
-	
 	}
 	method agregarSombra(){
 		game.addVisual(sombraDeReferencia)
 	}
 
 }
+
+
