@@ -9,8 +9,8 @@ import niveles.*
 import nivelW.*
 import objetos.*
 import timeline.*
+import sonido.*
 
-/* 
 describe "La casa de los Puzzle"{
 	
 	const caja2 = new Caja(position = game.at(8,3),resolucion="mayorResolucion",stringDeObjeto="caja2.png",cajaEnMeta="caja_ok2.png",tipo=2) 
@@ -24,8 +24,10 @@ describe "La casa de los Puzzle"{
 	const listaMeta= [meta1,meta2]
 	
 	const jugador1 = new Jugador(position = game.at(14, 1) ,resolucion="mayorResolucion" ,nombreJugador = "jugadora1")
+	const muroinvisible = "mayorResolucion/invisible.png"
 	
 	method initialize(){
+		soundProducer.provider(soundProviderMock)
 		configuraciones.configMusic("menu.mp3")
 		nivel1.cargarObjetos(listaMeta)
 		nivel1.cargarObjetos(listaCajas)	
@@ -105,6 +107,16 @@ describe "La casa de los Puzzle"{
 		caja2.position(game.at(8,9))
 		assert.equals(nivel0,nivel1.siguienteNivel())		
 	}
-
+	
+	test "Si una caja colisiona con otra caja, no avanza"{
+		caja2.cambiarPosicion(arriba)
+		caja2.cambiarPosicion(arriba)
+		assert.equals(game.at(8,3),caja2.position())		
+	}
+	
+	test "Si una caja colisiona con una pared, no avanza"{
+		caja1.cambiarPosicion(derecha)
+		assert.equals(game.at(8,7),caja1.position())		
+	}
+	
 }
-*/

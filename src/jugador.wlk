@@ -3,17 +3,16 @@ import direcciones.*
 import configuraciones.*
 import niveles.*
 import objetos.*
+import sonido.*
 
-class Jugador inherits Posicion{ //cambiar
+class Jugador inherits Posicion{
 
 	const nombreJugador
 	
 	var property resolucion
 	var property tipo =3
 	
-	method image() = resolucion + "/" + nombreJugador.toString() + ultimaDireccion.toString() + ".png" //vean el string "nivel0" ,revisen porque lo puse asi. 
-	
-	
+	method image() = resolucion + "/" + nombreJugador.toString() + ultimaDireccion.toString() + ".png"
 	
 	override method cambiarPosicion(direccion) {
 	
@@ -32,13 +31,12 @@ class Jugador inherits Posicion{ //cambiar
 	
 	method esPisable() = false
 	
-	
 	method llegoCheckpoint(){
 		configuraciones.nivelActual().avanzarA()
 	}
 	override method hacerAlgo(direccion){
 		configuraciones.elJugador().position(direccion.dirOpuesto(configuraciones.elJugador()))
-		game.say(self,"que sucede?")
+		game.say(self,"¿Qué sucede?")
 	}
 	
 	method retroceder(direccion){

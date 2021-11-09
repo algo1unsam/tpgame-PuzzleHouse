@@ -9,10 +9,10 @@ import nivelB.*
 import nivelW.*
 import nivelBel.*
 import nivelL.*
-
-/* si el codigo solo complica las cosas, no duden en cambiar todo!! */
+import sonido.*
 
 program juego {
+	
 	game.title( "TP" )
 	game.width( configuraciones.ancho() )
   	game.height( configuraciones.altura() ) 

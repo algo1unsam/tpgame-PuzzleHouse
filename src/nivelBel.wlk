@@ -24,7 +24,7 @@ object nivelBel inherits Nivel(siguienteNivel = nivel0){
 						 new Meta(position = game.at(8,3), image= meta1)
 						 ]
 						 
-	const listaCajas=[   new Caja(position = game.at(17,3),resolucion=resolucionCaja,stringDeObjeto="caja1.png",cajaEnMeta="caja_ok.png",tipo=1),
+	const listaCajas=[   new Caja(position = game.at(8,8),resolucion=resolucionCaja,stringDeObjeto="caja1.png",cajaEnMeta="caja_ok.png",tipo=1),
 						 new Caja(position = game.at(16,7),resolucion=resolucionCaja,stringDeObjeto="caja2.png",cajaEnMeta="caja_ok2.png",tipo=2),
 						 new Caja(position = game.at(16,6),resolucion=resolucionCaja,stringDeObjeto="caja2.png",cajaEnMeta="caja_ok2.png",tipo=2),
 						 new Caja(position = game.at(16,3),resolucion=resolucionCaja,stringDeObjeto="caja2.png",cajaEnMeta="caja_ok2.png",tipo=2),
@@ -54,7 +54,6 @@ object nivelBel inherits Nivel(siguienteNivel = nivel0){
 		const muroInvisible = "menorResolucion/invisible.png"
 			
 		/* Muros Horizontales */
-		
 		self.bordearHorizontalmente(11,13,9,muroVisible)
 		self.bordearHorizontalmente(10,11,5,muroVisible)
 		self.bordearHorizontalmente(14,15,2,muroVisible)

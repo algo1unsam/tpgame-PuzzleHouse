@@ -19,10 +19,9 @@ object pasadizo inherits Nivel(siguienteNivel = nivel0, duplicador = 2){
 		
 		game.addVisual(new Checkpoint(position = game.at(24,3), image = "mayorResolucion/invisible.png", siguienteNivel = nivel_bonus))
 		
-		self.generarMuros()
-		
-		
+		self.generarMuros()	
 	}
+	
 	override method listaCajas() = []
 	
 	method generarMuros(){
@@ -108,7 +107,7 @@ object nivel_bonus inherits Nivel (siguienteNivel = pasadizo){
 		self.bordearHorizontalmente(7,8,6,vallaH)
 		self.bordearHorizontalmente(7,8,8,vallaH)
 		
-		/*Vallas Verticales */
+		/* Vallas Verticales */
 		self.bordearVerticalmente(1,5,6,vallaV)
 		self.bordearVerticalmente(6,6,15,vallaV)
 		self.bordearVerticalmente(8,10,14,vallaV)
@@ -116,7 +115,7 @@ object nivel_bonus inherits Nivel (siguienteNivel = pasadizo){
 		self.bordearVerticalmente(7,7,9,vallaV)
 		self.bordearVerticalmente(9,10,6,vallaV)
 		
-		/*Muros invisibles */
+		/* Muros invisibles */
 		self.bordearVerticalmente(1,2,16,muroInvisible)
 		self.bordearVerticalmente(7,7,14,muroInvisible)
 		self.bordearVerticalmente(5,5,15,muroInvisible)
@@ -131,7 +130,6 @@ object nivel_bonus inherits Nivel (siguienteNivel = pasadizo){
 	
 	override method listaCajas() = listaCajas
 
- method listaMeta()= listaMeta
-	//override method  configNivel
-
+ 	method listaMeta()= listaMeta
+	
 }

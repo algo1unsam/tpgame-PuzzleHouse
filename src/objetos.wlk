@@ -3,12 +3,13 @@ import direcciones.*
 import configuraciones.*
 import niveles.*
 import jugador.*
+import sonido.*
 
 //configuraciones.nivelActual().listaMeta().any{ unaMeta => unaMeta.position() == self.position() && unaMeta.tipo() == self.tipo() }
-object sonidoObjeto { ///Me parece que queda mejor como objeto que como clase
+object sonidoObjeto { 
 
 	method emitirSonido(unSonido) {
-		const sonido = game.sound(unSonido)
+		const sonido = soundProducer.sound(unSonido)//game.sound(unSonido)
 		sonido.volume(0.3)
 		sonido.play()
 	}
@@ -49,7 +50,7 @@ class Caja inherits Posicion {
 		resolucion + "/" + cajaEnMeta
 	} else {
 		resolucion + "/" + stringDeObjeto
-	} // estif (self.llegoMeta()) {"nivel0/caja_ok.png"}else{"nivel0/caja2.png"}
+	} 
 
 	override method cambiarPosicion(direccion) {
 		const siguienteUbicacion = direccion.moverse(self)
@@ -68,10 +69,12 @@ class Caja inherits Posicion {
 	method llegoMeta() = game.colliders(self).any{ unaMeta => unaMeta.position() == self.position() && unaMeta.tipo() == self.tipo() } // configuraciones.nivelActual().listaMeta().any{ unaMeta => unaMeta.position() == self.position() && unaMeta.tipo() == self.tipo() }
 
 }
+
 class Oveja inherits Caja{
 	
 	override method image()= if (!self.llegoMeta()) { resolucion + "/" + stringDeObjeto + self.ultimaDireccion().toString() + ".png" } else{resolucion + "/" + stringDeObjeto+"Ok.png"}
-	}
+}
+	
 class MuroVisible inherits Posicion {
 
 	const property tipo = 6
@@ -103,7 +106,6 @@ class Checkpoint inherits Pisable {
 	
 	override method hacerAlgo(direccion){
 		configuraciones.configStopMusic()
-		//configuraciones.nivelActual().cambiarNivel()
 		game.clear()
 		siguienteNivel.cargarNivel()
 	}
@@ -121,8 +123,6 @@ class CheckpointSalir inherits Checkpoint {
 		game.clear()
 		game.stop()
 	}
-	//override method position() = game.at(3, 2)
-
 }
 
 object paleta {

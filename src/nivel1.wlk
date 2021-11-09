@@ -7,6 +7,7 @@ import jugador.*
 import niveles.*
 
 object nivel1 inherits Nivel (siguienteNivel = nivel0 ,duplicador=2){
+	
 	const jugador1 = new Jugador(position = game.at(14, 1) ,resolucion="mayorResolucion" ,nombreJugador = "jugador1")
 	
 	const listaCajas=[new Caja(position = game.at(8,3),resolucion="mayorResolucion",stringDeObjeto="caja2.png",cajaEnMeta="caja_ok2.png",tipo=2), 
@@ -25,8 +26,6 @@ object nivel1 inherits Nivel (siguienteNivel = nivel0 ,duplicador=2){
 		
 		self.cargarObjetos(listaMeta)
 		self.cargarObjetos(listaCajas)
-		
-		//self.cargarObjetos(listaPared)
 			
 		self.generarMuros()
 		
@@ -38,6 +37,7 @@ object nivel1 inherits Nivel (siguienteNivel = nivel0 ,duplicador=2){
 	override method listaCajas() = listaCajas
 
 	method generarMuros(){
+		
 		const muroinvisible = "mayorResolucion/invisible.png"
 		const muroVisible="mayorResolucion/muro3.png"
 		self.bordearVerticalmente(1,11,0,muroinvisible)
@@ -51,7 +51,7 @@ object nivel1 inherits Nivel (siguienteNivel = nivel0 ,duplicador=2){
 		self.bordearHorizontalmente(10,14,-3,muroinvisible)
 	}
 	
-	 method listaMeta()= listaMeta
+	method listaMeta()= listaMeta
 	
 	method image()   = "nivel1/nivel1RA-map.png"
 	
