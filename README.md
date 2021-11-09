@@ -1,6 +1,6 @@
 # Puzzle House
 <img src="https://user-images.githubusercontent.com/22482325/140875712-7ab24fba-04ea-4e80-8fd4-99c6c4cb5199.png" />
-Se tratará de un padre o madre que va a tener que ingeniárselas para salvar a su familia.
+Desafiate recorriendo las distintas habitaciones y poniendo a prueba tu capacidad para resolver puzzles
 
 <details>
  	<summary>Nivel 0 Puzzle inicio</summary>
@@ -30,7 +30,6 @@ Se tratará de un padre o madre que va a tener que ingeniárselas para salvar a 
 ## Equipo de desarrollo
 - Maria Belen Rodriguez Schachtschneider
 - Lorenzo Julián Martinez
-- Pablo
 - Wilfredo Joshua Bardales Castillo
 
 
