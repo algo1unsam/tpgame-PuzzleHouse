@@ -13,6 +13,7 @@ import nivelL.*
 class Nivel {
 	
 	var property siguienteNivel
+	
 	const duplicador=1
 	method listaCajas()
 	
@@ -100,6 +101,7 @@ object menu inherits Nivel(siguienteNivel = nivel1, duplicador = 2){
 }
 
 object nivel0 inherits Nivel (siguienteNivel = pasadizo){
+	var property sonido = "hogar1.mp3"
 	var property image = "nivel0/map3.png"
 	const jugador1 = new Jugador(position = game.at(3, 1) ,resolucion="menorResolucion",nombreJugador = "jugador1")
 	const listaCajas=[]
@@ -120,7 +122,7 @@ object nivel0 inherits Nivel (siguienteNivel = pasadizo){
 	var property posicionInitial = game.at(3,1)
 		method cargarNivel(){		
 		
-		configuraciones.configMusic("hogar1.mp3")
+		configuraciones.configMusic(self.sonido())
 		game.addVisual(self)
 		
 		//Habitación hijo
