@@ -33,10 +33,8 @@ object configuraciones {
 		keyboard.a().onPressDo{ jugador.cambiarPosicion(izquierda)}
 		keyboard.d().onPressDo{ jugador.cambiarPosicion(derecha)}
 		keyboard.r().onPressDo{ nivelActual.reiniciarNivel()}
-		keyboard.x().onPressDo{ game.clear()}
 		keyboard.z().onPressDo{ self.cambio()}
-		keyboard.p().onPressDo({ self.configStopMusic()})
-		
+
 	}
 
 	method configMusic(cancionNivel) {

@@ -13,16 +13,18 @@ object nivelL inherits Nivel (siguienteNivel = nivel0){
 	const meta2 = "menorResolucion/meta2.png"
 	const meta3=  "menorResolucion/meta3.png"
 	const meta4=  "menorResolucion/meta4.png"
+	const meta5=  "menorResolucion/meta5.png"
 	const resolucionCaja = "menorResolucion"
 	const caja1 = "caja1.png"
 	const caja2 = "caja2.png"
 	const caja3 = "caja3.png"
 	const caja4 = "caja4.png"
+	const caja5 = "caja5.png"
 	const cajaMeta1 = "caja_ok.png"
 	const cajaMeta2 = "caja_ok2.png"
 	const cajaMeta3 = "caja3_ok.png"
 	const cajaMeta4 = "caja4_ok.png"
-
+    const cajaMeta5 = "caja5_ok.png"
 	const listaMeta =[ 
 						 
 						 new Meta(position = game.at(21,2),image= meta1),
@@ -31,7 +33,8 @@ object nivelL inherits Nivel (siguienteNivel = nivel0){
 						
 						 new Meta(position = game.at(17,7), image= meta1),
 						 
-						 new Meta(position = game.at(4,4), image= meta2,tipo=2),
+						 new Meta(position = game.at(4,5), image= meta2,tipo=2),
+						 new Meta(position = game.at(4,4), image= meta5,tipo=5),
 						  
 						 new Meta(position = game.at(4,3), image= meta4,tipo=4),
 						  
@@ -54,13 +57,15 @@ object nivelL inherits Nivel (siguienteNivel = nivel0){
 						
 						 new Caja(position = game.at(21,9),resolucion=resolucionCaja,stringDeObjeto=caja4,cajaEnMeta=cajaMeta4,tipo=4),
 						 new Caja(position = game.at(3,11),resolucion=resolucionCaja,stringDeObjeto=caja2,cajaEnMeta=cajaMeta2,tipo=2),
+						 new Caja(position = game.at(7,7),resolucion=resolucionCaja,stringDeObjeto=caja5,cajaEnMeta=cajaMeta5,tipo=5),
 						 new Caja(position = game.at(16,10),resolucion=resolucionCaja,stringDeObjeto=caja2,cajaEnMeta=cajaMeta2,tipo=2)
+						
 	
 	]
 
 	method cargarNivel(){
 		
-		configuraciones.configMusic("nivelL-B.mp3")
+		configuraciones.configMusic("niveL.mp3")
 		game.addVisual(self)
 		self.cargarObjetos(listaMeta)
 		self.cargarObjetos(listaCajas)

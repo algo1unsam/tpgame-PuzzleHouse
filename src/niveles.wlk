@@ -200,6 +200,11 @@ object nivel0 inherits Nivel (siguienteNivel = pasadizo){
 		self.bordearVerticalmente(8,11,0,muroInvisible)
 		self.bordearVerticalmente(1,5,0,muroInvisible)
 		self.bordearHorizontalmente(1,5,5,muroInvisible)
+		self.bordearVerticalmente(1,2,23,muroInvisible)
+		self.bordearHorizontalmente(16,16,11,muroInvisible)
+		self.bordearVerticalmente(8,9,16,muroInvisible)
+		self.bordearVerticalmente(8,9,1,muroInvisible)
+		self.bordearHorizontalmente(1,1,11,muroInvisible)
 	}
 	
 	method position()=game.at(0,0)

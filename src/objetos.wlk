@@ -15,7 +15,7 @@ object sonidoObjeto {
 }
 
 class Posicion {
-
+	
 	var property ultimaDireccion = abajo
 	var property position
 	const property posicionInicial = position
@@ -30,7 +30,7 @@ class Posicion {
 	}
 
 	method cambiarPosicion(direccion)
-
+	
 }
 
 class Caja inherits Posicion {
@@ -39,8 +39,9 @@ class Caja inherits Posicion {
 	const stringDeObjeto = "caja1.png"
 	const cajaEnMeta = "caja_ok.png"
 	const property tipo = 1
-	
-    const sonido="caja_mover2.mp3"
+	const esUnCaballo = false
+	var property elCaballoSeTrabo = false
+	const sonido = "caja_mover2.mp3"
 
 	method esPisable() = false
 
@@ -48,18 +49,32 @@ class Caja inherits Posicion {
 		resolucion + "/" + cajaEnMeta
 	} else {
 		resolucion + "/" + stringDeObjeto
-	} 
+	}
 
 	override method cambiarPosicion(direccion) {
 		const siguienteUbicacion = direccion.moverse(self)
-		ultimaDireccion=direccion
+		ultimaDireccion = direccion
 		if (self.proximaUbicacionLibre(siguienteUbicacion)) {
 			self.position(direccion.moverse(self))
 			configuraciones.nivelActual().verificarMetas()
 		} else {
-			configuraciones.elJugador().retroceder(direccion)
+			self.retrocederParaNoCaballos(direccion)
 		}
-		sonidoObjeto.emitirSonido(sonido)
+		self.reproducirSonidoSiNoEsCaballo(sonido)
+	}
+
+	method reproducirSonidoSiNoEsCaballo(unSonido) {
+		if (!esUnCaballo) {
+			sonidoObjeto.emitirSonido(sonido)
+		}
+	}
+
+	method retrocederParaNoCaballos(direccion) {
+		if (!esUnCaballo) {
+			configuraciones.elJugador().retroceder(direccion)
+		} else {
+			elCaballoSeTrabo = true
+		}
 	}
 
 	method proximaUbicacionLibre(direccion) = game.getObjectsIn(direccion).all{ unObj => unObj.esPisable() }
@@ -72,6 +87,19 @@ class Oveja inherits Caja{
 	
 	override method image()= if (!self.llegoMeta()) { resolucion + "/" + stringDeObjeto + self.ultimaDireccion().toString() + ".png" } else{resolucion + "/" + stringDeObjeto+"Ok.png"}
 }
+
+class Caballo inherits Caja{
+	
+	override method cambiarPosicion(direccion){
+		2.times({i=>super(direccion)})
+		sonidoObjeto.emitirSonido(sonido)
+		if(self.elCaballoSeTrabo()){
+			configuraciones.elJugador().retroceder(direccion)
+			elCaballoSeTrabo=false
+		}
+	}
+	override method image()= if (!self.llegoMeta()) { resolucion + "/" + stringDeObjeto + self.ultimaDireccion().toString() + ".png" } else{resolucion + "/" + stringDeObjeto+"Ok.png"}
+}	
 	
 class MuroVisible inherits Posicion {
 
@@ -96,7 +124,6 @@ class Pisable {
 	}
 
 }
-
 class Checkpoint inherits Pisable {
 	
 	var property siguienteNivel
@@ -129,7 +156,6 @@ object paleta {
 	const property rojo = "FF0000FF"
 
 }
-
 object checkpointBonus{
 	
 	 method position()=game.at(16,4)
@@ -144,4 +170,17 @@ object checkpointBonus{
 		
 	}
 }
+
+class CambiarRopa{
+	
+	var property position=game.at(6,5)
+	var vestimenta
+	 method hacerAlgo(direccion){
+		configuraciones.elJugador().nombreJugador(vestimenta)
+		configuraciones.elJugador().retroceder(direccion)
+		pasadizo.vestimenta(vestimenta)
+		}
+	
+}
+
 

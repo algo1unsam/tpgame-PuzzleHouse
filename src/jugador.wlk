@@ -7,7 +7,7 @@ import sonido.*
 
 class Jugador inherits Posicion{
 
-	const nombreJugador
+	var property nombreJugador
 	
 	var property resolucion
 	var property tipo =3
