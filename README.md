@@ -3,71 +3,39 @@
 Desafiate recorriendo las distintas habitaciones y poniendo a prueba tu capacidad para resolver puzzles
 <img src="https://raw.githubusercontent.com/willybc/Puzzle-House/master/menu.png" />
 
-## Niveles
+## Imagenes
 
 <details>
- 	<summary>Nivel 0 Puzzle inicio</summary>
-	<img src="https://github.com/algo1unsam/tpgame-juegoooo/blob/master/nivel1.png?raw=true" />
+ 	<summary>Mapa de la Casa</summary>
+	<img src="https://user-images.githubusercontent.com/22482325/145655216-750664e8-699d-4efe-83d8-f8a3a7823530.png" />
 </details>
 
 <details>
-	<summary>Nivel 1 Exploracion de la casa del personaje principal</summary>
-	<img src="https://github.com/algo1unsam/tpgame-juegoooo/blob/master/mapa.png?raw=true" />
+	<summary>Mapa del Sueño</summary>
+	<img src="https://user-images.githubusercontent.com/22482325/145655217-d13c7419-5141-4a85-b3be-eac7dc564a8c.png" />
 </details>
 
 <details>
-	<summary>Nivel 2 Puzzle</summary>
-	<img src="https://github.com/algo1unsam/tpgame-juegoooo/blob/master/mapaW.png?raw=true" />
+	<summary>Puzzle Hardcore</summary>
+	<img src="https://user-images.githubusercontent.com/22482325/145655218-4df9b668-d196-423c-80fc-88ca9dc5456b.png" />
 </details>
 
 <details>
-	<summary>Nivel 3 Puzzle</summary>
-	<img src="https://github.com/algo1unsam/tpgame-juegoooo/blob/master/mapaBel.png?raw=true" />
-</details>
-
-<details>
-	<summary>Nivel 4 Puzzle</summary>
-	<img src="https://github.com/algo1unsam/tpgame-juegoooo/blob/master/mapaL.png?raw=true" />
-</details>
-
-<details>
-	<summary>Nivel Bonus</summary>
-	<img src="https://raw.githubusercontent.com/willybc/Puzzle-House/master/mapaBonus.png" />
+	<summary>Modo Creativo</summary>
+	<img src="https://user-images.githubusercontent.com/22482325/145655280-856fe08d-586f-4502-acda-30596d4150b6.png" />
 </details>
 
 ## Update v1.1
-
-<details>
- 	<summary> Mapa del sueño</summary>
-	<img src="https://raw.githubusercontent.com/willybc/Puzzle-House/master/mapaDream.png" />
-</details>
-
-<details>
- 	<summary> Puzzle Fantasma 1</summary>
-	<img src="https://raw.githubusercontent.com/willybc/Puzzle-House/master/mapaDreamG1.png" />
-</details>
-
-<details>
- 	<summary> Puzzle Fantasma 2</summary>
-	<img src="https://raw.githubusercontent.com/willybc/Puzzle-House/master/mapaDreamG2.png" />
-</details>
-
-<details>
- 	<summary> Puzzle Bonus</summary>
-	<img src="https://raw.githubusercontent.com/willybc/Puzzle-House/master/mapaDreamBonus.png" />
-</details>
-
-## Curiosidades
--
--
--
--
+- Animaciones
+- Acceso a skins exclusivas
+- DLC del Sueño
+- Modo Creativo 
+- Modo Hardcore
 	
 ## Equipo de desarrollo
 - Maria Belen Rodriguez Schachtschneider
 - Lorenzo Julián Martinez
 - Wilfredo Joshua Bardales Castillo
-
 
 ## Reglas de Juego / Instrucciones
 
@@ -81,3 +49,4 @@ direccionamiento del teclado
 - Algoritmos I/Unsam
 - Versión de wollok 3.0.0
 - Una vez terminado, no tenemos problemas en que el repositorio sea público
+
