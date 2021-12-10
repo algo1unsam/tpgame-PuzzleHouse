@@ -1,4 +1,4 @@
-import wollok.game.*
+ import wollok.game.*
 import direcciones.*
 import configuraciones.*
 import niveles.*
@@ -9,24 +9,43 @@ import nivelB.*
 import nivelW.*
 import nivelBel.*
 import nivelL.*
+import nivelDream.*
 import sonido.*
+import creativo.*
+import nivelB2.*
+import nivelTests.*
 
 program juego {
 	
-	game.title( "TP" )
+	game.title( "Puzzle House v1.2" )
 	game.width( configuraciones.ancho() )
   	game.height( configuraciones.altura() ) 
   	game.cellSize(50)
 	
+	//menu.cargarNivel() 			/* MENU */
+	//nivel1.cargarNivel()			/* NIVEL TUTORIAL */
+	nivel0.cargarNivel()			/* NIVEL 0 CASA*/
 	
-	menu.cargarNivel() 			/* MENU */
-	//nivel1.cargarNivel()			/* NIVEL 1 */
-	//nivel0.cargarNivel()			/* ESCENARIO CASA /*	
-	//nivelW.cargarNivel()			
-	//nivelBel.cargarNivel()
-	//nivelL.cargarNivel()
+	
+	//nivel0.nivelW().cargarNivel()		
+	//nivel0.nivelBel().cargarNivel()
+	//nivel0.nivelL().cargarNivel()
+	
 	//pasadizo.cargarNivel()
+	//nivelCreativo.cargarNivel()
 	
+	/* Update 1.1v */	
+	//nivelDream.cargarNivel()
+	//nivelG1.cargarNivel()
+	//nivelG2.cargarNivel()
+	//pasadizoDream.cargarNivel()
+	//nivelBonusDream.cargarNivel()
+	//nivelTest.cargarNivel()
+	//nivelWHardcoreTime.cargarNivel()
+	//nivelBelHardcoreTime.cargarNivel()
+	//nivelLHardcoreTime.cargarNivel()
+	//pasadizoTest.cargarNivel()
 	game.start()
 	
-}
+	
+} 

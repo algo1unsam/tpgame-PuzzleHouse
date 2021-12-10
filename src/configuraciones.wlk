@@ -10,6 +10,10 @@ object configuraciones {
 
 	const property altura = 13 
 	const property ancho = 25 
+	var property elcontadorDePasos=null
+	var property contadorDeEmpujes=null
+	var property habilitarConteo=true
+	var property habilitarSonido=true
 	var jugadorp
 	var numero = 1
 	var nivelActual
@@ -18,6 +22,7 @@ object configuraciones {
 	method nivelActual(unNivel) {
 		nivelActual = unNivel
 	}
+	
 
 	method nivelActual() = nivelActual
 
@@ -32,8 +37,10 @@ object configuraciones {
 		keyboard.s().onPressDo{ jugador.cambiarPosicion(abajo)}
 		keyboard.a().onPressDo{ jugador.cambiarPosicion(izquierda)}
 		keyboard.d().onPressDo{ jugador.cambiarPosicion(derecha)}
-		keyboard.r().onPressDo{ nivelActual.reiniciarNivel()}
+		keyboard.r().onPressDo{ nivelActual.reiniciar()}
 		keyboard.z().onPressDo{ self.cambio()}
+		keyboard.p().onPressDo({ self.configStopMusic()})
+		keyboard.backspace().onPressDo({self.nivelActual().abandonarNivel()})
 
 	}
 
@@ -65,5 +72,7 @@ object configuraciones {
 	method cambio() {
 		numero += 1
 	}
+	
+	
 
 }

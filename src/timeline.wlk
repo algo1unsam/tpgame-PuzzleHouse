@@ -6,29 +6,21 @@ import objetos.*
 import jugador.*
 
 
-class Imagen {
-	var property position = game.at(0,0)
+class Imagen inherits Estatico {
+	
 	var property imagen = null
 	var property esPisable = true
 	
-
-	
-	
 	method esEmpujable() = false
 	method image() = imagen
-	method hacerAlgo(direccion){
-		
-	}
+	
 }
 
-class SombraInvisible{
-	var property position
+class SombraInvisible inherits Estatico{
+
 	var property esPisable = true
 	method esEmpujable() = false
 	
-	method hacerAlgo(direccion){
-		
-	}
 }
 									
 object sombra1 inherits Imagen(	esPisable = false, position = game.at(0,0), imagen = "nivel0/sombras1.png"){}
@@ -39,15 +31,9 @@ object sombra3 inherits Imagen(	esPisable = false, position = game.at(0,0), imag
 
 object sombra4 inherits Imagen(	esPisable = false, position = game.at(0,0), imagen = "nivel0/sombras4.png"){}
 
-object pasadizo0 inherits Imagen ( esPisable = false, position = game.at(0,0), imagen = "nivel0/pasadizo/pasadizo0.png"){}
+object pasadizo2 inherits Imagen ( esPisable = false, position = game.at(0,0), imagen = "nivel0/habitaciones/pasadizo2.png"){}
 
-object pasadizo2 inherits Imagen ( esPisable = false, position = game.at(0,0), imagen = "nivel0/pasadizo/pasadizo2.png"){}
-
-object pasadizo3 inherits Imagen ( esPisable = false, position = game.at(0,0), imagen = "nivel0/pasadizo/pasadizo3.png"){}
-
-object pasadizo4 inherits Imagen ( esPisable = false, position = game.at(0,0), imagen = "nivel0/pasadizo/pasadizo4.png"){}
-
-object pasadizo5 inherits Imagen ( esPisable = false, position = game.at(0,0), imagen = "nivel0/pasadizo/pasadizo5.png"){}
+object pasadizo4 inherits Imagen ( esPisable = false, position = game.at(0,0), imagen = "nivel0/habitaciones/pasadizo4.png"){}
 
 object sombraHab1 inherits Imagen(	esPisable = false, position = game.at(0,0), imagen = "nivel0/habitaciones/sombraHab1.png"){}
 
@@ -55,29 +41,21 @@ object sombraHab2 inherits Imagen(	esPisable = false, position = game.at(0,0), i
 
 object gameover inherits Imagen( esPisable = false, position = game.at(0,0), imagen = "nivel0/gameover.png"){}
 
-object sombraInv1 inherits SombraInvisible( position = game.at(6,2)){}
+object pasadizo1Dream inherits Imagen ( esPisable = false, position = game.at(0,0), imagen = "nivel0/habitaciones/pasadizo1Dream.png"){}
+object sombraHab1Dream inherits Imagen(	esPisable = false, position = game.at(0,0), imagen = "nivel0/habitaciones/sombraHab1Dream.png"){}
 
-object sombraInv2 inherits SombraInvisible( position = game.at(12,2)){}
+object pasadizo2Dream inherits Imagen ( esPisable = false, position = game.at(0,0), imagen = "nivel0/habitaciones/pasadizo2Dream.png"){}
+object sombraHab2Dream inherits Imagen(	esPisable = false, position = game.at(0,0), imagen = "nivel0/habitaciones/sombraHab2Dream.png"){}
 
-object sombraInv3 inherits SombraInvisible( position = game.at(18,2 )){}
+object pasadizo3Dream inherits Imagen ( esPisable = false, position = game.at(0,0), imagen = "nivel0/habitaciones/pasadizo3Dream.png"){}
+object sombraHab3Dream inherits Imagen(	esPisable = false, position = game.at(0,0), imagen = "nivel0/habitaciones/sombraHab3Dream.png"){}
 
-object pasadizoInv2 inherits SombraInvisible ( position = game.at(7, 3)){}
+class CheckpointDeSombras inherits Estatico{
 
-object pasadizoInv4 inherits SombraInvisible ( position = game.at(10,3)){}
-
-object sombraHabInv1 inherits SombraInvisible ( position = game.at(7,5)){}
-
-object sombraHabInv2 inherits SombraInvisible ( position = game.at(10,5)){}
-
-
-class CheckpointDeSombras{
-
-	var property position = game.at(6,2)
-	
 	var property esPisable = true
 	var property seAtraveso=false
 	const sombraDeReferencia=sombra1
-	method hacerAlgo(direccion){
+	override method hacerAlgo(direccion){
 		if(!seAtraveso){
 			game.removeVisual(sombraDeReferencia)
 			seAtraveso=true

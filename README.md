@@ -1,6 +1,7 @@
 # Puzzle House
 <img src="https://user-images.githubusercontent.com/22482325/140875712-7ab24fba-04ea-4e80-8fd4-99c6c4cb5199.png" />
 Desafiate recorriendo las distintas habitaciones y poniendo a prueba tu capacidad para resolver puzzles
+<img src="https://raw.githubusercontent.com/willybc/Puzzle-House/master/menu.png" />
 
 ## Niveles
 
@@ -28,6 +29,39 @@ Desafiate recorriendo las distintas habitaciones y poniendo a prueba tu capacida
 	<summary>Nivel 4 Puzzle</summary>
 	<img src="https://github.com/algo1unsam/tpgame-juegoooo/blob/master/mapaL.png?raw=true" />
 </details>
+
+<details>
+	<summary>Nivel Bonus</summary>
+	<img src="https://raw.githubusercontent.com/willybc/Puzzle-House/master/mapaBonus.png" />
+</details>
+
+## Update v1.1
+
+<details>
+ 	<summary> Mapa del sueño</summary>
+	<img src="https://raw.githubusercontent.com/willybc/Puzzle-House/master/mapaDream.png" />
+</details>
+
+<details>
+ 	<summary> Puzzle Fantasma 1</summary>
+	<img src="https://raw.githubusercontent.com/willybc/Puzzle-House/master/mapaDreamG1.png" />
+</details>
+
+<details>
+ 	<summary> Puzzle Fantasma 2</summary>
+	<img src="https://raw.githubusercontent.com/willybc/Puzzle-House/master/mapaDreamG2.png" />
+</details>
+
+<details>
+ 	<summary> Puzzle Bonus</summary>
+	<img src="https://raw.githubusercontent.com/willybc/Puzzle-House/master/mapaDreamBonus.png" />
+</details>
+
+## Curiosidades
+-
+-
+-
+-
 	
 ## Equipo de desarrollo
 - Maria Belen Rodriguez Schachtschneider

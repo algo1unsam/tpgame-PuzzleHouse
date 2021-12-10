@@ -12,10 +12,10 @@ import timeline.*
 import sonido.*
 
 describe "La casa de los Puzzle"{
-	
+	const unContadorDePasos = new ContadorDePasos()
 	const caja2 = new Caja(position = game.at(8,3),resolucion="mayorResolucion",stringDeObjeto="caja2.png",cajaEnMeta="caja_ok2.png",tipo=2) 
 	const caja1 = new Caja(position = game.at(8,7),resolucion="mayorResolucion",stringDeObjeto="caja1.png",cajaEnMeta="caja_ok1.png",tipo=1)
-	
+	const unContadorDeEmpujes = new ContadorDePasos()
 	const listaCajas=[caja2,caja1]
 	
 	const meta1 = new Meta(position = game.at(16,9) ,	image="mayorResolucion/meta1.png")
@@ -27,12 +27,15 @@ describe "La casa de los Puzzle"{
 	
 	method initialize(){
 		soundProducer.provider(soundProviderMock)
+		configuraciones.elcontadorDePasos(unContadorDePasos)
+		configuraciones.contadorDeEmpujes(unContadorDeEmpujes)
 		configuraciones.configMusic("menu.mp3")
 		nivel1.cargarObjetos(listaMeta)
 		nivel1.cargarObjetos(listaCajas)	
 		nivel1.generarMuros()
 		game.addVisual(jugador1)
 		configuraciones.nivelActual(nivel1)
+		
 		nivel1.configNivel(jugador1)
 	}
 	
@@ -115,6 +118,6 @@ describe "La casa de los Puzzle"{
 	
 	test "Si una caja colisiona con una pared, no avanza"{
 		caja1.cambiarPosicion(derecha)
-		assert.equals(game.at(8,7),caja1.position())		
+		assert.equals(game.at(10,7),caja1.position())		
 	}	
 }

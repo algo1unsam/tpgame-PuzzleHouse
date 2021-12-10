@@ -9,13 +9,24 @@ import nivelB.*
 import nivelW.*
 import nivelBel.*
 import nivelL.*
+import creativo.*
+import nivelDream.*
+import nivelTests.*
+import nivelB2.*
 
-class Nivel {
-	
+class Nivel inherits Posicion{
+	var property soyUnNivelPuzzle=true
+	var property soyUnNivelHardcoreTime=false
 	var property siguienteNivel
-	
-	const duplicador=1
+	var property pertenescoAlDream=false
+	var property permitirAgregarAlAListaDeLnivel0Completado=false
+	var property soyUnNivelGranja=false
+	var property duplicador=1
 	method listaCajas()
+	
+	method remove(p1){
+		game.removeVisual(p1)
+	}
 	
 	method cargarObjetos(objeto) = objeto.forEach{ unObjeto => game.addVisual(unObjeto)}
 	
@@ -34,24 +45,71 @@ class Nivel {
 	}
 
 	method verificarMetas() {
-		const verificador = self.listaCajas().all({ unaCaja => unaCaja.llegoMeta() })
+		const verificador = self.listaCajas().all({ unaCaja => unaCaja.estoyEnMeta() })
 		if (verificador) {
 			sonidoObjeto.emitirSonido("victoriaFem.mp3") // es temporal
 			game.say(configuraciones.elJugador(), "ganaste!")
 			configuraciones.configStopMusic()
+			if(self.soyUnNivelHardcoreTime()){
+				self.desactivarCronometro()
+			}
+			
+			
 			game.schedule(1200,{self.cambiarNivel()})
 		}
 	}
-	
-	method cambiarNivel(){
-		self.reiniciarNivel()
-		game.clear()
-		siguienteNivel.cargarNivel()
+	method desactivarCronometro(){
+		configuraciones.nivelActual().cronometro().desactivarCronometro() //self.cronometro().desactivarCronometro() funciona pero el ide da aviso de errores.
+		
 	}
 	
-	method reiniciarNivel(){
-		configuraciones.nivelActual().listaCajas().forEach{ objeto => objeto.posicioninicial()}
-		configuraciones.elJugador().posicioninicial()	
+	method cambiarNivel(){
+		self.reiniciar()
+		game.clear()
+		if(self.permitirAgregarAlAListaDeLnivel0Completado() and !self.soyUnNivelHardcoreTime()){
+			nivel0.agregarNivelCompletado(self)
+			if(!self.soyUnNivelGranja()){
+				nivel0.agregarNivelHardTimeDesbloqueado(configuraciones.nivelActual().nivelHardCoreTime())
+			}
+		}
+		if (self.pertenescoAlDream() and !self.soyUnNivelHardcoreTime()){
+			nivelDream.agregarNivelCompletado(self)
+		}
+		if(self.soyUnNivelHardcoreTime()){
+			nivel0.agregarNivelHardTimeCompletado(self)
+		}
+		if(self.soyUnNivelGranja()){
+			nivel0.agregarNivelCompletado(self)
+		}
+		
+		
+		
+		siguienteNivel.cargarNivel()
+	}
+	method abandonarNivel(){
+			game.schedule(50,{
+			game.clear()
+			self.reiniciar()
+			configuraciones.configStopMusic()
+			siguienteNivel.cargarNivel()	
+			})
+			
+		}
+	
+	method reiniciar(){
+		self.listaCajas().forEach{ objeto => objeto.posicioninicial()}
+		self.listaCajas().forEach{ objeto => objeto.estoyEnMeta(false)}
+		configuraciones.elJugador().posicioninicial()
+		if(self.soyUnNivelPuzzle()){
+			configuraciones.elcontadorDePasos().reiniciar()
+			configuraciones.contadorDeEmpujes().reiniciar()
+		}
+		if(self.soyUnNivelHardcoreTime()){
+			self.listaCajas().forEach{ objeto => objeto.yaEstubeEnMeta(false)}
+			configuraciones.nivelActual().cronometro().reiniciar() //Da error si uso self en vez de configuraciones.nivelActual() . No entiendo el porque. Asumo que es un error del iDe ,sin embargo si ignoramos el error y ejecutamos el juego todo anda normal!
+		}
+		
+		
 	}
 	
 	
@@ -60,24 +118,33 @@ class Nivel {
 		configuraciones.configTeclas(personaje)
 		configuraciones.configColisiones(personaje)
 	}
+	
+	method soyUnNivelCreativo()=false
+	
+	override method cambiarPosicion(direccion){		
+	}
 }
 
-object menu inherits Nivel(siguienteNivel = nivel1, duplicador = 2){
-	
-	const jugador1 = new Jugador(position = game.at(10, 1) ,resolucion="mayorResolucion",nombreJugador = "jugador1")
+object menu inherits Nivel(siguienteNivel = nivel1, duplicador = 2,soyUnNivelPuzzle=false){
+
+	const jugador1 = new Jugador(position = game.at(11, 5) ,resolucion="mayorResolucion",nombreJugador = "jugador1")
 	
 	method cargarNivel(){
 		
 		configuraciones.configMusic("menu.mp3")
+		pasadizo.vestimenta("jugador1")
 		game.addVisual(self)
-		game.addVisual(new Checkpoint(position = game.at(6,5), image = "mayorResolucion/invisible.png", siguienteNivel = nivel1))
-		game.addVisual(new Checkpoint(position = game.at(4,5), image = "mayorResolucion/invisible.png", siguienteNivel = nivel1))
-		game.addVisual(new Checkpoint(position = game.at(2,5), image = "mayorResolucion/invisible.png", siguienteNivel = nivel1))
+		game.addVisual(new Checkpoint(position = game.at(9,1), image = "mayorResolucion/invisible.png", siguienteNivel = nivel1))
+		game.addVisual(new Checkpoint(position = game.at(11,1), image = "mayorResolucion/invisible.png", siguienteNivel = nivel1))
+		game.addVisual(new Checkpoint(position = game.at(13,1), image = "mayorResolucion/invisible.png", siguienteNivel = nivel1))
+		game.addVisual(new Checkpoint(position = game.at(3,5), image = "mayorResolucion/invisible.png", siguienteNivel = nivelCreativo))
+		game.addVisual(new Checkpoint(position = game.at(5,5), image = "mayorResolucion/invisible.png", siguienteNivel = nivelCreativo))
 		
-		game.addVisual(new CheckpointSalir(position = game.at(16,5), image = "mayorResolucion/invisible.png", siguienteNivel = nivel0))
-		game.addVisual(new CheckpointSalir(position = game.at(18,5), image = "mayorResolucion/invisible.png", siguienteNivel = nivel0))
-		game.addVisual(new CheckpointSalir(position = game.at(20,5), image = "mayorResolucion/invisible.png", siguienteNivel = nivel0))
 		
+		game.addVisual(new CheckpointSalir(position = game.at(17,5), image = "mayorResolucion/invisible.png", siguienteNivel = nivel0))
+		game.addVisual(new CheckpointSalir(position = game.at(19,5), image = "mayorResolucion/invisible.png", siguienteNivel = nivel0))
+		
+		jugador1.position(game.at(11, 5))
 		game.addVisual(jugador1)
 		configuraciones.nivelActual(self)
 		self.configNivel(jugador1)
@@ -88,19 +155,25 @@ object menu inherits Nivel(siguienteNivel = nivel1, duplicador = 2){
 		
 		const muroInvisible = "menorResolucion/invisible.png"
 		
-		self.bordearHorizontalmente(0,24,1,muroInvisible)
-		self.bordearHorizontalmente(0,24,11,muroInvisible)
-		self.bordearVerticalmente(1,11,0,muroInvisible)
-		self.bordearVerticalmente(1,11,24,muroInvisible)
+		self.bordearHorizontalmente(-1,25,-1,muroInvisible)
+		self.bordearHorizontalmente(-1,25,11,muroInvisible)
+		self.bordearVerticalmente(-1,11,-1,muroInvisible)
+		self.bordearVerticalmente(-1,11,25,muroInvisible)
 	}
 	
 	override method listaCajas() = []
 	
 	method image() = "oscuro.png"
-	method position()= game.at(0,0)
+	
+	override method abandonarNivel(){
+			
+			game.stop()
+			
+		}
+	
 }
 
-object nivel0 inherits Nivel (siguienteNivel = pasadizo){
+object nivel0 inherits Nivel (siguienteNivel = pasadizo,soyUnNivelPuzzle=false){
 	var property sonido = "hogar1.mp3"
 	var property image = "nivel0/map3.png"
 	const jugador1 = new Jugador(position = game.at(3, 1) ,resolucion="menorResolucion",nombreJugador = "jugador1")
@@ -116,15 +189,65 @@ object nivel0 inherits Nivel (siguienteNivel = pasadizo){
 		new CheckpointDeSombras(position=game.at(12,2),sombraDeReferencia=sombra2),
 		new CheckpointDeSombras(position=game.at(18,2 ),sombraDeReferencia=sombra3)
 	]
+	const nivelBel = new NivelBel()
+	const nivelL = new NivelL()
+	const nivelW= new NivelW ()
 	
 	const listaDeNivelesCompletados=[]
+	const listaDeNivelesHardTimeCompletados=[]
+	const listaDeNIvelesHardTimesDesbloqueados=[]
+	
+	const checkPointHardTimerW=new CheckpointHardTimer(position = game.at(3,11), imagen = "hardTimer/hardTimerW", siguienteNivel = nivelWHardcoreTime, velocidad=50 ,limite=7)
+	const checkPointHardTimerBel=new CheckpointHardTimer(position = game.at(13,11), imagen = "hardTimer/hardTimerBel", siguienteNivel = nivelBelHardcoreTime ,velocidad=60 ,limite=12)
+	const checkPointHardTimerL=new CheckpointHardTimer(position = game.at(19,4), imagen = "hardTimer/hardTimerL", siguienteNivel = nivelLHardcoreTime ,velocidad=60 ,limite=11)
 	
 	var property posicionInitial = game.at(3,1)
-		method cargarNivel(){		
+	
+	
+		method verificarSiEstaDesbloqueadoElNivel(unNivel)=listaDeNIvelesHardTimesDesbloqueados.contains(unNivel)
+		
+		
+		method agregarCheckPointHardTimer(unNivel,unCheckpoint){
+			if(self.verificarSiEstaDesbloqueadoElNivel(unNivel)){
+				game.addVisual(unCheckpoint)
+				unCheckpoint.animar()
+			}
+			
+			
+		}
+		method cargarNivel(){	
+			if(self.juegoTerminado()){
+				self.image("nivel0/map2.png")
+				game.addVisual(self)
+				
+				//zZzZ
+				const animacionZz = new Animacion(position = game.at(0,0), imagen="nivel0/zz/zzz", velocidad= 300)
+				game.addVisual(animacionZz)
+				animacionZz.animar()
+				
+				self.sonido("fin.mp3")
+			}
+			else{
+				game.addVisual(self)
+			}
 		
 		configuraciones.configMusic(self.sonido())
-		game.addVisual(self)
 		
+		self.agregarCheckPointHardTimer(nivelWHardcoreTime,checkPointHardTimerW)
+		self.agregarCheckPointHardTimer(nivelBelHardcoreTime,checkPointHardTimerBel)
+		self.agregarCheckPointHardTimer(nivelLHardcoreTime,checkPointHardTimerL)
+		
+		/*
+		const animacionZz = new Animacion(position = game.at(0,0), imagen="nivel0/zz/zzz", velocidad= 300)
+		game.addVisual(animacionZz)
+		animacionZz.animar()
+		*/
+		
+		//Chimenea
+		const chimenea = new Animacion(position = game.at(0,0), imagen="nivel0/chimenea/flama")
+		game.addVisual(chimenea)
+		chimenea.animar()
+
 		//Habitación hijo
 		const hijo = new Jugador(position = game.at(7, 11) ,resolucion="menorResolucion" ,nombreJugador = "hijo")
 		game.addVisual(hijo)
@@ -139,20 +262,37 @@ object nivel0 inherits Nivel (siguienteNivel = pasadizo){
 		const jugadora1 = new Jugador(position = game.at(23, 4) ,resolucion="menorResolucion", nombreJugador = "jugadora1")
 		game.addVisual(jugadora1)	
 		
-		game.addVisual(checkpointBonus)
+		//Bonus
+		
+		//const bonus = new CheckpointBonus( nivelBase = self, bonus=pasadizo)
+		const bonus = new CheckpointConRequisito(destino=pasadizo,condicion=!self.nivelPasadizoHabilitado(),mensajeDeError="Debes completar como minimo un Nivel para acceder al pasadizo!!!!")
+		game.addVisual(bonus)
+		
 		self.generarMuros()
 		
 		//Esposo
+		jugador1.nombreJugador(pasadizo.vestimenta())
 		jugador1.position(posicionInitial)
 		game.addVisual(jugador1)
 		self.configNivel(jugador1)
 		
-		game.addVisual(new Checkpoint(position = game.at(7,11), image = "menorResolucion/invisible.png", siguienteNivel = nivelW))
-		game.addVisual(new Checkpoint(position = game.at(10,11), image = "menorResolucion/invisible.png", siguienteNivel = nivelBel))		
-		game.addVisual(new Checkpoint(position = game.at(23,4), image = "menorResolucion/invisible.png", siguienteNivel = nivelL))	
+		//Dream
+		const dream = new CheckpointConRequisito(destino=nivelDream,condicion=!self.nivelDreamHabilitado(),mensajeDeError="Debes completar todos los niveles NORMALES para acceder al Dream !!!!")
+		//const dream = new CheckpointBonus( nivelBase = self, bonus=nivelDream)
+		
+		dream.position( game.at(16,11) )
+		game.addVisual(dream)
+		
+		game.addVisual(new Checkpoint(position = game.at(7,11), image = "menorResolucion/invisible.png", siguienteNivel = self.nivelW()))
+
+		game.addVisual(new Checkpoint(position = game.at(10,11), image = "menorResolucion/invisible.png", siguienteNivel = self.nivelBel()))
+		//game.addVisual(new Checkpoint(position = game.at(12,11), image = "menorResolucion/reloj.png", siguienteNivel = nivelBelHardcoreTime))	 el png ese es horrible ,lo puse para probar pero ni asi lo quiero jaja		
+		game.addVisual(new Checkpoint(position = game.at(23,4), image = "menorResolucion/invisible.png", siguienteNivel = self.nivelL()))	
 		self.cargarObjetos(listaSombras)
+		game.addVisual(listasNivelesCompletados2)
 		self.listaSombrasNoAtravesadas().forEach({unaSombra=>unaSombra.agregarSombra()})
-	
+		nivelDream.posicionInitial(game.at(13, 11)) //por si entramos nuevamente al nivel dream
+
 	}	
 		override method configNivel(personaje1){
 		duplicaDireccion.direccionDuplicador(duplicador)
@@ -161,15 +301,31 @@ object nivel0 inherits Nivel (siguienteNivel = pasadizo){
 		configuraciones.nivelActual(self)
 
 	}
+	method nivelBel()=nivelBel
+	method nivelW()=nivelW
+	method nivelL()=nivelL
+	method nivelDreamHabilitado()=listaDeNivelesCompletados.asSet().size()>=3
 	
 	method listaSombras()=listaSombras
 	method listaSombrasNoAtravesadas()=self.listaSombras().filter({unaSombra=>!unaSombra.seAtraveso()})
 	method agregarNivelCompletado(unNivel){
 		listaDeNivelesCompletados.add(unNivel)
 	}
-	method listaDeNivelesCompletados()=listaDeNivelesCompletados
-	method nivelBonusHabilitado() =self.listaDeNivelesCompletados().asSet().size()==3
+	method agregarNivelHardTimeCompletado(unNivel){
+		listaDeNivelesHardTimeCompletados.add(unNivel)
+	}
+	method agregarNivelHardTimeDesbloqueado(unNivel){
+		listaDeNIvelesHardTimesDesbloqueados.add(unNivel)
+	}
+	method listaDeNIvelesHardTimesDesbloqueados()=listaDeNIvelesHardTimesDesbloqueados
 	
+	method listaDeNIvelesHardTimesCompletados()=listaDeNivelesHardTimeCompletados
+	
+	method juegoTerminado() = self.listaDeNivelesCompletados().contains(nivel_bonus)
+	
+	method listaDeNivelesCompletados()=listaDeNivelesCompletados
+	method nivelPasadizoHabilitado() = self.listaDeNivelesCompletados().asSet().size()>=1
+	method nivelGranjaHabilitado()=self.listaDeNivelesCompletados().asSet().size()>=3
 	override method listaCajas() = listaCajas
 
     method listaMeta()= listaMeta
@@ -203,13 +359,34 @@ object nivel0 inherits Nivel (siguienteNivel = pasadizo){
 		self.bordearVerticalmente(1,5,0,muroInvisible)
 		self.bordearHorizontalmente(1,5,5,muroInvisible)
 		self.bordearVerticalmente(1,2,23,muroInvisible)
-		self.bordearHorizontalmente(16,16,11,muroInvisible)
 		self.bordearVerticalmente(8,9,16,muroInvisible)
 		self.bordearVerticalmente(8,9,1,muroInvisible)
 		self.bordearHorizontalmente(1,1,11,muroInvisible)
+		
+		//self.bordearHorizontalmente(16,16,11,muroInvisible)	/* Cama */
 	}
+	method limpiarlistaDeNivelesCompletados(){
+		listaDeNivelesCompletados.clear()
+	}
+	override method abandonarNivel(){
+			game.schedule(50,{
+			listaSombras.forEach({unaSombra=>unaSombra.seAtraveso(false)})
+			self.limpiarlistaDeNivelesCompletados()
+			game.clear()
+			self.sonido("hogar1.mp3")
+			image = "nivel0/map3.png"
+			configuraciones.configStopMusic()
+			menu.cargarNivel()	
+			})
+			
+		}
 	
-	method position()=game.at(0,0)
-
-
 }
+object listasNivelesCompletados2{
+	var property position=game.at(7,0)
+	
+	method text()=nivel0.listaDeNIvelesHardTimesCompletados().asSet().toString()
+	
+}
+ 
+ 

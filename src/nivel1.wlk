@@ -7,7 +7,9 @@ import jugador.*
 import niveles.*
 
 object nivel1 inherits Nivel (siguienteNivel = nivel0 ,duplicador=2){
-	
+
+	const unContadorDePasos = new ContadorDePasos(position=game.at(10,12))
+	const unContadorDeEmpujes = new ContadorDePasos(texto="Pushes : ",position=game.at(14,12))
 	const jugador1 = new Jugador(position = game.at(14, 1) ,resolucion="mayorResolucion" ,nombreJugador = "jugador1")
 	
 	const listaCajas=[new Caja(position = game.at(8,3),resolucion="mayorResolucion",stringDeObjeto="caja2.png",cajaEnMeta="caja_ok2.png",tipo=2), 
@@ -21,9 +23,12 @@ object nivel1 inherits Nivel (siguienteNivel = nivel0 ,duplicador=2){
 	method cargarNivel(){
 		
 		configuraciones.configMusic("hogar.mp3")
-		
+		configuraciones.elcontadorDePasos(unContadorDePasos)
+		configuraciones.contadorDeEmpujes(unContadorDeEmpujes)
+		nivel0.limpiarlistaDeNivelesCompletados()
 		game.addVisual(self)
-		
+		game.addVisual(unContadorDePasos)
+		game.addVisual(unContadorDeEmpujes)	
 		self.cargarObjetos(listaMeta)
 		self.cargarObjetos(listaCajas)
 			
@@ -32,6 +37,7 @@ object nivel1 inherits Nivel (siguienteNivel = nivel0 ,duplicador=2){
 		game.addVisual(jugador1)
 		configuraciones.nivelActual(self)
 		self.configNivel(jugador1)
+		nivel0.posicionInitial(game.at(3,1))
 	}
 
 	override method listaCajas() = listaCajas
@@ -55,7 +61,16 @@ object nivel1 inherits Nivel (siguienteNivel = nivel0 ,duplicador=2){
 	
 	method image()   = "nivel1/nivel1RA-map.png"
 	
-	method position() = game.origin()
+	override method abandonarNivel(){
+			
+			game.schedule(50,{
+			game.clear()
+			self.reiniciar()
+			configuraciones.configStopMusic()
+			menu.cargarNivel()	
+			})
+			
+		}
 
 }
 
