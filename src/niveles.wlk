@@ -368,6 +368,10 @@ object nivel0 inherits Nivel (siguienteNivel = pasadizo,soyUnNivelPuzzle=false){
 	}
 	method limpiarlistaDeNivelesCompletados(){
 		listaDeNivelesCompletados.clear()
+		listaDeNIvelesHardTimesDesbloqueados.clear()
+		listaDeNivelesHardTimeCompletados.clear()
+		nivelDream.limpiarNivel()
+		
 	}
 	override method abandonarNivel(){
 			game.schedule(50,{

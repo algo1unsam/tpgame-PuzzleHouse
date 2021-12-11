@@ -39,7 +39,7 @@ class NivelL inherits Nivel (siguienteNivel = nivel0,permitirAgregarAlAListaDeLn
 						
 	]
 	const listaCajas=[  
-						 new Caja(position = game.at(18,6),resolucion=resolucionCaja,stringDeObjeto=caja1,cajaEnMeta=cajaMeta1,tipo=1,hardCoreTimeBonificacion=15,colorDelTextoDeLaCaja=paleta.aqua()) /* , 
+						 new Caja(position = game.at(18,6),resolucion=resolucionCaja,stringDeObjeto=caja1,cajaEnMeta=cajaMeta1,tipo=1,hardCoreTimeBonificacion=15,colorDelTextoDeLaCaja=paleta.aqua())  , 
 						 new Caja(position = game.at(19,5),resolucion=resolucionCaja,stringDeObjeto=caja1,cajaEnMeta=cajaMeta1,tipo=1,hardCoreTimeBonificacion=20,colorDelTextoDeLaCaja=paleta.verde()),
 						 new Caja(position = game.at(20,4),resolucion=resolucionCaja,stringDeObjeto=caja1,cajaEnMeta=cajaMeta1,tipo=1,hardCoreTimeBonificacion=15,colorDelTextoDeLaCaja=paleta.amarillo()),
 						 new Caja(position = game.at(21,3),resolucion=resolucionCaja,stringDeObjeto=caja1,cajaEnMeta=cajaMeta1,tipo=1,hardCoreTimeBonificacion=30,colorDelTextoDeLaCaja=paleta.rosado()),
@@ -49,7 +49,7 @@ class NivelL inherits Nivel (siguienteNivel = nivel0,permitirAgregarAlAListaDeLn
 						 new Caja(position = game.at(21,9),resolucion=resolucionCaja,stringDeObjeto=caja4,cajaEnMeta=cajaMeta4,tipo=4,hardCoreTimeBonificacion=4,colorDelTextoDeLaCaja=paleta.naranja()),
 						 new Caja(position = game.at(3,11),resolucion=resolucionCaja,stringDeObjeto=caja2,cajaEnMeta=cajaMeta2,tipo=2,colorDelTextoDeLaCaja=paleta.rojo()),
 						 new Caja(position = game.at(7,7),resolucion=resolucionCaja,stringDeObjeto=caja5,cajaEnMeta=cajaMeta5,tipo=5,hardCoreTimeBonificacion=5,colorDelTextoDeLaCaja=paleta.blanco()),
-						 new Caja(position = game.at(16,10),resolucion=resolucionCaja,stringDeObjeto=caja2,cajaEnMeta=cajaMeta2,tipo=2,colorDelTextoDeLaCaja=paleta.negro())*/
+						 new Caja(position = game.at(16,10),resolucion=resolucionCaja,stringDeObjeto=caja2,cajaEnMeta=cajaMeta2,tipo=2,colorDelTextoDeLaCaja=paleta.negro())
 					
 	
 	]

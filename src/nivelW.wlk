@@ -34,7 +34,7 @@ class NivelW inherits Nivel (siguienteNivel = nivel0,permitirAgregarAlAListaDeLn
 						 new Meta(position = game.at(6,2), image= meta2W, tipo=2),
 						 new Meta(position = game.at(5,3), image= meta2W, tipo=2)
 	]
-	const listaCajas=[  new Caja(position = game.at(6,2),resolucion=resolucionCajaW,stringDeObjeto=caja1W,cajaEnMeta=cajaMeta1W,tipo=1,colorDelTextoDeLaCaja=paleta.rosado())/*  ,
+	const listaCajas=[  new Caja(position = game.at(6,2),resolucion=resolucionCajaW,stringDeObjeto=caja1W,cajaEnMeta=cajaMeta1W,tipo=1,colorDelTextoDeLaCaja=paleta.rosado())  ,
 						 new Caja(position = game.at(7,7),resolucion=resolucionCajaW,stringDeObjeto=caja1W,cajaEnMeta=cajaMeta1W,tipo=1) ,
 						 new Caja(position = game.at(6,9) ,resolucion=resolucionCajaW,stringDeObjeto=caja1W,cajaEnMeta=cajaMeta1W,tipo=1,colorDelTextoDeLaCaja=paleta.blanco()),
 						 new Caja(position = game.at(9,9) ,resolucion=resolucionCajaW,stringDeObjeto=caja2W,cajaEnMeta=cajaMeta2W,tipo=2,colorDelTextoDeLaCaja=paleta.violeta()),
@@ -45,7 +45,7 @@ class NivelW inherits Nivel (siguienteNivel = nivel0,permitirAgregarAlAListaDeLn
 						 
 						
 						 new Caja(position = game.at(8,2),resolucion=resolucionCajaW,stringDeObjeto=caja2W,cajaEnMeta=cajaMeta2W,tipo=2,colorDelTextoDeLaCaja=paleta.negro()),
-						 new Caja(position = game.at(12,8),resolucion=resolucionCajaW,stringDeObjeto=caja2W,cajaEnMeta=cajaMeta2W,tipo=2,colorDelTextoDeLaCaja=paleta.rojo())*/ 
+						 new Caja(position = game.at(12,8),resolucion=resolucionCajaW,stringDeObjeto=caja2W,cajaEnMeta=cajaMeta2W,tipo=2,colorDelTextoDeLaCaja=paleta.rojo()) 
 	]
 
 	method cargarNivel(){
@@ -135,7 +135,7 @@ object nivelWHardcoreTime inherits  NivelW(siguienteNivel = nivel0,soyUnNivelHar
 						 new Meta(position = game.at(6,2), image= meta2, tipo=2),
 						 new Meta(position = game.at(5,3), image= meta2, tipo=2)
 	]
-	const listaCajas2 =[  new Caja(position = game.at(6,2),resolucion=resolucionCaja,stringDeObjeto=caja1,cajaEnMeta=cajaMeta1,tipo=1,hardCoreTimeBonificacion=4,colorDelTextoDeLaCaja=paleta.rosado())/* ,
+	const listaCajas2 =[  new Caja(position = game.at(6,2),resolucion=resolucionCaja,stringDeObjeto=caja1,cajaEnMeta=cajaMeta1,tipo=1,hardCoreTimeBonificacion=4,colorDelTextoDeLaCaja=paleta.rosado()) ,
 						 new Caja(position = game.at(7,7),resolucion=resolucionCaja,stringDeObjeto=caja1,cajaEnMeta=cajaMeta1,tipo=1,hardCoreTimeBonificacion=3) ,
 						 new Caja(position = game.at(6,9) ,resolucion=resolucionCaja,stringDeObjeto=caja1,cajaEnMeta=cajaMeta1,tipo=1,hardCoreTimeBonificacion=2,colorDelTextoDeLaCaja=paleta.blanco()),
 						 new Caja(position = game.at(9,9) ,resolucion=resolucionCaja,stringDeObjeto=caja2,cajaEnMeta=cajaMeta2,tipo=2,colorDelTextoDeLaCaja=paleta.violeta()),
@@ -146,7 +146,7 @@ object nivelWHardcoreTime inherits  NivelW(siguienteNivel = nivel0,soyUnNivelHar
 						 
 						
 						 new Caja(position = game.at(8,2),resolucion=resolucionCaja,stringDeObjeto=caja2,cajaEnMeta=cajaMeta2,tipo=2,hardCoreTimeBonificacion=2,colorDelTextoDeLaCaja=paleta.negro()),
-						 new Caja(position = game.at(12,8),resolucion=resolucionCaja,stringDeObjeto=caja2,cajaEnMeta=cajaMeta2,tipo=2,colorDelTextoDeLaCaja=paleta.rojo())*/
+						 new Caja(position = game.at(12,8),resolucion=resolucionCaja,stringDeObjeto=caja2,cajaEnMeta=cajaMeta2,tipo=2,colorDelTextoDeLaCaja=paleta.rojo())
 	]
 	
 	override method cargarNivel(){

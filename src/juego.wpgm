@@ -21,7 +21,8 @@ program juego {
 	game.width( configuraciones.ancho() )
   	game.height( configuraciones.altura() ) 
   	game.cellSize(50)
-	menu.cargarNivel() 		
+	menu.cargarNivel() 
+	
 	game.start()
 	
 	
