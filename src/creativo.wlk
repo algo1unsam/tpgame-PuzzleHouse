@@ -20,7 +20,7 @@ class Creativo inherits Nivel{
 	method cajasEnMeta()
 }
 
-object nivelCreativo inherits Creativo (siguienteNivel = menu,soyUnNivelPuzzle=false) {
+object nivelCreativo inherits Creativo (siguienteNivel = menu,soyUnNivelPuzzle=false,soyUnNivelCreativo=true) {
 
 	const jugador1 = new JugadorConstructor (position = game.center() , resolucion="menorResolucion",nombreJugador = "jugador1" ,tipo=66)
 	const objetosPorDefecto=[posicionInicialDelConstructor,jugador1,ui,ui2,contadorDeCajas] //Estos objetos no se pueden eliminar adentro del modo creativo
@@ -190,7 +190,6 @@ object nivelCreativo inherits Creativo (siguienteNivel = menu,soyUnNivelPuzzle=f
 }
 
 
-
 object nivelCreativoJugar inherits Creativo (siguienteNivel = nivelCreativo,soyUnNivelPuzzle=false){
 	const unContadorDePasos = new ContadorDePasos(position=game.at(1,6))
 	const unContadorDeEmpujes = new ContadorDePasos(texto="Pushes : ",position=game.at(1,5))
@@ -202,8 +201,7 @@ object nivelCreativoJugar inherits Creativo (siguienteNivel = nivelCreativo,soyU
 	var property numeroDeCajasTotales=0
 	const cajasEnMeta=[]
 
-	
-  
+
 	override method verificarMetas() {
 		
 		const verificador = self.listaCajas().all({ unaCaja => unaCaja.estoyEnMeta()})
@@ -256,7 +254,6 @@ object nivelCreativoJugar inherits Creativo (siguienteNivel = nivelCreativo,soyU
 	}
 	
 
-
 	method image() = "menorResolucion/modoLibre.png"
 
 	override method position() = game.at(0, 0)
@@ -264,8 +261,6 @@ object nivelCreativoJugar inherits Creativo (siguienteNivel = nivelCreativo,soyU
 	override method listaCajas() = listaCajas
 
 	method listaMeta() = listaMeta
-
-	override method soyUnNivelCreativo() = true
 
 	
 	override method hacerAlgo(direccion){

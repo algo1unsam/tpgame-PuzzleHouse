@@ -77,7 +77,7 @@ object nivelDream inherits Dream (siguienteNivel = nivel0,soyUnNivelPuzzle=false
 		
 			
 		self.cargarObjetos(listaSombras)
-		game.addVisual(listasNivelesCompletados)
+		
 		self.listaSombrasNoAtravesadas().forEach({unaSombra=>unaSombra.agregarSombra()})
 	}	
 		override method configNivel(personaje1){
@@ -345,9 +345,4 @@ object nivelG2 inherits Dream (siguienteNivel = nivelDream,pertenescoAlDream=tru
  	method listaMeta()= listaMeta
  	
 }
-object listasNivelesCompletados{
-	var property position=game.at(7,0)
-	
-	method text()=nivelDream.listaDeNivelesCompletados().asSet().toString()
-	
-}
+
