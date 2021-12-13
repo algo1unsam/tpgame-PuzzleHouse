@@ -13,7 +13,7 @@ object pasadizoDream inherits Nivel(siguienteNivel = nivelDream, duplicador = 2,
 
 	method cargarNivel(){
 		const jugador1 = new Jugador(position = game.at(2, 3) ,resolucion="mayorResolucion",nombreJugador = "chara3")
-		configuraciones.configMusic("thebridge.mp3")
+		configuraciones.configMusic("pasadizoDream.mp3")
 		game.addVisual(self)
 		game.addVisual(jugador1)
 		configuraciones.nivelActual(self)
