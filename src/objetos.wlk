@@ -80,7 +80,7 @@ object skin5  inherits CambiarSkin(position=game.at(18,5),vestimenta="jugadorDre
 	override method condicion()=nivelDream.listaDeNivelesCompletados().asSet().size()>=3
 	
 	override method mensaje(){
-		game.say(configuraciones.elJugador(),"Debes COMPLETAR todos los nivel del DREAM para desbloquear esto!!!")
+		game.say(configuraciones.elJugador(),"Debes COMPLETAR todos los niveles del DREAM para desbloquear esto!!!")
 	}
 }
 

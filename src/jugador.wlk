@@ -24,7 +24,6 @@ class Jugador inherits Posicion {
 		sonidoObjeto.emitirSonido("victoriaFem.mp3")
 	}
 
-	method text() = if (!configuraciones.libreMoviento()) {	""} else {	"[ " + position.x().toString() + " , " + position.y().toString() + " ]"}
 
 	method textColor() = "00FF00FF"
 

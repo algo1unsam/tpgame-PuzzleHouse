@@ -147,7 +147,7 @@ object nivelDream inherits Dream (siguienteNivel = nivel0,soyUnNivelPuzzle=false
 	}
 	
 	override method abandonarNivel(){
-				game.say(configuraciones.elJugador(),"Vuelve a la cama para volver!")
+				game.say(configuraciones.elJugador(),"Debes ir a la cama para salir del DREAM!")
 	}	
 	
 }

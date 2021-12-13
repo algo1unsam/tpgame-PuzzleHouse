@@ -104,6 +104,9 @@ class JugadorConstructor inherits Jugador{
    
     var property numeroSelector = 0
    
+    method text() = if (!configuraciones.libreMoviento()) {	""} else {	"[ " + position.x().toString() + " , " + position.y().toString() + " ]"}
+    
+    
     
     override method cambiarPosicion(direccion) {
 	 	ultimaDireccion=direccion
