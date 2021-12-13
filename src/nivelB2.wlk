@@ -18,8 +18,7 @@ object pasadizoDream inherits Nivel(siguienteNivel = nivelDream, duplicador = 2,
 		game.addVisual(jugador1)
 		configuraciones.nivelActual(self)
 		self.configNivel(jugador1)
-		game.addVisual(new DreamCambiarSkin(position=game.at(6,5),vestimenta="chara2") )
-		game.addVisual(new DreamCambiarSkin(position=game.at(16,5),vestimenta="chara3") )
+		
 		game.addVisual(new Checkpoint(position = game.at(24,3), image = "mayorResolucion/invisible.png", siguienteNivel = nivelBonusDream))
 		
 		self.generarMuros()	
@@ -33,11 +32,7 @@ object pasadizoDream inherits Nivel(siguienteNivel = nivelDream, duplicador = 2,
 		const muroInvisible = "menorResolucion/invisible.png"
 		
 		self.bordearHorizontalmente(-2,0,3,muroInvisible)
-		
-		
-		self.bordearHorizontalmente(0,4,5,muroInvisible)
-		self.bordearHorizontalmente(8,14,5,muroInvisible)
-		self.bordearHorizontalmente(18,24,5,muroInvisible)
+		self.bordearHorizontalmente(0,22,5,muroInvisible)
 		self.bordearHorizontalmente(0,22,1,muroInvisible)
 	}
 	

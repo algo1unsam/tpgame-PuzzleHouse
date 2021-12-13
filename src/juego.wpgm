@@ -17,7 +17,7 @@ import nivelTests.*
 
 program juego {
 	
-	game.title( "Puzzle House v1.2" )
+	game.title( "Puzzle House v1.1" )
 	game.width( configuraciones.ancho() )
   	game.height( configuraciones.altura() ) 
   	game.cellSize(50)
