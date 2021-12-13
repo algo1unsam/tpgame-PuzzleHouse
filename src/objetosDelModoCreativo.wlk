@@ -90,11 +90,6 @@ object posicionInicialDelConstructor inherits Posicion(modoCreativo_soyUnPuntoDe
 	}
 }
 
-class JugadorDelNivelCreado inherits Jugador{
-
-	override method text() =""
-}
-
 class JugadorConstructor inherits Jugador{
 	var  pasos="pasosf.mp3"
 	var property  elJugadorNoPudoAvanzar=false

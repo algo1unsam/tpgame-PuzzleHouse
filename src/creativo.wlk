@@ -203,7 +203,7 @@ object nivelCreativo inherits Creativo (siguienteNivel = menu,soyUnNivelPuzzle=f
 object nivelCreativoJugar inherits Creativo (siguienteNivel = nivelCreativo,soyUnNivelPuzzle=false){
 	const unContadorDePasos = new ContadorDePasos(position=game.at(1,6))
 	const unContadorDeEmpujes = new ContadorDePasos(texto="Pushes : ",position=game.at(1,5))
-	const jugador1 = new JugadorDelNivelCreado(position =posicionInicialDelConstructor.position() , resolucion="menorResolucion",nombreJugador = "jugador1")
+	const jugador1 = new Jugador(position =posicionInicialDelConstructor.position() , resolucion="menorResolucion",nombreJugador = "jugador1")
 	
 	var listaMeta =[]
 	var listaCajas=[]
