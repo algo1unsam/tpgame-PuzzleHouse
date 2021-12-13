@@ -13,12 +13,11 @@ object pasadizoDream inherits Nivel(siguienteNivel = nivelDream, duplicador = 2,
 
 	method cargarNivel(){
 		const jugador1 = new Jugador(position = game.at(2, 3) ,resolucion="mayorResolucion",nombreJugador = "chara3")
-		//configuraciones.configMusic("pasadizo.mp3")
+		configuraciones.configMusic("thebridge.mp3")
 		game.addVisual(self)
 		game.addVisual(jugador1)
 		configuraciones.nivelActual(self)
 		self.configNivel(jugador1)
-		
 		game.addVisual(new Checkpoint(position = game.at(24,3), image = "mayorResolucion/invisible.png", siguienteNivel = nivelBonusDream))
 		
 		self.generarMuros()	
@@ -31,7 +30,7 @@ object pasadizoDream inherits Nivel(siguienteNivel = nivelDream, duplicador = 2,
 		
 		const muroInvisible = "menorResolucion/invisible.png"
 		
-		self.bordearHorizontalmente(-2,0,3,muroInvisible)
+		self.bordearHorizontalmente(-2,-2,3,muroInvisible)
 		self.bordearHorizontalmente(0,22,5,muroInvisible)
 		self.bordearHorizontalmente(0,22,1,muroInvisible)
 	}
@@ -48,7 +47,6 @@ object pasadizoDream inherits Nivel(siguienteNivel = nivelDream, duplicador = 2,
 object nivelBonusDream inherits Dream (siguienteNivel = nivel0,pertenescoAlDream=true){
 	const unContadorDePasos = new ContadorDePasos(position=game.at(4,8))
 	const unContadorDeEmpujes = new ContadorDePasos(texto="Pushes : ",position=game.at(4,7))
-	//const jugador1 = new Jugador(position = game.at(15, 3) , resolucion="menorResolucion",nombreJugador = pasadizoDream.vestimenta())
 	const jugador1 = new Jugador(position = game.at(0, 4) ,resolucion="menorResolucion",nombreJugador = "chara3")
 	
 	const meta1 = "menorResolucion/vagoneta1.png"
@@ -137,6 +135,7 @@ object nivelBonusDream inherits Dream (siguienteNivel = nivel0,pertenescoAlDream
 		self.bordearVerticalmente(6,9,6,vallaV)
 		self.bordearVerticalmente(11,11,11,vallaV)
 		self.bordearVerticalmente(2,11,21,vallaV)
+		self.bordearVerticalmente(3,5,-1, vallaV)
 		
 		/*Personalizado */
 		self.bordearHorizontalmente(7,7,2,vallaH2)
