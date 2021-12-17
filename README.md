@@ -7,12 +7,12 @@ Desafiate recorriendo las distintas habitaciones y poniendo a prueba tu capacida
 
 <details>
  	<summary>Mapa de la Casa</summary>
-	<img src="https://user-images.githubusercontent.com/22482325/145655216-750664e8-699d-4efe-83d8-f8a3a7823530.png" />
+	<img src="https://raw.githubusercontent.com/algo1unsam/tpgame-PuzzleHouse/master/muestra1.png" />
 </details>
 
 <details>
 	<summary>Mapa del Sueño</summary>
-	<img src="https://user-images.githubusercontent.com/22482325/145655217-d13c7419-5141-4a85-b3be-eac7dc564a8c.png" />
+	<img src="https://raw.githubusercontent.com/algo1unsam/tpgame-PuzzleHouse/master/muestra2.png" />
 </details>
 
 <details>
@@ -23,6 +23,41 @@ Desafiate recorriendo las distintas habitaciones y poniendo a prueba tu capacida
 <details>
 	<summary>Modo Creativo</summary>
 	<img src="https://user-images.githubusercontent.com/22482325/145655280-856fe08d-586f-4502-acda-30596d4150b6.png" />
+</details>
+
+## Puzzles de la Casa
+<details>
+ 	<summary>nivelB</summary>
+	<img src="https://raw.githubusercontent.com/algo1unsam/tpgame-PuzzleHouse/master/nivelB.png" />
+</details>
+
+<details>
+ 	<summary>nivelW</summary>
+	<img src="https://raw.githubusercontent.com/algo1unsam/tpgame-PuzzleHouse/master/nivelW.png" />
+</details>
+
+<details>
+ 	<summary>nivelL</summary>
+	<img src="https://raw.githubusercontent.com/algo1unsam/tpgame-PuzzleHouse/master/nivelL.png" />
+</details>
+
+<details>
+ 	<summary>nivelGranja</summary>
+	<img src="https://raw.githubusercontent.com/algo1unsam/tpgame-PuzzleHouse/master/nivelF.png" />
+</details>
+
+## Puzzles del Sueño
+<details>
+ 	<summary>nivelGhost 1 del Sueño</summary>
+	<img src="https://raw.githubusercontent.com/algo1unsam/tpgame-PuzzleHouse/master/nivel1Dream.png" />
+</details>
+<details>
+ 	<summary>nivelGhost 2 del Sueño</summary>
+	<img src="https://raw.githubusercontent.com/algo1unsam/tpgame-PuzzleHouse/master/nivel2Dream.png" />
+</details>
+<details>
+ 	<summary>nivelFinal del Sueño</summary>
+	<img src="https://raw.githubusercontent.com/algo1unsam/tpgame-PuzzleHouse/master/nivelFDream.png" />
 </details>
 
 ## Update v1.1
