@@ -22,7 +22,9 @@ program juego {
   	game.height( configuraciones.altura() ) 
   	game.cellSize(50)
 	menu.cargarNivel() 
+	
 	game.start()
+	
 	
 	
 } 
