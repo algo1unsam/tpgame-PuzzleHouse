@@ -1,10 +1,4 @@
-import wollok.game.*
-import objetos.*
-import direcciones.*
-import configuraciones.*
-import timeline.*
-import jugador.*
-import niveles.*
+
 
 import wollok.game.*
 import objetos.*
@@ -23,7 +17,7 @@ class NivelBel inherits Nivel(siguienteNivel = nivel0,permitirAgregarAlAListaDeL
 	const meta2B=  "menorResolucion/caja2Bmeta.png"
 	const resolucionCajaB = "menorResolucion"
 	
-	const listaMeta =[   new Meta(position = game.at(17,2), image= meta1B)  ,
+	const listaMeta =[   new Meta(position = game.at(17,2), image= meta1B)     ,
 						 new Meta(position = game.at(7,1), image= meta2B,tipo=2),
 						 new Meta(position = game.at(7,10), image= meta2B,tipo=2),
 						 new Meta(position = game.at(15,1), image= meta2B,tipo=2),
@@ -31,11 +25,11 @@ class NivelBel inherits Nivel(siguienteNivel = nivel0,permitirAgregarAlAListaDeL
 						 new Meta(position = game.at(11,10), image= meta1B),
 						 new Meta(position = game.at(7,9), image = meta1B),
 						 new Meta(position = game.at(14,1), image = meta1B),
-						 new Meta(position = game.at(8,3), image= meta1B)
+						 new Meta(position = game.at(8,3), image= meta1B) 
 						 ]
 						 
 	const listaCajas=[   
-						 new Caja(position = game.at(14,9),resolucion=resolucionCajaB,stringDeObjeto="caja1B.png",cajaEnMeta="caja1B_ok.png",tipo=1,colorDelTextoDeLaCaja=paleta.rosado())  ,
+						 new Caja(position = game.at(14,9),resolucion=resolucionCajaB,stringDeObjeto="caja1B.png",cajaEnMeta="caja1B_ok.png",tipo=1,colorDelTextoDeLaCaja=paleta.rosado())     ,
 						 new Caja(position = game.at(8,8),resolucion=resolucionCajaB,stringDeObjeto="caja1B.png",cajaEnMeta="caja1B_ok.png",tipo=1,colorDelTextoDeLaCaja=paleta.lima()) ,
 						 new Caja(position = game.at(16,7),resolucion=resolucionCajaB,stringDeObjeto="caja2B.png",cajaEnMeta="caja2B_ok.png",tipo=2,colorDelTextoDeLaCaja=paleta.verde()),
 						 new Caja(position = game.at(16,6),resolucion=resolucionCajaB,stringDeObjeto="caja2B.png",cajaEnMeta="caja2B_ok.png",tipo=2,colorDelTextoDeLaCaja=paleta.negro()),
@@ -43,7 +37,7 @@ class NivelBel inherits Nivel(siguienteNivel = nivel0,permitirAgregarAlAListaDeL
 						 new Caja(position = game.at(13,2),resolucion=resolucionCajaB,stringDeObjeto="caja1B.png",cajaEnMeta="caja1B_ok.png",tipo=1),
 						 new Caja(position= game.at(11,4),resolucion=resolucionCajaB,stringDeObjeto ="caja1B.png", cajaEnMeta="caja1B_ok.png",tipo=1,colorDelTextoDeLaCaja=paleta.amarillo()),
 						 new Caja(position = game.at(10,2),resolucion=resolucionCajaB,stringDeObjeto= "caja1B.png", cajaEnMeta = "caja1B_ok.png",tipo=1,colorDelTextoDeLaCaja=paleta.naranja()),
-						 new Caja(position = game.at(11,6),resolucion=resolucionCajaB,stringDeObjeto= "caja2B.png", cajaEnMeta = "caja2B_ok.png",tipo=2,colorDelTextoDeLaCaja=paleta.azul())
+						 new Caja(position = game.at(11,6),resolucion=resolucionCajaB,stringDeObjeto= "caja2B.png", cajaEnMeta = "caja2B_ok.png",tipo=2,colorDelTextoDeLaCaja=paleta.azul())   
 						 ]
 
 	method cargarNivel(){
@@ -109,7 +103,7 @@ class NivelBel inherits Nivel(siguienteNivel = nivel0,permitirAgregarAlAListaDeL
 
 object nivelBelHardcoreTime inherits NivelBel(siguienteNivel = nivel0,soyUnNivelHardcoreTime=true){
 	
-	const unCronometro=new Cronometro()
+	const unCronometro=new Cronometro(segundos=16,segundoDeReset=16)
 	const readyGo=new ReadyYGO()
 	
 
@@ -117,7 +111,7 @@ object nivelBelHardcoreTime inherits NivelBel(siguienteNivel = nivel0,soyUnNivel
 	const meta2=  "menorResolucion/meta2.png"
 	const resolucionCaja = "menorResolucion"
 	
-	const listaMeta2 =[   new Meta(position = game.at(17,2), image= meta1)  ,
+	const listaMeta2 =[  new Meta(position = game.at(17,2), image= meta1)   ,
 						 new Meta(position = game.at(7,1), image= meta2,tipo=2),
 						 new Meta(position = game.at(7,10), image= meta2,tipo=2),
 						 new Meta(position = game.at(15,1), image= meta2,tipo=2),
@@ -125,7 +119,7 @@ object nivelBelHardcoreTime inherits NivelBel(siguienteNivel = nivel0,soyUnNivel
 						 new Meta(position = game.at(11,10), image= meta1),
 						 new Meta(position = game.at(7,9), image = meta1),
 						 new Meta(position = game.at(14,1), image = meta1),
-						 new Meta(position = game.at(8,3), image= meta1)
+						 new Meta(position = game.at(8,3), image= meta1)  
 						 ]
 						 
 	const listaCajas2 =[   
@@ -181,5 +175,3 @@ object nivelBelHardcoreTime inherits NivelBel(siguienteNivel = nivel0,soyUnNivel
 	}
  	method cronometro()=unCronometro
 }
-
-

@@ -65,7 +65,7 @@ object nivelBonusDream inherits Dream (siguienteNivel = nivel0,pertenescoAlDream
 	
 
 	const listaMeta =[  
-						 new Meta(position = game.at(6,4), image= meta2,tipo=2) ,
+						 new Meta(position = game.at(6,4), image= meta2,tipo=2)   ,
 						 new Meta(position = game.at(15,8), image= meta1),
 						 new Meta(position = game.at(18,8), image= meta1),
 						 new Meta(position = game.at(15,2), image= meta1),
@@ -75,18 +75,18 @@ object nivelBonusDream inherits Dream (siguienteNivel = nivel0,pertenescoAlDream
 						 new Meta(position = game.at(16,8), image= meta2,tipo=2),
 						 new Meta(position = game.at(17,8), image= meta2,tipo=2),
 						 new Meta(position = game.at(17,2), image= meta2,tipo=2),
-						 new Meta(position = game.at(14,2), image= meta2,tipo=2)	
+						 new Meta(position = game.at(14,2), image= meta2,tipo=2) 
 					]
 					
 	const listaCajas=[	
-						new Caja(position = game.at(8,4),resolucion=resolucionCaja,stringDeObjeto=caja2,cajaEnMeta=cajaMeta2,tipo=2),
+						new Caja(position = game.at(8,4),resolucion=resolucionCaja,stringDeObjeto=caja2,cajaEnMeta=cajaMeta2,tipo=2)  ,
 						new Caja(position = game.at(8,6),resolucion=resolucionCaja,stringDeObjeto=caja1,cajaEnMeta=cajaMeta1,tipo=1),
 						new Caja(position = game.at(9,6),resolucion=resolucionCaja,stringDeObjeto=caja1,cajaEnMeta=cajaMeta1,tipo=1),
 						new Caja(position = game.at(10,6),resolucion=resolucionCaja,stringDeObjeto=caja1,cajaEnMeta=cajaMeta1,tipo=1),
 						new Caja(position = game.at(9,8),resolucion=resolucionCaja,stringDeObjeto=caja1,cajaEnMeta=cajaMeta1,tipo=1),
 						
 						
-						new Caja(position = game.at(9,4),resolucion=resolucionCaja,stringDeObjeto=caja2,cajaEnMeta=cajaMeta2,tipo=2),
+						new Caja(position = game.at(9,4),resolucion=resolucionCaja,stringDeObjeto=caja2,cajaEnMeta=cajaMeta2,tipo=2) ,
 						new Caja(position = game.at(10,2),resolucion=resolucionCaja,stringDeObjeto=caja2,cajaEnMeta=cajaMeta2,tipo=2),
 						new Caja(position = game.at(18,7),resolucion=resolucionCaja,stringDeObjeto=caja2,cajaEnMeta=cajaMeta2,tipo=2),
 						new Caja(position = game.at(12,6),resolucion=resolucionCaja,stringDeObjeto=caja2,cajaEnMeta=cajaMeta2,tipo=2)

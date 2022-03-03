@@ -6,6 +6,8 @@ import timeline.*
 import jugador.*
 import niveles.*
 import objetosDelModoCreativo.*
+import masObjetos.*
+import sonido.*
 
 class Creativo inherits Nivel{
 	

@@ -5,6 +5,7 @@ import configuraciones.*
 import timeline.*
 import jugador.*
 import niveles.*
+import masObjetos.*
 
 object nivel1 inherits Nivel (siguienteNivel = nivel0 ,duplicador=2){
 
@@ -25,7 +26,7 @@ object nivel1 inherits Nivel (siguienteNivel = nivel0 ,duplicador=2){
 		configuraciones.configMusic("hogar.mp3")
 		configuraciones.elcontadorDePasos(unContadorDePasos)
 		configuraciones.contadorDeEmpujes(unContadorDeEmpujes)
-		nivel0.limpiarlistaDeNivelesCompletados()
+		
 		game.addVisual(self)
 		game.addVisual(unContadorDePasos)
 		game.addVisual(unContadorDeEmpujes)	
@@ -71,9 +72,7 @@ object nivel1 inherits Nivel (siguienteNivel = nivel0 ,duplicador=2){
 			})
 			
 		}
+		
+	
 
 }
-
-
-
-

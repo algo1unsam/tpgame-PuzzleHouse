@@ -12,6 +12,7 @@ class Jugador inherits Posicion {
 	var property impedirConteo = false
 	var property nombreJugador
 	var property resolucion
+	var property sonidoDelJugador="pasosf.mp3"
 
 	method image() = resolucion + "/" + nombreJugador.toString() + ultimaDireccion.toString() + ".png"
 
@@ -44,7 +45,7 @@ class Jugador inherits Posicion {
 
 	method moverse(direccion) {
 		self.position(direccion.moverse(self))
-		sonidoObjeto.emitirSonido("pasosf.mp3")
+		sonidoObjeto.emitirSonido(sonidoDelJugador)
 		self.incrementarContador()
 	}
 

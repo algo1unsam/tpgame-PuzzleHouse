@@ -37,54 +37,37 @@ object nivelDream inherits Dream (siguienteNivel = nivel0,soyUnNivelPuzzle=false
 		new CheckpointDeSombras(position=game.at(12,2),sombraDeReferencia=sombra2),
 		new CheckpointDeSombras(position=game.at(18,2 ),sombraDeReferencia=sombra3)
 	]
-	
+	const chimenea = new Animacion(position = game.at(0,0), imagen="Dreams/chimenea/flama")
 	const listaDeNivelesCompletados=[]
-	
+	const visualesDelNivelDream =[
+		new Ghost(position = game.at(18, 11) ,resolucion="menorResolucion", nombreJugador = "ghost1", siguienteNivel=nivelG1),
+		new Ghost(position = game.at(5, 10) ,resolucion="menorResolucion", nombreJugador = "ghost2", siguienteNivel=nivelG2, ms1='Querés un verdadero reto?', ms2='Estas seguro?', ms3='Bueno, bueno, tu lo decidiste.'),	
+		new Checkpoint(position = game.at(14,11), image = "menorResolucion/invisible.png", siguienteNivel = nivel0),
+		chimenea,
+		jugador1
+	]
 	var property posicionInitial = game.at(13,11)
 	
-	method limpiarNivel(){
+	method limpiarNivel() {
 		listaDeNivelesCompletados.clear()
-		}
-		
-		method cargarNivel(){		
-		
+	}
+
+	method cargarNivel() {
+		const bonus = new CheckpointConRequisito(destino = pasadizoDream, condicion = !self.nivelBonusHabilitado(), mensajeDeError = "Debes completar todos los niveles  del Dream para acceder!!!")
 		configuraciones.configMusic(self.sonido())
 		game.addVisual(self)
-		
-		//Chimenea
-		const chimenea = new Animacion(position = game.at(0,0), imagen="Dreams/chimenea/flama")
-		game.addVisual(chimenea)
-		chimenea.animar()
-		
-		//Bonus
-		const bonus = new CheckpointConRequisito(destino=pasadizoDream,condicion=!self.nivelBonusHabilitado(),mensajeDeError="Debes completar todos los niveles  del Dream para acceder!!!")
+		self.cargarObjetos(visualesDelNivelDream)
 		game.addVisual(bonus)
-		
+		chimenea.animar()
 		self.generarMuros()
-		
-		//Personaje
 		jugador1.position(posicionInitial)
-		game.addVisual(jugador1)
 		self.configNivel(jugador1)
-		
-		//Ghost level 1
-		const ghost1 = new Ghost(position = game.at(18, 11) ,resolucion="menorResolucion", nombreJugador = "ghost1", siguienteNivel=nivelG1)
-		game.addVisual(ghost1)
-		
-		//Ghost level 2
-		const ghost2 = new Ghost(position = game.at(5, 10) ,resolucion="menorResolucion", nombreJugador = "ghost2", siguienteNivel=nivelG2, ms1='Querés un verdadero reto?', ms2='Estas seguro?', ms3='Bueno, bueno, tu lo decidiste.')
-		game.addVisual(ghost2)
-		
-		//Despertar
-		nivel0.posicionInitial(game.at(15,10))
-		game.addVisual(new Checkpoint(position = game.at(14,11), image = "menorResolucion/invisible.png", siguienteNivel = nivel0))
-		
-			
+		nivel0.posicionInitial(game.at(15, 10))
 		self.cargarObjetos(listaSombras)
-		
-		self.listaSombrasNoAtravesadas().forEach({unaSombra=>unaSombra.agregarSombra()})
-	}	
-		override method configNivel(personaje1){
+		self.listaSombrasNoAtravesadas().forEach({ unaSombra => unaSombra.agregarSombra()})
+	}
+
+	override method configNivel(personaje1) {
 		duplicaDireccion.direccionDuplicador(duplicador)
 		configuraciones.configTeclas(personaje1)
 		configuraciones.configColisiones(personaje1)
@@ -178,7 +161,7 @@ object nivelG1 inherits Dream (siguienteNivel = nivelDream,pertenescoAlDream=tru
 						 new Meta(position = game.at(10,9), image= meta1, tipo=1)
 	]
 	
-	const listaCajas=[  new Caja(position = game.at(7,6),resolucion=resolucionCaja,stringDeObjeto=caja1,cajaEnMeta=cajaMeta1,tipo=1) ,
+	const listaCajas=[  new Caja(position = game.at(7,6),resolucion=resolucionCaja,stringDeObjeto=caja1,cajaEnMeta=cajaMeta1,tipo=1)  ,
 						new Caja(position = game.at(14,7),resolucion=resolucionCaja,stringDeObjeto=caja1,cajaEnMeta=cajaMeta1,tipo=1),
 						new Caja(position = game.at(9,5),resolucion=resolucionCaja,stringDeObjeto=caja1,cajaEnMeta=cajaMeta1,tipo=1),
 						new Caja(position = game.at(11,3),resolucion=resolucionCaja,stringDeObjeto=caja1,cajaEnMeta=cajaMeta1,tipo=1),
@@ -266,7 +249,7 @@ object nivelG2 inherits Dream (siguienteNivel = nivelDream,pertenescoAlDream=tru
 
 	const listaMeta =[   
 		
-						 new Meta(position = game.at(13,5), image= meta2, tipo=2),
+						 new Meta(position = game.at(13,5), image= meta2, tipo=2) ,
 						 new Meta(position = game.at(15,6), image= meta1, tipo=1),
 						 new Meta(position = game.at(15,4), image= meta1, tipo=1),
 						 new Meta(position = game.at(15,3), image= meta1, tipo=1),
@@ -281,7 +264,7 @@ object nivelG2 inherits Dream (siguienteNivel = nivelDream,pertenescoAlDream=tru
 	]
 	
 	const listaCajas=[  
-						new Caja(position = game.at(9,5),resolucion=resolucionCaja,stringDeObjeto=caja2,cajaEnMeta=cajaMeta2,tipo=2) ,
+						new Caja(position = game.at(9,5),resolucion=resolucionCaja,stringDeObjeto=caja2,cajaEnMeta=cajaMeta2,tipo=2)   ,
 		                new Caja(position = game.at(8,8),resolucion=resolucionCaja,stringDeObjeto=caja1,cajaEnMeta=cajaMeta1,tipo=1),
 						new Caja(position = game.at(15,10),resolucion=resolucionCaja,stringDeObjeto=caja1,cajaEnMeta=cajaMeta1,tipo=1),
 						new Caja(position = game.at(10,9),resolucion=resolucionCaja,stringDeObjeto=caja1,cajaEnMeta=cajaMeta1,tipo=1),
@@ -350,4 +333,3 @@ object nivelG2 inherits Dream (siguienteNivel = nivelDream,pertenescoAlDream=tru
  	method listaMeta()= listaMeta
  	
 }
-

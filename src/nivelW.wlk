@@ -21,7 +21,7 @@ class NivelW inherits Nivel (siguienteNivel = nivel0,permitirAgregarAlAListaDeLn
 	const cajaMeta2W = "caja2W_ok.png"
 
 	const listaMeta =[   
-						 new Meta(position = game.at(5,2), image= meta1W) ,
+						 new Meta(position = game.at(5,2), image= meta1W)  ,
 						 new Meta(position = game.at(9,5),image= meta1W),
 						 new Meta(position = game.at(8,5), image= meta2W,tipo=2),
 						 new Meta(position = game.at(10,5), image= meta1W),
@@ -32,9 +32,9 @@ class NivelW inherits Nivel (siguienteNivel = nivel0,permitirAgregarAlAListaDeLn
 						 
 						 
 						 new Meta(position = game.at(6,2), image= meta2W, tipo=2),
-						 new Meta(position = game.at(5,3), image= meta2W, tipo=2)
+						 new Meta(position = game.at(5,3), image= meta2W, tipo=2) 
 	]
-	const listaCajas=[  new Caja(position = game.at(6,2),resolucion=resolucionCajaW,stringDeObjeto=caja1W,cajaEnMeta=cajaMeta1W,tipo=1,colorDelTextoDeLaCaja=paleta.rosado())  ,
+	const listaCajas=[  new Caja(position = game.at(6,2),resolucion=resolucionCajaW,stringDeObjeto=caja1W,cajaEnMeta=cajaMeta1W,tipo=1,colorDelTextoDeLaCaja=paleta.rosado())    ,
 						 new Caja(position = game.at(7,7),resolucion=resolucionCajaW,stringDeObjeto=caja1W,cajaEnMeta=cajaMeta1W,tipo=1) ,
 						 new Caja(position = game.at(6,9) ,resolucion=resolucionCajaW,stringDeObjeto=caja1W,cajaEnMeta=cajaMeta1W,tipo=1,colorDelTextoDeLaCaja=paleta.blanco()),
 						 new Caja(position = game.at(9,9) ,resolucion=resolucionCajaW,stringDeObjeto=caja2W,cajaEnMeta=cajaMeta2W,tipo=2,colorDelTextoDeLaCaja=paleta.violeta()),
@@ -45,7 +45,7 @@ class NivelW inherits Nivel (siguienteNivel = nivel0,permitirAgregarAlAListaDeLn
 						 
 						
 						 new Caja(position = game.at(8,2),resolucion=resolucionCajaW,stringDeObjeto=caja2W,cajaEnMeta=cajaMeta2W,tipo=2,colorDelTextoDeLaCaja=paleta.negro()),
-						 new Caja(position = game.at(12,8),resolucion=resolucionCajaW,stringDeObjeto=caja2W,cajaEnMeta=cajaMeta2W,tipo=2,colorDelTextoDeLaCaja=paleta.rojo()) 
+						 new Caja(position = game.at(12,8),resolucion=resolucionCajaW,stringDeObjeto=caja2W,cajaEnMeta=cajaMeta2W,tipo=2,colorDelTextoDeLaCaja=paleta.rojo())   
 	]
 
 	method cargarNivel(){
@@ -110,7 +110,7 @@ class NivelW inherits Nivel (siguienteNivel = nivel0,permitirAgregarAlAListaDeLn
 
 }
 object nivelWHardcoreTime inherits  NivelW(siguienteNivel = nivel0,soyUnNivelHardcoreTime=true){
-	const unCronometro=new Cronometro(segundos=5,segundoDeReset=5)
+	const unCronometro=new Cronometro(segundos=10,segundoDeReset=10)
 	const readyGo=new ReadyYGO(delay1=2700)
 	
 	const meta1 = "menorResolucion/meta1.png"
@@ -122,7 +122,7 @@ object nivelWHardcoreTime inherits  NivelW(siguienteNivel = nivel0,soyUnNivelHar
 	const cajaMeta2 = "caja_ok2.png"
 
 	const listaMeta2 =[   
-						 new Meta(position = game.at(5,2), image= meta1) ,
+						 new Meta(position = game.at(5,2), image= meta1)   ,
 						 new Meta(position = game.at(9,5),image= meta1),
 						 new Meta(position = game.at(8,5), image= meta2,tipo=2),
 						 new Meta(position = game.at(10,5), image= meta1),
@@ -133,9 +133,9 @@ object nivelWHardcoreTime inherits  NivelW(siguienteNivel = nivel0,soyUnNivelHar
 						 
 						 
 						 new Meta(position = game.at(6,2), image= meta2, tipo=2),
-						 new Meta(position = game.at(5,3), image= meta2, tipo=2)
+						 new Meta(position = game.at(5,3), image= meta2, tipo=2)  
 	]
-	const listaCajas2 =[  new Caja(position = game.at(6,2),resolucion=resolucionCaja,stringDeObjeto=caja1,cajaEnMeta=cajaMeta1,tipo=1,hardCoreTimeBonificacion=4,colorDelTextoDeLaCaja=paleta.rosado()) ,
+	const listaCajas2 =[  new Caja(position = game.at(6,2),resolucion=resolucionCaja,stringDeObjeto=caja1,cajaEnMeta=cajaMeta1,tipo=1,hardCoreTimeBonificacion=4,colorDelTextoDeLaCaja=paleta.rosado())   ,
 						 new Caja(position = game.at(7,7),resolucion=resolucionCaja,stringDeObjeto=caja1,cajaEnMeta=cajaMeta1,tipo=1,hardCoreTimeBonificacion=3) ,
 						 new Caja(position = game.at(6,9) ,resolucion=resolucionCaja,stringDeObjeto=caja1,cajaEnMeta=cajaMeta1,tipo=1,hardCoreTimeBonificacion=2,colorDelTextoDeLaCaja=paleta.blanco()),
 						 new Caja(position = game.at(9,9) ,resolucion=resolucionCaja,stringDeObjeto=caja2,cajaEnMeta=cajaMeta2,tipo=2,colorDelTextoDeLaCaja=paleta.violeta()),

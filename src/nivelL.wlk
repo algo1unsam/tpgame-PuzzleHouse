@@ -27,7 +27,7 @@ class NivelL inherits Nivel (siguienteNivel = nivel0,permitirAgregarAlAListaDeLn
 	const cajaMeta4 = "caja4_ok.png"
     const cajaMeta5 = "caja5_ok.png"
 	const listaMeta =[ 
-						 new Meta(position = game.at(17,6), image= meta1),
+						 new Meta(position = game.at(17,6), image= meta1)  ,
 						 new Meta(position = game.at(21,2),image= meta1)  ,
 						 new Meta(position = game.at(22,2), image= meta1),
 						 new Meta(position = game.at(17,7), image= meta1),
@@ -39,7 +39,7 @@ class NivelL inherits Nivel (siguienteNivel = nivel0,permitirAgregarAlAListaDeLn
 						
 	]
 	const listaCajas=[  
-						 new Caja(position = game.at(18,6),resolucion=resolucionCaja,stringDeObjeto=caja1,cajaEnMeta=cajaMeta1,tipo=1,hardCoreTimeBonificacion=15,colorDelTextoDeLaCaja=paleta.aqua())  , 
+						 new Caja(position = game.at(18,6),resolucion=resolucionCaja,stringDeObjeto=caja1,cajaEnMeta=cajaMeta1,tipo=1,hardCoreTimeBonificacion=15,colorDelTextoDeLaCaja=paleta.aqua())    , 
 						 new Caja(position = game.at(19,5),resolucion=resolucionCaja,stringDeObjeto=caja1,cajaEnMeta=cajaMeta1,tipo=1,hardCoreTimeBonificacion=20,colorDelTextoDeLaCaja=paleta.verde()),
 						 new Caja(position = game.at(20,4),resolucion=resolucionCaja,stringDeObjeto=caja1,cajaEnMeta=cajaMeta1,tipo=1,hardCoreTimeBonificacion=15,colorDelTextoDeLaCaja=paleta.amarillo()),
 						 new Caja(position = game.at(21,3),resolucion=resolucionCaja,stringDeObjeto=caja1,cajaEnMeta=cajaMeta1,tipo=1,hardCoreTimeBonificacion=30,colorDelTextoDeLaCaja=paleta.rosado()),
@@ -149,7 +149,7 @@ class NivelL inherits Nivel (siguienteNivel = nivel0,permitirAgregarAlAListaDeLn
 
 }
 object nivelLHardcoreTime inherits NivelL(siguienteNivel = nivel0,soyUnNivelHardcoreTime=true){
-	const unCronometro=new Cronometro(segundos=6,segundoDeReset=6)
+	const unCronometro=new Cronometro(segundos=14,segundoDeReset=14)
 	const readyGo=new ReadyYGO()
 	override method cargarNivel(){
 	
