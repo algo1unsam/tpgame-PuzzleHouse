@@ -111,6 +111,8 @@ object nivelDream inherits Dream (siguienteNivel = nivel0,soyUnNivelPuzzle=false
 		self.bordearHorizontalmente(9,14,12,muroInvisible)
 		self.bordearHorizontalmente(14,16,3,muroInvisible)
 		self.bordearHorizontalmente(14,15,4,muroInvisible)
+		self.bordearHorizontalmente(4,5,8,muroInvisible)
+		self.bordearHorizontalmente(21,21,10,muroInvisible)
 		
 		self.bordearVerticalmente(1,11,0,muroInvisible)
 		self.bordearVerticalmente(6,6,2,muroInvisible)
@@ -126,6 +128,9 @@ object nivelDream inherits Dream (siguienteNivel = nivel0,soyUnNivelPuzzle=false
 		self.bordearVerticalmente(4,11,8,muroInvisible)
 		self.bordearVerticalmente(4,7,10,muroInvisible)
 		self.bordearVerticalmente(8,11,15,muroInvisible)
+		self.bordearVerticalmente(4,11,0,muroInvisible)
+		self.bordearVerticalmente(8,8,0,muroInvisible)
+		self.bordearVerticalmente(8,9,14,muroInvisible)
 	}
 	
 	override method abandonarNivel(){

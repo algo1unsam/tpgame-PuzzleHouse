@@ -62,15 +62,7 @@ class Posicion {
 	
 	}
 	
-	/* 
-	method hacerAlgo(direccion) {
-		if (!configuraciones.libreMoviento() or configuraciones.nivelActual().soyUnNivelCreativo()) {
-			self.cambiarPosicion(direccion)
-		}
-		
-		}
 	
-	*/
 	
 	
 

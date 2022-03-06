@@ -68,4 +68,9 @@ class Jugador inherits Posicion {
 
 }
 
+
+
+
+	
+	
 	

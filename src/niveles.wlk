@@ -189,7 +189,7 @@ object nivel0 inherits Nivel (siguienteNivel = pasadizo,soyUnNivelPuzzle=false){
 	const listaDeNIvelesHardTimesDesbloqueados=[]
 	const animacionZz = new Animacion(position = game.at(0,0), imagen="nivel0/zz/zzz", velocidad= 300)
 	const checkPointHardTimerW=new CheckpointHardTimer(position = game.at(3,11), imagen = "hardTimer/hardTimerW", siguienteNivel = nivelWHardcoreTime, velocidad=50 ,limite=8)
-	const checkPointHardTimerBel=new CheckpointHardTimer(position = game.at(13,11), imagen = "hardTimer/hardTimerBel", siguienteNivel = nivelBelHardcoreTime ,velocidad=60 ,limite=12)
+	const checkPointHardTimerBel=new CheckpointHardTimer(position = game.at(13,11), imagen = "hardTimer/hardTimerBel", siguienteNivel = nivelBelHardcoreTime ,velocidad=50 ,limite=11)
 	const checkPointHardTimerL=new CheckpointHardTimer(position = game.at(19,4), imagen = "hardTimer/hardTimerL", siguienteNivel = nivelLHardcoreTime ,velocidad=60 ,limite=11)
 	const chimenea = new Animacion(position = game.at(0,0), imagen="nivel0/chimenea/flama")
 	

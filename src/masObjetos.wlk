@@ -58,7 +58,6 @@ object skin1 inherits CambiarSkin(position = game.at(2, 5), vestimenta = "jugado
 
 	override method mensaje() {
 		requisito.invisible(true)
-		game.say(configuraciones.elJugador(), "No lo tienes puesto?")
 	}
 
 	override method hacerAlgo(direccion) {
@@ -103,10 +102,6 @@ object skin4 inherits CambiarSkin(position = game.at(14, 5), vestimenta = "jugad
 	}
 
 }
-
-//14,5
-//10,5
-
 
 object skin5 inherits CambiarSkin(position = game.at(18, 5), vestimenta = "jugadorDream") {
 
