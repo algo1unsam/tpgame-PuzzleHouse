@@ -1,7 +1,7 @@
 # Puzzle House
 <img src="https://user-images.githubusercontent.com/22482325/140875712-7ab24fba-04ea-4e80-8fd4-99c6c4cb5199.png" />
 Desafiate recorriendo las distintas habitaciones y poniendo a prueba tu capacidad para resolver puzzles
-<img src="https://raw.githubusercontent.com/willybc/Puzzle-House/master/menu.png" />
+<img src="https://github.com/algo1unsam/tpgame-PuzzleHouse/blob/master/menu.png" />
 
 ## Imagenes
 
